@@ -13,7 +13,6 @@ namespace BD.Web.Data
 
         }
 
-
         public DbSet<provincia> provincia { get; set; }
     }
 }
