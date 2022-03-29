@@ -1,0 +1,30 @@
+﻿@model List<BD.Web.Data.provincia>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Banding</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<h2>Personas</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+            {
+            <tr>
+                <td>@item.ID_PROVINCIA</td>
+                <td>@item.NOMBRE_PROVINCIA</td>
+            </tr>
+            }
+    </tbody>
+</table>
