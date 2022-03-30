@@ -19,6 +19,7 @@ namespace BD.Web.Data
         [Display(Name = "Celular")]
         public string Celular { get; set; }
         [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "El correo no es válido")]
         public string E_Mail { get; set; }
         [Display(Name = "Username")]
         public string Username { get; set; }
