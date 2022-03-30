@@ -1,0 +1,45 @@
+﻿@model BD.Web.Data.Emprendimiento
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Crear</h1>
+
+<h4>Emprendimiento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id_Categoria" class="control-label"></label>
+                <input asp-for="Id_Categoria" class="form-control" />
+                <span asp-validation-for="Id_Categoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre_Emprendimiento" class="control-label"></label>
+                <input asp-for="Nombre_Emprendimiento" class="form-control" />
+                <span asp-validation-for="Nombre_Emprendimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion_Emprendimiento" class="control-label"></label>
+                <input asp-for="Descripcion_Emprendimiento" class="form-control" />
+                <span asp-validation-for="Descripcion_Emprendimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Logo" class="control-label"></label>
+                <input asp-for="Logo" class="form-control" />
+                <span asp-validation-for="Logo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-dark" asp-action="Index">Regresar</a>
+</div>
+

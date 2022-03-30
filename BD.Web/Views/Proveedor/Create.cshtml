@@ -1,0 +1,55 @@
+﻿@model BD.Web.Data.Proveedor
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Crear</h1>
+
+<h4>Proveedor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id_Provincia" class="control-label"></label>
+                <input asp-for="Id_Provincia" class="form-control" />
+                <span asp-validation-for="Id_Provincia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre_Proveedor" class="control-label"></label>
+                <input asp-for="Nombre_Proveedor" class="form-control" />
+                <span asp-validation-for="Nombre_Proveedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefono" class="control-label"></label>
+                <input asp-for="Telefono" class="form-control" />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="E_Mail_Proveedor" class="control-label"></label>
+                <input asp-for="E_Mail_Proveedor" class="form-control" />
+                <span asp-validation-for="E_Mail_Proveedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Producto" class="control-label"></label>
+                <input asp-for="Producto" class="form-control" />
+                <span asp-validation-for="Producto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RUC" class="control-label"></label>
+                <input asp-for="RUC" class="form-control" />
+                <span asp-validation-for="RUC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-dark" asp-action="Index">Regresar</a>
+</div>
+

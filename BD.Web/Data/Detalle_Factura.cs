@@ -10,8 +10,11 @@ namespace BD.Web.Data
     {
         [Key]
         public int Id_Cabecera { get; set; }
+        [Display(Name = "Producto")]
         public int Id_Producto { get; set; }
+        [Display(Name = "Cantidad Vendida")]
         public decimal Cantidad_Vendida { get; set; }
+        [Display(Name = "Precio Total")]
         public decimal Precio_Total { get; set; }
     }
 }

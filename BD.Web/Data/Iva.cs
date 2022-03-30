@@ -10,6 +10,7 @@ namespace BD.Web.Data
     {
         [Key]
         public int Id_Iva { get; set; }
+        [Display(Name = "Valor Iva")]
         public decimal Valor_Iva { get; set; }
     }
 }

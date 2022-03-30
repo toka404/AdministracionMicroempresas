@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = BD.Web
-build_property.ProjectDir = C:\Users\alang\Source\Repos\toka404\AdministracionMicroempresas\BD.Web\
+build_property.ProjectDir = C:\Users\alang\source\repos\toka404\AdministracionMicroempresas\BD.Web\

@@ -10,6 +10,7 @@ namespace BD.Web.Data
     {
         [Key]
         public int Id_Categoria { get; set; }
+        [Display(Name = "Nombre")]
         public string Nombre_Categoria { get; set; }
     }
 }

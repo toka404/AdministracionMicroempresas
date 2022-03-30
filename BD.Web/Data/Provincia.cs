@@ -10,6 +10,7 @@ namespace BD.Web.Data
     {
         [Key]
         public int Id_Provincia { get; set; }
+        [Display(Name = "Nombre")]
         public string Nombre_Provincia { get; set; }
     }
 }

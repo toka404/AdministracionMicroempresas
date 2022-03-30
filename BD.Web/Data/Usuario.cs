@@ -10,12 +10,20 @@ namespace BD.Web.Data
     {
         [Key]
         public int Id_Usuario { get; set; }
+        [Display(Name = "Provincia")]
         public int Id_Provincia { get; set; }
+        [Display(Name = "Nombre")]
         public string Nombre_Usuario { get; set; }
+        [Display(Name = "Apellido")]
         public string Apellido_Usuario { get; set; }
+        [Display(Name = "Celular")]
         public string Celular { get; set; }
+        [Display(Name = "Email")]
         public string E_Mail { get; set; }
+        [Display(Name = "Username")]
         public string Username { get; set; }
+
+        [Display(Name = "Contraseña")]
         public string Contrasena { get; set; }
     }
 }
