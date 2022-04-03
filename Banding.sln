@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BD.Web", "BD.Web\BD.Web.csproj", "{EFF7FB7C-9B49-464D-B5F6-6D2209E97F36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BD.Web", "BD.Web\BD.Web.csproj", "{EFF7FB7C-9B49-464D-B5F6-6D2209E97F36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banding.Core", "Banding.Core\Banding.Core.csproj", "{D327CDB0-118C-4C09-A627-4047166ECD92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banding.Repository", "Banding.Repository\Banding.Repository.csproj", "{5A45116E-F216-46A9-8979-0D3438F23893}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{EFF7FB7C-9B49-464D-B5F6-6D2209E97F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFF7FB7C-9B49-464D-B5F6-6D2209E97F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFF7FB7C-9B49-464D-B5F6-6D2209E97F36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D327CDB0-118C-4C09-A627-4047166ECD92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D327CDB0-118C-4C09-A627-4047166ECD92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D327CDB0-118C-4C09-A627-4047166ECD92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D327CDB0-118C-4C09-A627-4047166ECD92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A45116E-F216-46A9-8979-0D3438F23893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A45116E-F216-46A9-8979-0D3438F23893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A45116E-F216-46A9-8979-0D3438F23893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A45116E-F216-46A9-8979-0D3438F23893}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

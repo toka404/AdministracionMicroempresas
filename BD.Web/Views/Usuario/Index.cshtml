@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BD.Web.Data.Usuario>
+﻿@model Banding.Core.ViewModels.UsuarioEmprendimientoViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -13,31 +13,34 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id_Provincia)
+                @Html.DisplayNameFor(model => model.Usuarios.First().Id_Provincia)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre_Usuario)
+                @Html.DisplayNameFor(model => model.Usuarios.First().Nombre_Usuario)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Apellido_Usuario)
+                @Html.DisplayNameFor(model => model.Usuarios.First().Apellido_Usuario)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Celular)
+                Emprendimientos
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.E_Mail)
+                @Html.DisplayNameFor(model => model.Usuarios.First().Celular)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Username)
+                @Html.DisplayNameFor(model => model.Usuarios.First().E_Mail)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Contrasena)
+                @Html.DisplayNameFor(model => model.Usuarios.First().Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuarios.First().Contrasena)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var (item, index) in Model.Usuarios.Select((value, i) => (value,i))) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Id_Provincia)
@@ -47,6 +50,16 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Apellido_Usuario)
+            </td>
+            <td>
+                
+                @foreach (var (nombre, i) in Model.EmprendimientosUsuario[index].Select((value, i) => (value,i)))
+                {
+                    @Html.DisplayFor(modelItem => nombre);
+                    if(i!= Model.EmprendimientosUsuario[index].Count-1)
+                    {
+                        <label>, </label>
+                    }                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Celular)

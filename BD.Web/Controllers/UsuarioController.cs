@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BD.Web.Data;
+using Banding.Repository.DataBaseContext;
+using Banding.Core.Models.Entities.MySql;
+using Banding.Core.ViewModels;
+
 
 namespace BD.Web.Controllers
 {
@@ -21,7 +24,32 @@ namespace BD.Web.Controllers
         // GET: Usuario
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Usuario.ToListAsync());
+            var usuarios = new UsuarioEmprendimientoViewModel();
+            usuarios.Usuarios = await _context.Usuario.ToListAsync();
+            var emprendimientos = await _context.Usuario_Tiene_Emprendimientos.ToListAsync();
+
+            
+
+            //Guardar los nombres de los emprendimientos por cada usuario
+            var emprendimientoUsuario = new List<List<string>>();
+            foreach (var usuario in usuarios.Usuarios)
+            {
+                var aux = new List<string>();
+                foreach (var empUsuarios in emprendimientos)
+                {
+                    if(usuario.Id_Usuario == empUsuarios.Id_Usuario)
+                    {
+                        Emprendimiento emprendimientoAux = await _context.Emprendimiento.Where(e => e.Id_Emprendimiento == empUsuarios.Id_Emprendimiento).SingleOrDefaultAsync();
+                        string nombreEmprendimiento = emprendimientoAux.Nombre_Emprendimiento;
+                        aux.Add(nombreEmprendimiento);
+                    }
+                }
+                emprendimientoUsuario.Add(aux);
+            }
+
+            usuarios.EmprendimientosUsuario = emprendimientoUsuario;
+
+            return View(usuarios);
         }
 
         // GET: Usuario/Details/5

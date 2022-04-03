@@ -1,4 +1,4 @@
-﻿using BD.Web.Data;
+﻿using Banding.Repository.DataBaseContext;
 using BD.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Banding.Core.Models.Entities.MySql;
+
 
 namespace BD.Web.Controllers
 {

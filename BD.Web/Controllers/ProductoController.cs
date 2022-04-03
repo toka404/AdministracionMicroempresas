@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BD.Web.Data;
+using Banding.Repository.DataBaseContext;
+using Banding.Core.Models.Entities.MySql;
+
 
 namespace BD.Web.Controllers
 {
