@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Banding.Core.Models.Entities.MySql.Provincia>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Provincia</h1>
+
+<p>
+    <a class="btn btn-dark" asp-action="Create">Crear</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_Provincia)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_Provincia)
+            </td>
+            <td>
+                <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.Id_Provincia">Editar</a> |
+                <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.Id_Provincia">Detalles</a> |
+                <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.Id_Provincia">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

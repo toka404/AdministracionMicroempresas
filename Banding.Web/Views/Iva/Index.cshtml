@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Banding.Core.Models.Entities.MySql.Iva>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Iva</h1>
+
+<p>
+    <a class="btn btn-dark" asp-action="Create">Crear</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor_Iva)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor_Iva)
+            </td>
+            <td>
+                <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.Id_Iva">Editar</a> |
+                <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.Id_Iva">Detalles</a> |
+                <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.Id_Iva">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

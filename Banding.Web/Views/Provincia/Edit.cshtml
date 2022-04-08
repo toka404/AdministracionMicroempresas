@@ -1,0 +1,34 @@
+﻿@model Banding.Core.Models.Entities.MySql.Provincia
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar</h1>
+
+<h4>Provincia</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id_Provincia" />
+            <div class="form-group">
+                <label asp-for="Nombre_Provincia" class="control-label"></label>
+                <input asp-for="Nombre_Provincia" class="form-control" />
+                <span asp-validation-for="Nombre_Provincia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-dark" asp-action="Index">Regresar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

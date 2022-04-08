@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Banding.Core.Models.Entities.MySql.Usuario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-dark" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_Provincia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido_Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Celular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.E_Mail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contrasena)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Provincia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido_Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Celular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.E_Mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contrasena)
+            </td>
+            <td>
+                <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.Id_Usuario">Editar</a> |
+                <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.Id_Usuario">Detalles</a> |
+                <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.Id_Usuario">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
