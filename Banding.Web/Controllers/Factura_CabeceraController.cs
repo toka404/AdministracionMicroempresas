@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Banding.Core.Models.Entities.MySql;
 using Banding.Repository.DataBaseContext;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Banding.Web.Controllers
 {
+    [Authorize]
     public class Factura_CabeceraController : Controller
     {
         private readonly MyDbContext _context;

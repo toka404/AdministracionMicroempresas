@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HWIwBgsfomjuY0TkNPSu5mZ5r+j/1QirEbnOgc/VYs/TBSPE84xj92mEqBrAaH1E2B0R/nvlgA3adu+efMOJpw==",
+  "dgSpecHash": "6COR9E4Ey/rCn5ckB79XmlNCbrpoFckRV7/ks5ZDb6E7dIqpApnD2xh/nBQf43LSbUn+Aza3zAUT8TleV7qauw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alang\\Desktop\\Banding\\Banding.Web\\Banding.Web.csproj",
+  "projectFilePath": "C:\\Users\\alang\\Documents\\GitHub\\AdministracionMicroempresas\\Banding.Web\\Banding.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alang\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\alang\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",

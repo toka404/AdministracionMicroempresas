@@ -1460,11 +1460,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alang\\Desktop\\Banding\\Banding.Core\\Banding.Core.csproj",
+      "projectUniqueName": "C:\\Users\\alang\\Documents\\GitHub\\AdministracionMicroempresas\\Banding.Core\\Banding.Core.csproj",
       "projectName": "Banding.Core",
-      "projectPath": "C:\\Users\\alang\\Desktop\\Banding\\Banding.Core\\Banding.Core.csproj",
+      "projectPath": "C:\\Users\\alang\\Documents\\GitHub\\AdministracionMicroempresas\\Banding.Core\\Banding.Core.csproj",
       "packagesPath": "C:\\Users\\alang\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alang\\Desktop\\Banding\\Banding.Core\\obj\\",
+      "outputPath": "C:\\Users\\alang\\Documents\\GitHub\\AdministracionMicroempresas\\Banding.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

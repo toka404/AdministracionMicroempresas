@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Banding.Core.Models.Entities.MySql;
 using Banding.Repository.DataBaseContext;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Banding.Web.Controllers
 {
+    [Authorize]
     public class CategoriaController : Controller
     {
         private readonly MyDbContext _context;
@@ -150,4 +152,4 @@ namespace Banding.Web.Controllers
             return _context.Categoria.Any(e => e.Id_Categoria == id);
         }
     }
-}
+} 
