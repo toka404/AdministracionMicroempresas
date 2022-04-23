@@ -1,0 +1,12 @@
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\bin\Debug\net5.0\Banding.Service.deps.json
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\bin\Debug\net5.0\Banding.Service.dll
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\bin\Debug\net5.0\Banding.Service.pdb
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\obj\Debug\net5.0\Banding.Service.csproj.AssemblyReference.cache
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\obj\Debug\net5.0\Banding.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\obj\Debug\net5.0\Banding.Service.AssemblyInfoInputs.cache
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\obj\Debug\net5.0\Banding.Service.AssemblyInfo.cs
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\obj\Debug\net5.0\Banding.Service.csproj.CoreCompileInputs.cache
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\obj\Debug\net5.0\Banding.Service.dll
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\obj\Debug\net5.0\refint\Banding.Service.dll
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\obj\Debug\net5.0\Banding.Service.pdb
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\obj\Debug\net5.0\ref\Banding.Service.dll

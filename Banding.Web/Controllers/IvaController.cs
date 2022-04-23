@@ -8,23 +8,23 @@ using Microsoft.EntityFrameworkCore;
 using Banding.Core.Models.Entities.MySql;
 using Banding.Repository.DataBaseContext;
 using Microsoft.AspNetCore.Authorization;
+using Banding.Core.Interfaces.Repository.MySql;
 
 namespace Banding.Web.Controllers
 {
     [Authorize]
     public class IvaController : Controller
     {
-        private readonly MyDbContext _context;
-
-        public IvaController(MyDbContext context)
+        private readonly IIvaRepository _ivaRepository;
+        public IvaController(IIvaRepository ivaRepository)
         {
-            _context = context;
+            _ivaRepository = ivaRepository;
         }
 
         // GET: Iva
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Iva.ToListAsync());
+            return View(_ivaRepository.GetIvas());
         }
 
         // GET: Iva/Details/5
@@ -35,8 +35,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var iva = await _context.Iva
-                .FirstOrDefaultAsync(m => m.Id_Iva == id);
+            var iva = _ivaRepository.GetIvaById(id);
             if (iva == null)
             {
                 return NotFound();
@@ -60,8 +59,7 @@ namespace Banding.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(iva);
-                await _context.SaveChangesAsync();
+                _ivaRepository.CreateIva(iva);
                 return RedirectToAction(nameof(Index));
             }
             return View(iva);
@@ -75,7 +73,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var iva = await _context.Iva.FindAsync(id);
+            var iva = _ivaRepository.GetIvaById(id);
             if (iva == null)
             {
                 return NotFound();
@@ -99,12 +97,11 @@ namespace Banding.Web.Controllers
             {
                 try
                 {
-                    _context.Update(iva);
-                    await _context.SaveChangesAsync();
+                    _ivaRepository.UpdateIva(iva);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!IvaExists(iva.Id_Iva))
+                    if (!_ivaRepository.IvaExists(iva.Id_Iva))
                     {
                         return NotFound();
                     }
@@ -126,8 +123,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var iva = await _context.Iva
-                .FirstOrDefaultAsync(m => m.Id_Iva == id);
+            var iva = _ivaRepository.GetIvaById(id);
             if (iva == null)
             {
                 return NotFound();
@@ -141,15 +137,10 @@ namespace Banding.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var iva = await _context.Iva.FindAsync(id);
-            _context.Iva.Remove(iva);
-            await _context.SaveChangesAsync();
+            var iva = _ivaRepository.GetIvaById(id);
+            _ivaRepository.DeleteIva(iva);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool IvaExists(int id)
-        {
-            return _context.Iva.Any(e => e.Id_Iva == id);
-        }
     }
 }

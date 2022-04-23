@@ -8,23 +8,24 @@ using Microsoft.EntityFrameworkCore;
 using Banding.Core.Models.Entities.MySql;
 using Banding.Repository.DataBaseContext;
 using Microsoft.AspNetCore.Authorization;
+using Banding.Core.Interfaces.Repository.MySql;
 
 namespace Banding.Web.Controllers
 {
     [Authorize]
     public class CategoriaController : Controller
     {
-        private readonly MyDbContext _context;
+        private readonly ICategoriaRepository _categoriaRepository;
 
-        public CategoriaController(MyDbContext context)
+        public CategoriaController(ICategoriaRepository categoriaRepository)
         {
-            _context = context;
+            _categoriaRepository = categoriaRepository;
         }
 
         // GET: Categoria
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Categoria.ToListAsync());
+            return View(_categoriaRepository.GetCategorias());
         }
 
         // GET: Categoria/Details/5
@@ -35,8 +36,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Categoria
-                .FirstOrDefaultAsync(m => m.Id_Categoria == id);
+            var categoria = _categoriaRepository.GetCategoriaById(id);
             if (categoria == null)
             {
                 return NotFound();
@@ -60,8 +60,7 @@ namespace Banding.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(categoria);
-                await _context.SaveChangesAsync();
+                _categoriaRepository.CreateCategoria(categoria);
                 return RedirectToAction(nameof(Index));
             }
             return View(categoria);
@@ -75,7 +74,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Categoria.FindAsync(id);
+            var categoria = _categoriaRepository.GetCategoriaById(id);
             if (categoria == null)
             {
                 return NotFound();
@@ -99,12 +98,11 @@ namespace Banding.Web.Controllers
             {
                 try
                 {
-                    _context.Update(categoria);
-                    await _context.SaveChangesAsync();
+                    _categoriaRepository.UpdateCategoria(categoria);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoriaExists(categoria.Id_Categoria))
+                    if (!_categoriaRepository.CategoriaExists(categoria.Id_Categoria))
                     {
                         return NotFound();
                     }
@@ -126,8 +124,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Categoria
-                .FirstOrDefaultAsync(m => m.Id_Categoria == id);
+            var categoria = _categoriaRepository.GetCategoriaById(id);
             if (categoria == null)
             {
                 return NotFound();
@@ -141,15 +138,9 @@ namespace Banding.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var categoria = await _context.Categoria.FindAsync(id);
-            _context.Categoria.Remove(categoria);
-            await _context.SaveChangesAsync();
+            var categoria = _categoriaRepository.GetCategoriaById(id);
+            _categoriaRepository.DeleteCategoria(categoria);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool CategoriaExists(int id)
-        {
-            return _context.Categoria.Any(e => e.Id_Categoria == id);
         }
     }
 } 

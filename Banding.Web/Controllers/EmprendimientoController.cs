@@ -8,23 +8,24 @@ using Microsoft.EntityFrameworkCore;
 using Banding.Core.Models.Entities.MySql;
 using Banding.Repository.DataBaseContext;
 using Microsoft.AspNetCore.Authorization;
+using Banding.Core.Interfaces.Repository.MySql;
 
 namespace Banding.Web.Controllers
 {
     [Authorize]
     public class EmprendimientoController : Controller
     {
-        private readonly MyDbContext _context;
+        private readonly IEmprendimientoRepository _emprendimientoRepository;
 
-        public EmprendimientoController(MyDbContext context)
+        public EmprendimientoController(IEmprendimientoRepository emprendimientoRepository)
         {
-            _context = context;
+            _emprendimientoRepository = emprendimientoRepository;
         }
 
         // GET: Emprendimiento
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Emprendimiento.ToListAsync());
+            return View(_emprendimientoRepository.GetEmprendimientos());
         }
 
         // GET: Emprendimiento/Details/5
@@ -35,8 +36,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var emprendimiento = await _context.Emprendimiento
-                .FirstOrDefaultAsync(m => m.Id_Emprendimiento == id);
+            var emprendimiento = _emprendimientoRepository.GetEmprendimientoById(id);
             if (emprendimiento == null)
             {
                 return NotFound();
@@ -60,8 +60,7 @@ namespace Banding.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(emprendimiento);
-                await _context.SaveChangesAsync();
+                _emprendimientoRepository.CreateEmprendimiento(emprendimiento);
                 return RedirectToAction(nameof(Index));
             }
             return View(emprendimiento);
@@ -75,7 +74,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var emprendimiento = await _context.Emprendimiento.FindAsync(id);
+            var emprendimiento = _emprendimientoRepository.GetEmprendimientoById(id);
             if (emprendimiento == null)
             {
                 return NotFound();
@@ -99,12 +98,11 @@ namespace Banding.Web.Controllers
             {
                 try
                 {
-                    _context.Update(emprendimiento);
-                    await _context.SaveChangesAsync();
+                    _emprendimientoRepository.UpdateEmprendimiento(emprendimiento);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmprendimientoExists(emprendimiento.Id_Emprendimiento))
+                    if (!_emprendimientoRepository.EmprendimientoExists(emprendimiento.Id_Emprendimiento))
                     {
                         return NotFound();
                     }
@@ -126,8 +124,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var emprendimiento = await _context.Emprendimiento
-                .FirstOrDefaultAsync(m => m.Id_Emprendimiento == id);
+            var emprendimiento = _emprendimientoRepository.GetEmprendimientoById(id);
             if (emprendimiento == null)
             {
                 return NotFound();
@@ -141,15 +138,10 @@ namespace Banding.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var emprendimiento = await _context.Emprendimiento.FindAsync(id);
-            _context.Emprendimiento.Remove(emprendimiento);
-            await _context.SaveChangesAsync();
+            var emprendimiento = _emprendimientoRepository.GetEmprendimientoById(id);
+            _emprendimientoRepository.DeleteEmprendimiento(emprendimiento);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EmprendimientoExists(int id)
-        {
-            return _context.Emprendimiento.Any(e => e.Id_Emprendimiento == id);
-        }
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Banding.Repository.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20220407142414_initial")]
+    [Migration("20220423191838_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,7 +17,7 @@ namespace Banding.Repository.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.15");
+                .HasAnnotation("ProductVersion", "5.0.16");
 
             modelBuilder.Entity("Banding.Core.Models.Entities.MySql.Categoria", b =>
                 {
@@ -145,7 +145,10 @@ namespace Banding.Repository.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
-                    b.Property<DateTime>("Fecha_Caducidad")
+                    b.Property<string>("Email_Enviado")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("Fecha_Caducidad")
                         .HasColumnType("datetime");
 
                     b.Property<string>("Foto")
@@ -169,6 +172,9 @@ namespace Banding.Repository.Migrations
                         .HasColumnType("double");
 
                     b.Property<int>("Stock")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Stock_Minimo")
                         .HasColumnType("int");
 
                     b.HasKey("Id_Producto");

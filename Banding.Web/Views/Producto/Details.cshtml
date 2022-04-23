@@ -2,9 +2,10 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Detalles</h1>
+<h1>Details</h1>
 
 <div>
     <h4>Producto</h4>
@@ -47,6 +48,13 @@
             @Html.DisplayFor(model => model.Stock)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stock_Minimo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stock_Minimo)
+        </dd>
+
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Fecha_Caducidad)
         </dt>
         <dd class = "col-sm-10">
@@ -67,6 +75,6 @@
     </dl>
 </div>
 <div>
-    <a class="btn btn-dark" asp-action="Edit" asp-route-id="@Model.Id_Producto">Editar</a> |
-    <a class="btn btn-dark" asp-action="Index">Regresar</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id_Producto">Edit</a> |
+    <a asp-action="Index">Back to List</a>
 </div>

@@ -8,23 +8,24 @@ using Microsoft.EntityFrameworkCore;
 using Banding.Core.Models.Entities.MySql;
 using Banding.Repository.DataBaseContext;
 using Microsoft.AspNetCore.Authorization;
+using Banding.Core.Interfaces.Repository.MySql;
 
 namespace Banding.Web.Controllers
 {
     [Authorize]
     public class ProveedorController : Controller
     {
-        private readonly MyDbContext _context;
+        private readonly IProveedorRepository _proveedorRepository;
 
-        public ProveedorController(MyDbContext context)
+        public ProveedorController(IProveedorRepository proveedorRepository)
         {
-            _context = context;
+            _proveedorRepository = proveedorRepository;
         }
 
         // GET: Proveedor
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Proveedor.ToListAsync());
+            return View(_proveedorRepository.GetProveedores());
         }
 
         // GET: Proveedor/Details/5
@@ -35,8 +36,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var proveedor = await _context.Proveedor
-                .FirstOrDefaultAsync(m => m.Id_Proveedor == id);
+            var proveedor = _proveedorRepository.GetProveedorById(id);
             if (proveedor == null)
             {
                 return NotFound();
@@ -60,8 +60,7 @@ namespace Banding.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(proveedor);
-                await _context.SaveChangesAsync();
+                _proveedorRepository.CreateProveedor(proveedor);
                 return RedirectToAction(nameof(Index));
             }
             return View(proveedor);
@@ -75,7 +74,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var proveedor = await _context.Proveedor.FindAsync(id);
+            var proveedor = _proveedorRepository.GetProveedorById(id);  
             if (proveedor == null)
             {
                 return NotFound();
@@ -99,12 +98,11 @@ namespace Banding.Web.Controllers
             {
                 try
                 {
-                    _context.Update(proveedor);
-                    await _context.SaveChangesAsync();
+                   _proveedorRepository.UpdateProveedor(proveedor);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProveedorExists(proveedor.Id_Proveedor))
+                    if (!_proveedorRepository.ProveedorExists(proveedor.Id_Proveedor))
                     {
                         return NotFound();
                     }
@@ -126,8 +124,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var proveedor = await _context.Proveedor
-                .FirstOrDefaultAsync(m => m.Id_Proveedor == id);
+            var proveedor = _proveedorRepository.GetProveedorById(id);
             if (proveedor == null)
             {
                 return NotFound();
@@ -141,15 +138,10 @@ namespace Banding.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var proveedor = await _context.Proveedor.FindAsync(id);
-            _context.Proveedor.Remove(proveedor);
-            await _context.SaveChangesAsync();
+            var proveedor = _proveedorRepository.GetProveedorById(id);
+            _proveedorRepository.DeleteProveedor(proveedor);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProveedorExists(int id)
-        {
-            return _context.Proveedor.Any(e => e.Id_Proveedor == id);
-        }
     }
 }

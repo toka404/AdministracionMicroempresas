@@ -100,7 +100,9 @@ namespace Banding.Repository.Migrations
                     Descripcion = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: true),
                     Foto = table.Column<string>(type: "text", nullable: true),
                     Stock = table.Column<int>(type: "int", nullable: false),
-                    Fecha_Caducidad = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Stock_Minimo = table.Column<int>(type: "int", nullable: false),
+                    Email_Enviado = table.Column<string>(type: "text", nullable: true),
+                    Fecha_Caducidad = table.Column<DateTime>(type: "datetime", nullable: true),
                     Precio_Venta = table.Column<double>(type: "double", nullable: false),
                     Iva = table.Column<string>(type: "text", nullable: true)
                 },

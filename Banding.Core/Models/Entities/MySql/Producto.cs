@@ -27,6 +27,9 @@ namespace Banding.Core.Models.Entities.MySql
         public string Foto { get; set; }
         [Display(Name = "Stock")]
         public int Stock { get; set; }
+        [Display(Name = "Stock Mínimo")]
+        public int Stock_Minimo { get; set; }
+        public string Email_Enviado { get; set; } = "0";
         [DataType(DataType.Date)]
         [Display(Name = "Fecha de caducidad")]
         public DateTime? Fecha_Caducidad { get; set; }

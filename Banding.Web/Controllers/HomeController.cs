@@ -28,7 +28,7 @@ namespace Banding.Web.Controllers
 
         public IActionResult Index()
         {
-            return View(_contexto.Provincia.FirstOrDefault());
+            return View(_contexto.Producto.ToList());
         }
 
         public IActionResult Privacy()
@@ -42,15 +42,13 @@ namespace Banding.Web.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         [HttpGet("login")]
-        public IActionResult LogIn(string returnUrl)
+        public IActionResult LogIn()
         {
-            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
         [HttpPost("login")]
-        public async Task<IActionResult> Validate(string username, string password, string returnUrl)
+        public async Task<IActionResult> Validate(string username, string password)
         {
-            ViewData["ReturnUrl"] = returnUrl;
             var usuario = _contexto.Usuario.Where(u => (u.Username.Equals(username) || u.E_Mail.Equals(username))
             && u.Contrasena.Equals(password)).SingleOrDefault();
             if (usuario != null)
@@ -59,6 +57,10 @@ namespace Banding.Web.Controllers
                 claims.Add(new Claim("username", usuario.Username));
                 claims.Add(new Claim(ClaimTypes.NameIdentifier, usuario.Username));
                 claims.Add(new Claim(ClaimTypes.Name, usuario.Nombre_Usuario));
+                var emprendimientoAux = _contexto.Usuario_Tiene_Emprendimientos.Where(e => e.Id_Usuario == usuario.Id_Usuario).SingleOrDefault();
+                var emprendimiento = _contexto.Emprendimiento.Where(e => e.Id_Emprendimiento == emprendimientoAux.Id_Emprendimiento).FirstOrDefault();
+                claims.Add(new Claim("emprendimientoID", emprendimientoAux.Id_Emprendimiento.ToString()));
+                claims.Add(new Claim("emprendimiento", emprendimiento.Nombre_Emprendimiento));
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);

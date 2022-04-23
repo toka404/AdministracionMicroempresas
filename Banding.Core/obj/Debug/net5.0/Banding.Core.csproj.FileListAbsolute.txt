@@ -10,3 +10,15 @@ C:\Users\alang\Desktop\Banding\Banding.Core\obj\Debug\net5.0\Banding.Core.dll
 C:\Users\alang\Desktop\Banding\Banding.Core\obj\Debug\net5.0\refint\Banding.Core.dll
 C:\Users\alang\Desktop\Banding\Banding.Core\obj\Debug\net5.0\Banding.Core.pdb
 C:\Users\alang\Desktop\Banding\Banding.Core\obj\Debug\net5.0\ref\Banding.Core.dll
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Core\bin\Debug\net5.0\Banding.Core.deps.json
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Core\bin\Debug\net5.0\Banding.Core.dll
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Core\bin\Debug\net5.0\Banding.Core.pdb
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Core\obj\Debug\net5.0\Banding.Core.csproj.AssemblyReference.cache
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Core\obj\Debug\net5.0\Banding.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Core\obj\Debug\net5.0\Banding.Core.AssemblyInfoInputs.cache
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Core\obj\Debug\net5.0\Banding.Core.AssemblyInfo.cs
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Core\obj\Debug\net5.0\Banding.Core.csproj.CoreCompileInputs.cache
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Core\obj\Debug\net5.0\Banding.Core.dll
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Core\obj\Debug\net5.0\refint\Banding.Core.dll
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Core\obj\Debug\net5.0\Banding.Core.pdb
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Core\obj\Debug\net5.0\ref\Banding.Core.dll

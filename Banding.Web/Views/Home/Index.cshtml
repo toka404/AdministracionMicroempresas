@@ -1,20 +1,40 @@
-﻿@{
+﻿@model IEnumerable<Banding.Core.Models.Entities.MySql.Producto>
+
+@{
     ViewData["Title"] = "Home Page";
     Layout = "_Layout";
 }
 
 @if (User.Identity.IsAuthenticated)
 {
-    <div class="jumbotron">
-        <h1 class="display-4">Bienvenido @User.Claims.ElementAt(2).Value</h1>
-        <p class="lead">Bienvenido a la página de banding</p>
-        <hr class="my-4">
-        <p>Emprendimientos para todos</p>
-        <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Saber más</a>
-        </p>
-    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-9">
+                <div class="jumbotron">
+                    <h1 class="display-4">Bienvenido @User.Claims.ElementAt(2).Value</h1>
+                    <p class="lead">Bienvenido a la página de adminstración de su emprendimiento.</p>
+                    <hr class="my-4">
+                    <p>@User.Claims.ElementAt(4).Value</p>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="notifications">
+                    <div><strong>Notificaciones</strong></div>
 
+                    Los siguentes productos llegaron a su stock mínimo.
+                    <ul>
+                    @foreach(var item in Model)
+                    {
+                        <li>@item.Nombre_Producto</li>
+                    }
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 
 }
 else
@@ -28,7 +48,5 @@ else
             <a class="btn btn-primary btn-lg" href="#" role="button">Saber más</a>
         </p>
     </div>
-
-
 }
 

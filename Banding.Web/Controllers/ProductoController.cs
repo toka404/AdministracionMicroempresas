@@ -8,23 +8,24 @@ using Microsoft.EntityFrameworkCore;
 using Banding.Core.Models.Entities.MySql;
 using Banding.Repository.DataBaseContext;
 using Microsoft.AspNetCore.Authorization;
+using Banding.Core.Interfaces.Repository.MySql;
 
 namespace Banding.Web.Controllers
 {
     [Authorize]
     public class ProductoController : Controller
     {
-        private readonly MyDbContext _context;
+        private readonly IProductoRepository _productoRepository;
 
-        public ProductoController(MyDbContext context)
+        public ProductoController(IProductoRepository productoRepository)
         {
-            _context = context;
+            _productoRepository = productoRepository;
         }
 
         // GET: Producto
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Producto.ToListAsync());
+            return View(_productoRepository.GetProductos());
         }
 
         // GET: Producto/Details/5
@@ -35,8 +36,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var producto = await _context.Producto
-                .FirstOrDefaultAsync(m => m.Id_Producto == id);
+            var producto = _productoRepository.GetProductoById(id);
             if (producto == null)
             {
                 return NotFound();
@@ -56,12 +56,11 @@ namespace Banding.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id_Producto,Id_Emprendimiento,Nombre_Producto,Precio_Fabricacion,Descripcion,Foto,Stock,Fecha_Caducidad,Precio_Venta,Iva")] Producto producto)
+        public async Task<IActionResult> Create([Bind("Id_Producto,Id_Emprendimiento,Nombre_Producto,Precio_Fabricacion,Descripcion,Foto,Stock,Stock_Minimo,Email_Enviado,Fecha_Caducidad,Precio_Venta,Iva")] Producto producto)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(producto);
-                await _context.SaveChangesAsync();
+                _productoRepository.CreateProducto(producto);
                 return RedirectToAction(nameof(Index));
             }
             return View(producto);
@@ -75,7 +74,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var producto = await _context.Producto.FindAsync(id);
+            var producto = _productoRepository.GetProductoById(id);
             if (producto == null)
             {
                 return NotFound();
@@ -88,7 +87,7 @@ namespace Banding.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id_Producto,Id_Emprendimiento,Nombre_Producto,Precio_Fabricacion,Descripcion,Foto,Stock,Fecha_Caducidad,Precio_Venta,Iva")] Producto producto)
+        public async Task<IActionResult> Edit(int id, [Bind("Id_Producto,Id_Emprendimiento,Nombre_Producto,Precio_Fabricacion,Descripcion,Foto,Stock,Stock_Minimo,Email_Enviado,Fecha_Caducidad,Precio_Venta,Iva")] Producto producto)
         {
             if (id != producto.Id_Producto)
             {
@@ -99,12 +98,11 @@ namespace Banding.Web.Controllers
             {
                 try
                 {
-                    _context.Update(producto);
-                    await _context.SaveChangesAsync();
+                    _productoRepository.UpdateProducto(producto);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductoExists(producto.Id_Producto))
+                    if (!_productoRepository.ProductoExists(producto.Id_Producto))
                     {
                         return NotFound();
                     }
@@ -126,8 +124,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var producto = await _context.Producto
-                .FirstOrDefaultAsync(m => m.Id_Producto == id);
+            var producto = _productoRepository.GetProductoById(id);
             if (producto == null)
             {
                 return NotFound();
@@ -141,15 +138,9 @@ namespace Banding.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var producto = await _context.Producto.FindAsync(id);
-            _context.Producto.Remove(producto);
-            await _context.SaveChangesAsync();
+            var producto = _productoRepository.GetProductoById(id);
+            _productoRepository.DeleteProducto(producto);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool ProductoExists(int id)
-        {
-            return _context.Producto.Any(e => e.Id_Producto == id);
         }
     }
 }

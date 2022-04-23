@@ -6,25 +6,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Banding.Core.Models.Entities.MySql;
-using Banding.Repository.DataBaseContext;
 using Microsoft.AspNetCore.Authorization;
+using Banding.Core.Interfaces.Repository.MySql;
 
 namespace Banding.Web.Controllers
 {
     [Authorize]
     public class UsuarioController : Controller
     {
-        private readonly MyDbContext _context;
+        private readonly IUsuarioRepository _userRepository;
 
-        public UsuarioController(MyDbContext context)
+        public UsuarioController(IUsuarioRepository userRepository)
         {
-            _context = context;
+            _userRepository = userRepository;
         }
 
         // GET: Usuario
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Usuario.ToListAsync());
+            return View(_userRepository.GetUsuarios());
         }
 
         // GET: Usuario/Details/5
@@ -35,8 +35,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuario
-                .FirstOrDefaultAsync(m => m.Id_Usuario == id);
+            var usuario = _userRepository.GetUsuarioById(id);
             if (usuario == null)
             {
                 return NotFound();
@@ -60,8 +59,7 @@ namespace Banding.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(usuario);
-                await _context.SaveChangesAsync();
+                _userRepository.CreateUsuario(usuario);
                 return RedirectToAction(nameof(Index));
             }
             return View(usuario);
@@ -75,7 +73,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuario.FindAsync(id);
+            var usuario = _userRepository.GetUsuarioById(id);
             if (usuario == null)
             {
                 return NotFound();
@@ -99,12 +97,11 @@ namespace Banding.Web.Controllers
             {
                 try
                 {
-                    _context.Update(usuario);
-                    await _context.SaveChangesAsync();
+                    _userRepository.UpdateUsuario(usuario);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsuarioExists(usuario.Id_Usuario))
+                    if (!_userRepository.UsuarioExists(usuario.Id_Usuario))
                     {
                         return NotFound();
                     }
@@ -126,8 +123,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuario
-                .FirstOrDefaultAsync(m => m.Id_Usuario == id);
+            var usuario = _userRepository.GetUsuarioById(id);
             if (usuario == null)
             {
                 return NotFound();
@@ -141,15 +137,10 @@ namespace Banding.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var usuario = await _context.Usuario.FindAsync(id);
-            _context.Usuario.Remove(usuario);
-            await _context.SaveChangesAsync();
+            var usuario = _userRepository.GetUsuarioById(id);
+            _userRepository.DeleteUsuario(usuario);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UsuarioExists(int id)
-        {
-            return _context.Usuario.Any(e => e.Id_Usuario == id);
-        }
     }
 }

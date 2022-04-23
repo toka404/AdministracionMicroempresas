@@ -8,23 +8,24 @@ using Microsoft.EntityFrameworkCore;
 using Banding.Core.Models.Entities.MySql;
 using Banding.Repository.DataBaseContext;
 using Microsoft.AspNetCore.Authorization;
+using Banding.Core.Interfaces.Repository.MySql;
 
 namespace Banding.Web.Controllers
 {
     [Authorize]
     public class ProvinciaController : Controller
     {
-        private readonly MyDbContext _context;
+        private readonly IProvinciaRepository _provinciaRepository;
 
-        public ProvinciaController(MyDbContext context)
+        public ProvinciaController(IProvinciaRepository provinciaRepository)
         {
-            _context = context;
+            _provinciaRepository = provinciaRepository;
         }
 
         // GET: Provincia
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Provincia.ToListAsync());
+            return View(_provinciaRepository.GetProvincias());
         }
 
         // GET: Provincia/Details/5
@@ -35,8 +36,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var provincia = await _context.Provincia
-                .FirstOrDefaultAsync(m => m.Id_Provincia == id);
+            var provincia = _provinciaRepository.GetProvinciaById(id);
             if (provincia == null)
             {
                 return NotFound();
@@ -60,8 +60,7 @@ namespace Banding.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(provincia);
-                await _context.SaveChangesAsync();
+                _provinciaRepository.CreateProvincia(provincia);
                 return RedirectToAction(nameof(Index));
             }
             return View(provincia);
@@ -75,7 +74,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var provincia = await _context.Provincia.FindAsync(id);
+            var provincia = _provinciaRepository.GetProvinciaById(id);
             if (provincia == null)
             {
                 return NotFound();
@@ -99,12 +98,11 @@ namespace Banding.Web.Controllers
             {
                 try
                 {
-                    _context.Update(provincia);
-                    await _context.SaveChangesAsync();
+                    _provinciaRepository.UpdateProvincia(provincia);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProvinciaExists(provincia.Id_Provincia))
+                    if (!_provinciaRepository.ProvinciaExists(provincia.Id_Provincia))
                     {
                         return NotFound();
                     }
@@ -126,8 +124,7 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
 
-            var provincia = await _context.Provincia
-                .FirstOrDefaultAsync(m => m.Id_Provincia == id);
+            var provincia = _provinciaRepository.GetProvinciaById(id);
             if (provincia == null)
             {
                 return NotFound();
@@ -141,15 +138,9 @@ namespace Banding.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var provincia = await _context.Provincia.FindAsync(id);
-            _context.Provincia.Remove(provincia);
-            await _context.SaveChangesAsync();
+            var provincia = _provinciaRepository.GetProvinciaById(id);
+            _provinciaRepository.DeleteProvincia(provincia);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool ProvinciaExists(int id)
-        {
-            return _context.Provincia.Any(e => e.Id_Provincia == id);
         }
     }
 }

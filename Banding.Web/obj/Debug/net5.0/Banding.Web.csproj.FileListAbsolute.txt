@@ -362,11 +362,6 @@ C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debu
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Iva\Details.cshtml.g.cs
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Iva\Edit.cshtml.g.cs
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Iva\Index.cshtml.g.cs
-C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Producto\Create.cshtml.g.cs
-C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Producto\Delete.cshtml.g.cs
-C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Producto\Details.cshtml.g.cs
-C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Producto\Edit.cshtml.g.cs
-C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Producto\Index.cshtml.g.cs
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Proveedor\Create.cshtml.g.cs
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Proveedor\Delete.cshtml.g.cs
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Proveedor\Details.cshtml.g.cs
@@ -397,3 +392,9 @@ C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debu
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Banding.Web.pdb
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Banding.Web.genruntimeconfig.cache
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\ref\Banding.Web.dll
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Inventario\Index.cshtml.g.cs
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Producto\Create.cshtml.g.cs
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Producto\Delete.cshtml.g.cs
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Producto\Details.cshtml.g.cs
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Producto\Edit.cshtml.g.cs
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Producto\Index.cshtml.g.cs

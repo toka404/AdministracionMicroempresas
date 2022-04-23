@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Productos</h1>
+<h1>Index</h1>
 
 <p>
-    <a class="btn btn-dark" asp-action="Create">Crear</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -29,6 +29,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock_Minimo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Fecha_Caducidad)
@@ -64,6 +67,9 @@
                 @Html.DisplayFor(modelItem => item.Stock)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Stock_Minimo)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Fecha_Caducidad)
             </td>
             <td>
@@ -73,9 +79,9 @@
                 @Html.DisplayFor(modelItem => item.Iva)
             </td>
             <td>
-                <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.Id_Producto">Editar</a> |
-                <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.Id_Producto">Detalles</a> |
-                <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.Id_Producto">Eliminar</a>
+                <a asp-action="Edit" asp-route-id="@item.Id_Producto">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id_Producto">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id_Producto">Delete</a>
             </td>
         </tr>
 }
