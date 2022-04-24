@@ -10,3 +10,8 @@ C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\obj\
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\obj\Debug\net5.0\refint\Banding.Service.dll
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\obj\Debug\net5.0\Banding.Service.pdb
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\obj\Debug\net5.0\ref\Banding.Service.dll
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\bin\Debug\net5.0\Banding.Core.dll
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\bin\Debug\net5.0\Banding.Repository.dll
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\bin\Debug\net5.0\Banding.Repository.pdb
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\bin\Debug\net5.0\Banding.Core.pdb
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Service\obj\Debug\net5.0\Banding.Service.csproj.CopyComplete

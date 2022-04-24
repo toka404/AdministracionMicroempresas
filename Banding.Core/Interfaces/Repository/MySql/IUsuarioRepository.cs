@@ -9,7 +9,7 @@ namespace Banding.Core.Interfaces.Repository.MySql
 {
     public interface IUsuarioRepository
     {
-        public Usuario GetUserByEmailUsername(string param);
+        public Usuario GetUserByEmailUsername(string param, string password);
         public List<Usuario> GetUsuarios();
         public Usuario GetUsuarioById(int? id);
         public void CreateUsuario(Usuario usuario);

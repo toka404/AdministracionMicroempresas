@@ -16,9 +16,9 @@ namespace Banding.Repository.Data.MySql
         {
             _context = context;
         }
-        public Usuario GetUserByEmailUsername(string param)
+        public Usuario GetUserByEmailUsername(string param, string password)
         {
-            return _context.Usuario.Where(u => u.E_Mail.Equals(param) || u.Username.Equals(param)).SingleOrDefault();
+            return _context.Usuario.Where(u => (u.E_Mail.Equals(param) || u.Username.Equals(param)) && u.Contrasena.Equals(password) ).SingleOrDefault();
         }
         public List<Usuario> GetUsuarios()
         {

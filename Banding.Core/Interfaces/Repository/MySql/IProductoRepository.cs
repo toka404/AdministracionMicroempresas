@@ -13,7 +13,11 @@ namespace Banding.Core.Interfaces.Repository.MySql
         public Producto GetProductoById(int? id);
         public void CreateProducto(Producto usuario);
         public void UpdateProducto(Producto usuario);
+        public void UpdateProductos(List<Producto> usuario);
         public void DeleteProducto(Producto usuario);
         public bool ProductoExists(int id);
+        public List<Producto> ProductosWithMinStock(int? idEmprendimiento);
+        public List<Producto> ProductosNotEmailSent(int? idEmprendimiento);
+
     }
 }

@@ -33,7 +33,7 @@
     ".NETCoreApp,Version=v5.0": {
       "Banding.Web/1.0.0": {
         "dependencies": {
-          "Banding.Repository": "1.0.0",
+          "Banding.Service": "1.0.0",
           "Microsoft.EntityFrameworkCore.Design": "5.0.16",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.16",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.16",
@@ -1942,6 +1942,17 @@
         },
         "compile": {
           "Banding.Repository.dll": {}
+        }
+      },
+      "Banding.Service/1.0.0": {
+        "dependencies": {
+          "Banding.Repository": "1.0.0"
+        },
+        "runtime": {
+          "Banding.Service.dll": {}
+        },
+        "compile": {
+          "Banding.Service.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
@@ -4568,6 +4579,11 @@
       "sha512": ""
     },
     "Banding.Repository/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Banding.Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

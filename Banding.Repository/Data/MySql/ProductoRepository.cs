@@ -48,5 +48,18 @@ namespace Banding.Repository.Data.MySql
             _context.Update(producto);
             _context.SaveChanges();
         }
+        public void UpdateProductos(List<Producto> productos)
+        {
+            _context.Update(productos);
+            _context.SaveChanges();
+        }
+        public List<Producto> ProductosWithMinStock(int? idEmprendimiento)
+        {
+            return _context.Producto.Where(p => p.Stock <= p.Stock_Minimo && p.Id_Emprendimiento == idEmprendimiento).ToList(); 
+        }
+        public List<Producto> ProductosNotEmailSent(int? idEmprendimiento)
+        {
+            return _context.Producto.Where(p => p.Stock <= p.Stock_Minimo && p.Id_Emprendimiento == idEmprendimiento && p.Email_Enviado.Equals("0")).ToList();
+        }
     }
 }

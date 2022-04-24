@@ -1,6 +1,8 @@
 using Banding.Core.Interfaces.Repository.MySql;
+using Banding.Core.Interfaces.Service;
 using Banding.Repository.Data.MySql;
 using Banding.Repository.DataBaseContext;
+using Banding.Service.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,9 +37,14 @@ namespace Banding.Web
             services.AddScoped<IProductoRepository, ProductoRepository>();
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<IEmprendimientoRepository, EmprendimientoRepository>();
+            services.AddScoped<IUsuarioEmprendimientoRepository, UsuarioEmprendimientoRepository>();
             services.AddScoped<IIvaRepository, IvaRepository>();
             services.AddScoped<IProveedorRepository, ProveedorRepository>();
             services.AddScoped<IProvinciaRepository, ProvinciaRepository>();
+
+            //Service
+            services.AddTransient<IAuthenticateUserService, AuthenticateUserService>();
+            services.AddTransient<IInventarioService, InventarioService>();
 
             services.AddControllersWithViews();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).

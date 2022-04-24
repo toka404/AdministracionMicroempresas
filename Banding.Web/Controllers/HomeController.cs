@@ -1,4 +1,7 @@
-﻿using Banding.Repository.Data.MySql;
+﻿using Banding.Core.Interfaces.Repository.MySql;
+using Banding.Core.Interfaces.Service;
+using Banding.Core.Models.Entities.MySql;
+using Banding.Repository.Data.MySql;
 using Banding.Repository.DataBaseContext;
 using Banding.Web.Models;
 using Microsoft.AspNetCore.Authentication;
@@ -17,18 +20,36 @@ namespace Banding.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly MyDbContext _contexto;
         private readonly ILogger<HomeController> _logger;
+        private readonly IAuthenticateUserService _authenticationService;
+        private readonly IInventarioService _inventarioService;
+        private readonly IProductoRepository _productoRepository;
 
-        public HomeController(ILogger<HomeController> logger, MyDbContext context)
+        public HomeController(ILogger<HomeController> logger,
+            IAuthenticateUserService authenticationService,
+            IInventarioService inventarioService,
+            IProductoRepository productoRepository)
         {
-            _contexto = context;
+            _authenticationService = authenticationService;
+            _inventarioService = inventarioService;
+            _productoRepository = productoRepository;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View(_contexto.Producto.ToList());
+            IEnumerable<Producto> listaProductos = Enumerable.Empty<Producto>();
+            if (User.Claims.Any())
+            {
+                int idEmprendimiento = int.Parse(User.Claims.ElementAt(3).Value);
+                listaProductos = _productoRepository.ProductosWithMinStock(idEmprendimiento);
+                var listaEmailProductos = _productoRepository.ProductosNotEmailSent(idEmprendimiento);
+                if (listaEmailProductos != null && listaEmailProductos.Count()>0)
+                {
+                    _inventarioService.SendEmail(listaEmailProductos, User.Claims.ElementAt(2).Value, User.Claims.ElementAt(5).Value );
+                }
+            }
+            return View(listaProductos);
         }
 
         public IActionResult Privacy()
@@ -47,21 +68,12 @@ namespace Banding.Web.Controllers
             return View();
         }
         [HttpPost("login")]
-        public async Task<IActionResult> Validate(string username, string password)
+        public async Task<IActionResult> LogIn(string username, string password)
         {
-            var usuario = _contexto.Usuario.Where(u => (u.Username.Equals(username) || u.E_Mail.Equals(username))
-            && u.Contrasena.Equals(password)).SingleOrDefault();
-            if (usuario != null)
-            {
-                var claims = new List<Claim>();
-                claims.Add(new Claim("username", usuario.Username));
-                claims.Add(new Claim(ClaimTypes.NameIdentifier, usuario.Username));
-                claims.Add(new Claim(ClaimTypes.Name, usuario.Nombre_Usuario));
-                var emprendimientoAux = _contexto.Usuario_Tiene_Emprendimientos.Where(e => e.Id_Usuario == usuario.Id_Usuario).SingleOrDefault();
-                var emprendimiento = _contexto.Emprendimiento.Where(e => e.Id_Emprendimiento == emprendimientoAux.Id_Emprendimiento).FirstOrDefault();
-                claims.Add(new Claim("emprendimientoID", emprendimientoAux.Id_Emprendimiento.ToString()));
-                claims.Add(new Claim("emprendimiento", emprendimiento.Nombre_Emprendimiento));
+            var claims = _authenticationService.Validate(username, password);
 
+            if (claims.Count != 0)
+            {
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 await HttpContext.SignInAsync(claimsPrincipal);

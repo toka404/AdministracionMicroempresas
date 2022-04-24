@@ -398,3 +398,5 @@ C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debu
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Producto\Details.cshtml.g.cs
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Producto\Edit.cshtml.g.cs
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Producto\Index.cshtml.g.cs
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\bin\Debug\net5.0\Banding.Service.dll
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\bin\Debug\net5.0\Banding.Service.pdb
