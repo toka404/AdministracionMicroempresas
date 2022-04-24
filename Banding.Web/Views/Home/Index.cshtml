@@ -19,16 +19,21 @@
             </div>
             <div class="col-3">
                 <div class="notifications">
+
                     <div><strong>Notificaciones</strong></div>
 
-                    Los siguentes productos llegaron a su stock mínimo.
-                    <ul>
-                    @foreach(var item in Model)
+                    @if(@Model.Count()>0)
                     {
-                        <li>@item.Nombre_Producto</li>
+                        <div>Los siguentes productos llegaron a su stock mínimo.</div>
+                        <ul>
+                            @foreach (var item in Model)
+                            {
+                                <li>@item.Nombre_Producto</li>
+                            }
+                        </ul>
+                    }else{
+                        <div>No hay productos con el stock mínimo.</div>
                     }
-                    </ul>
-
                 </div>
             </div>
         </div>
@@ -42,7 +47,7 @@ else
         <hr class="my-4">
         <p>Emprendimientos para todos</p>
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Saber más</a>
+             <a class="btn btn-dark btn-lg" asp-area="" asp-controller="Home" asp-action="Privacy">Saber más</a>
         </p>
     </div>
 }

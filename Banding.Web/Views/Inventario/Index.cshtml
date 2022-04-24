@@ -1,10 +1,14 @@
 ﻿@model IEnumerable<Banding.Core.Models.Entities.MySql.Producto>
 
 @{
-    Layout = "_Layout"; 
+    Layout = "_Layout";
 }
 
 <h1>Inventario</h1>
+
+<p>
+    <a class="btn btn-dark" asp-action="Create">Crear</a>
+</p>
 
 <table class="table">
     <thead>
@@ -22,6 +26,9 @@
                 @Html.DisplayNameFor(model => model.Stock)
             </th>
             <th>
+                
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Fecha_Caducidad)
             </th>
             <th>
@@ -31,27 +38,36 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre_Producto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Precio_Fabricacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha_Caducidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Precio_Venta)
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre_Producto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio_Fabricacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock_Minimo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha_Caducidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio_Venta)
+                </td>
+                <td>
+                    <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.Id_Producto">Editar</a> |
+                    <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.Id_Producto">Detalles</a> |
+                    <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.Id_Producto">Eliminar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

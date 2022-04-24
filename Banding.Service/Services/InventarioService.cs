@@ -42,7 +42,7 @@ namespace Banding.Service.Services
                     smtp.UseDefaultCredentials = false;
                     smtp.EnableSsl = true;
                     smtp.Credentials = new NetworkCredential("alanjuker@gmail.com", "9709baby");
-                    smtp.Send(mail);
+                    smtp.SendMailAsync(mail);
                 }
             }
         }

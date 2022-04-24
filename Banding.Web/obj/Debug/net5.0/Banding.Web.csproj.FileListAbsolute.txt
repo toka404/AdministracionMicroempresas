@@ -400,3 +400,8 @@ C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debu
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Producto\Index.cshtml.g.cs
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\bin\Debug\net5.0\Banding.Service.dll
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\bin\Debug\net5.0\Banding.Service.pdb
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Facturacion\Index.cshtml.g.cs
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Inventario\Create.cshtml.g.cs
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Inventario\Delete.cshtml.g.cs
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Inventario\Details.cshtml.g.cs
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Inventario\Edit.cshtml.g.cs
