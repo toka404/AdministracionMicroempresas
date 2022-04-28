@@ -154,6 +154,19 @@ namespace Banding.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Roles",
+                columns: table => new
+                {
+                    id_rol = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    nombre_rol = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Roles", x => x.id_rol);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Usuario",
                 columns: table => new
                 {
@@ -165,7 +178,9 @@ namespace Banding.Repository.Migrations
                     Celular = table.Column<string>(type: "text", nullable: true),
                     E_Mail = table.Column<string>(type: "text", nullable: true),
                     Username = table.Column<string>(type: "text", nullable: true),
-                    Contrasena = table.Column<string>(type: "text", nullable: true)
+                    Contrasena = table.Column<string>(type: "text", nullable: true),
+                    rol_id = table.Column<int>(type: "int", nullable: false),
+                    id_emprendimiento = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -212,6 +227,9 @@ namespace Banding.Repository.Migrations
 
             migrationBuilder.DropTable(
                 name: "Provincia");
+
+            migrationBuilder.DropTable(
+                name: "Roles");
 
             migrationBuilder.DropTable(
                 name: "Usuario");

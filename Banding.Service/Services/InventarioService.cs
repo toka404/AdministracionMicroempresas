@@ -28,7 +28,7 @@ namespace Banding.Service.Services
                 mail.Subject = "Banding | Stock Mínimo";
                 string listaProductos = "";
                 foreach (var item in productos)
-                {
+                {   
                     item.Email_Enviado = "1";
                     _productoRepository.UpdateProducto(item);
                     listaProductos += "<li>"+item.Nombre_Producto+"</li>";
@@ -42,7 +42,7 @@ namespace Banding.Service.Services
                     smtp.UseDefaultCredentials = false;
                     smtp.EnableSsl = true;
                     smtp.Credentials = new NetworkCredential("alanjuker@gmail.com", "9709baby");
-                    smtp.SendMailAsync(mail);
+                    smtp.Send(mail);
                 }
             }
         }

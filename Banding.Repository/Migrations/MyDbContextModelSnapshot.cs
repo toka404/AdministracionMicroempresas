@@ -235,6 +235,20 @@ namespace Banding.Repository.Migrations
                     b.ToTable("Provincia");
                 });
 
+            modelBuilder.Entity("Banding.Core.Models.Entities.MySql.Roles", b =>
+                {
+                    b.Property<int>("id_rol")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("nombre_rol")
+                        .HasColumnType("text");
+
+                    b.HasKey("id_rol");
+
+                    b.ToTable("Roles");
+                });
+
             modelBuilder.Entity("Banding.Core.Models.Entities.MySql.Usuario", b =>
                 {
                     b.Property<int>("Id_Usuario")
@@ -261,6 +275,12 @@ namespace Banding.Repository.Migrations
 
                     b.Property<string>("Username")
                         .HasColumnType("text");
+
+                    b.Property<int>("id_emprendimiento")
+                        .HasColumnType("int");
+
+                    b.Property<int>("rol_id")
+                        .HasColumnType("int");
 
                     b.HasKey("Id_Usuario");
 

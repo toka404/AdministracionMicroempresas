@@ -39,6 +39,32 @@ namespace Banding.Repository.Data.MySql
             return _context.Proveedor.ToList();
         }
 
+        public List<Proveedor> GetProveedoresByEmprendimiento(int id)
+        {
+            var productos = _context.Producto.Where(p => p.Id_Emprendimiento == id).ToList();
+            List<int> proveedoresProducto = new List<int>();
+            List<Proveedor> proveedores = _context.Proveedor.ToList();
+
+            foreach (var item in productos)
+            {
+                var aux = _context.Producto_Tiene_Proveedor.FirstOrDefault(p => p.Id_Producto == item.Id_Producto);
+                proveedoresProducto.Add(aux.Id_Proveedor);
+            }
+
+
+            IEnumerable<int> auxiliar = proveedoresProducto.Distinct();
+            List<Proveedor> auxLista = new List<Proveedor>();
+                
+            foreach (var obj in auxiliar)
+            {
+                var aux = _context.Proveedor.FirstOrDefault(p=>p.Id_Proveedor == obj);
+                auxLista.Add(aux);
+            }
+
+
+            return auxLista;
+        }
+
         public bool ProveedorExists(int id)
         {
             return _context.Proveedor.Any(p => p.Id_Proveedor == id);

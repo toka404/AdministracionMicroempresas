@@ -41,6 +41,7 @@ namespace Banding.Web
             services.AddScoped<IIvaRepository, IvaRepository>();
             services.AddScoped<IProveedorRepository, ProveedorRepository>();
             services.AddScoped<IProvinciaRepository, ProvinciaRepository>();
+            services.AddScoped<IRolRepository, RolRepository>();
 
             //Service
             services.AddTransient<IAuthenticateUserService, AuthenticateUserService>();

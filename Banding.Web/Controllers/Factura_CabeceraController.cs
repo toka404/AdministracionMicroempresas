@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Banding.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin")]
     public class Factura_CabeceraController : Controller
     {
         private readonly MyDbContext _context;

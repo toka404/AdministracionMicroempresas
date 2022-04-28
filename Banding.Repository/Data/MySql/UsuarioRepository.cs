@@ -24,6 +24,11 @@ namespace Banding.Repository.Data.MySql
         {
             return _context.Usuario.ToList();
         }
+        public string GetRol(int? id)
+        {
+            var usuario = _context.Usuario.FirstOrDefault(u => u.Id_Usuario == id);
+            return "";
+        }
         public Usuario GetUsuarioById(int? id)
         {
             return _context.Usuario.FirstOrDefault(u => u.Id_Usuario == id);
@@ -46,6 +51,11 @@ namespace Banding.Repository.Data.MySql
         public bool UsuarioExists(int id)
         {
             return _context.Usuario.Any(e => e.Id_Usuario == id);
+        }
+
+        public List<Usuario> GetUsuariosByEmprendimiento(int id_emprendimiento)
+        {
+            return _context.Usuario.Where(u => u.id_emprendimiento == id_emprendimiento).ToList();
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Banding.Repository.Data.MySql
         {
             _context = context;
         }
+
         public bool CategoriaExists(int id)
         {
             return _context.Categoria.Any(c => c.Id_Categoria == id);
@@ -35,7 +36,7 @@ namespace Banding.Repository.Data.MySql
 
         public Categoria GetCategoriaById(int? id)
         {
-            return _context.Categoria.FirstOrDefault(c => c.Id_Categoria == id);
+            return _context.Categoria.FirstOrDefault(c=>c.Id_Categoria==id);
         }
 
         public List<Categoria> GetCategorias()
@@ -45,7 +46,7 @@ namespace Banding.Repository.Data.MySql
 
         public void UpdateCategoria(Categoria categoria)
         {
-            _context.Categoria.Update(categoria);
+            _context.Update(categoria);
             _context.SaveChanges();
         }
     }

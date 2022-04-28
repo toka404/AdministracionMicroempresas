@@ -10,6 +10,7 @@ namespace Banding.Core.Interfaces.Repository.MySql
     public interface IProveedorRepository
     {
         public List<Proveedor> GetProveedores();
+        public List<Proveedor> GetProveedoresByEmprendimiento(int id);
         public Proveedor GetProveedorById(int? id);
         public void CreateProveedor(Proveedor proveedor);
         public void UpdateProveedor(Proveedor proveedor);

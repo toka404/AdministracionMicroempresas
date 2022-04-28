@@ -61,5 +61,6 @@ namespace Banding.Repository.Data.MySql
         {
             return _context.Producto.Where(p => p.Stock <= p.Stock_Minimo && p.Id_Emprendimiento == idEmprendimiento && p.Email_Enviado.Equals("0")).ToList();
         }
+
     }
 }

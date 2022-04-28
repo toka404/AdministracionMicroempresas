@@ -23,6 +23,7 @@ namespace Banding.Repository.DataBaseContext
         public DbSet<Proveedor> Proveedor { get; set; }
         public DbSet<Provincia> Provincia { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Roles> Roles { get; set; }
         public DbSet<Usuario_Tiene_Emprendimientos> Usuario_Tiene_Emprendimientos { get; set; }
     }
 }

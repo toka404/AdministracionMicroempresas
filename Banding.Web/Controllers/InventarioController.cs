@@ -70,6 +70,7 @@ namespace Banding.Web.Controllers
             }
 
             var producto = _productoRepository.GetProductoById(id);
+
             if (producto == null)
             {
                 return NotFound();
@@ -93,7 +94,7 @@ namespace Banding.Web.Controllers
             {
                 try
                 {
-                    if (producto.Email_Enviado.Equals("1") && producto.Stock_Minimo<producto.Stock)
+                    if (producto.Email_Enviado.Equals("1") && producto.Stock_Minimo>producto.Stock)
                     {
                         producto.Email_Enviado = "0";
                     }

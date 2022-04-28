@@ -12,7 +12,7 @@ using Banding.Core.Interfaces.Repository.MySql;
 
 namespace Banding.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin")]
     public class CategoriaController : Controller
     {
         private readonly ICategoriaRepository _categoriaRepository;
