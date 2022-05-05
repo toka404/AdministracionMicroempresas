@@ -1,97 +1,146 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+
+
+@model IPagedList<Banding.Core.Models.ViewModels.FacturaViewModel>
+
 @{
     Layout = "_Layout";
 }
 
 <h1>Facturación</h1>
 
-<div class="container">
-    <div class="row">
-        <h2>Factura N°</h2>
-        <p class="title-right">213123511243</p>
-    </div>
+<p>
+    <a class="btn btn-dark" asp-action="Create">Registrar Factura</a>
+</p>
 
-    <div class="row">
-        <div class="col-8" >
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-3">
-                        <h5>Nombre</h5>
-                        <h5>Cédula</h5>
-                        <h5>Celular</h5>
-                    </div>
-                    <div class="col-9">
-                        <label class="body-right">Alan Guijarro</label>
-                        <br>
-                        <label class="body-right">0605167402</label>
-                        <br>
-                        <label class="body-right">Los Alamos</label>
+@foreach (var item in Model)
+{
+    <div class="container">
+        <div class="row">
+            <h2>Factura N°</h2>
+            <p class="title-right">
+                @Html.DisplayFor(model => model.First().FacturaCabecera.Nro_Factura)
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3">
+                            <h5>Nombre</h5>
+                            <h5>Cédula</h5>
+                            <h5>Celular</h5>
+                        </div>
+                        <div class="col-9">
+                            <label class="body-right">
+                                @Html.DisplayFor(model => model.First().FacturaCabecera.Nombre_Cliente)
+                            </label>
+                            <br>
+                            <label class="body-right">
+                                @Html.DisplayFor(model => model.First().FacturaCabecera.Cedula_Cliente)
+                            </label>
+                            <br>
+                            <label class="body-right">
+                                @Html.DisplayFor(model => model.First().FacturaCabecera.Telefono_Cliente)
+                            </label>
+                        </div>
                     </div>
                 </div>
-
             </div>
-        </div>
-        <div class="col-4 align-content-end" style="padding:0">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <h5>Fecha</h5>
-                        <h5>Dirección</h5>
-                    </div>
-                    <div class="col">
+            <div class="col-4 align-content-end" style="padding:0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h5>Fecha</h5>
+                            <h5>Dirección</h5>
+                        </div>
+                        <div class="col">
 
-                        <label class="body-right">Enero</label>
-                        <br>
-                        <label class="body-right">Los Alamos</label>
+                            <label class="body-right">
+                                @Html.DisplayFor(model => model.First().FacturaCabecera.Fecha_Cabecera)
+                            </label>
+                            <br>
+                            <label class="body-right">
+                                @Html.DisplayFor(model => model.First().FacturaCabecera.Direccion_Cliente)
+                            </label>
+                        </div>
                     </div>
+
                 </div>
-
             </div>
         </div>
     </div>
-</div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Producto</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Precio Unitario</th>
-            <th scope="col">Precio Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">Pie de Chocolate</th>
-            <td>2</td>
-            <td>$8.00</td>
-            <td>$16.00</td>
-        </tr>
-        <tr>
-            <th scope="row">Pie de limón</th>
-            <td>2</td>
-            <td>$4.33</td>
-            <td>$8.66</td>
-        </tr>
-    </tbody>
-</table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio Unitario</th>
+                <th scope="col">Precio Total</th>
+            </tr>
+        </thead>
 
-<div class="container">
-    <div class="row">
-        <div class="col-2">
-            <h5>Subtotal</h5>
-            <h5>Iva</h5>
-            <h5>Total</h5>
-        </div>
-        <div class="col-10">
-            <label class="body-right">$24.66</label>
-            <br>
-            <label class="body-right">$2.95</label>
-            <br>
-            <label class="body-right">$27.61</label>
+        <tbody>
+            
+            @foreach (var producto in item.DetalleFactura)
+            {
+                <tr>
+                    <td>@producto.NombreProducto</td>
+                    <td>@producto.CantidadVendida</td>
+                    <td>$@producto.PrecioUnitario</td>
+                    <td>$@producto.PrecioTotal</td>
+                </tr>
+            }
+            
+        </tbody>
+
+
+    </table>
+
+
+    <div hidden>@Html.DisplayFor(model => model.First().FacturaCabecera.Id_Iva)</div>
+    <div hidden>@Html.DisplayFor(model => model.First().FacturaCabecera.Iva_Cero)</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <h5>Subtotal</h5>
+                <h5>Iva @item.Iva%</h5>
+                <h5>Total</h5>
+            </div>
+            <div class="col-10">
+                <label class="body-right">
+                    @Html.DisplayFor(model => model.First().FacturaCabecera.Subtotal)
+                </label>
+                <br>
+                <label class="body-right">
+                    @Html.DisplayFor(model => model.First().FacturaCabecera.Iva_Total)
+                </label>
+                <br>
+                <label class="body-right">
+                    @Html.DisplayFor(model => model.First().FacturaCabecera.Total)
+                </label>
+            </div>
         </div>
     </div>
-</div>
+
+    <div hidden>@Html.DisplayFor(model => model.First().FacturaCabecera.Id_Cabecera)</div>
+}
+
+<p>
+    <a class="btn btn-dark" asp-action="Delete">Eliminar Factura</a>
+</p>
+
+
+@Html.PagedListPager((IPagedList)Model, page =>
+    Url.Action("Index", new { page = page }),
+    new PagedListRenderOptions {
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+})

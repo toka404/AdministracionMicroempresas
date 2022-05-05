@@ -31,7 +31,7 @@ namespace Banding.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MyDbContext>(options => options.UseMySQL(Configuration.GetConnectionString("Default")));
-
+            
             //Repository
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IProductoRepository, ProductoRepository>();
@@ -42,10 +42,13 @@ namespace Banding.Web
             services.AddScoped<IProveedorRepository, ProveedorRepository>();
             services.AddScoped<IProvinciaRepository, ProvinciaRepository>();
             services.AddScoped<IRolRepository, RolRepository>();
+            services.AddScoped<IDetalleFacturaRepository, DetalleFacturaRepository>();
+            services.AddScoped<IFacturaCabeceraRepository, FacturaCabeceraRepository>();
 
             //Service
             services.AddTransient<IAuthenticateUserService, AuthenticateUserService>();
             services.AddTransient<IInventarioService, InventarioService>();
+            services.AddTransient<IFacturacionService, FacturacionService>();
 
             services.AddControllersWithViews();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).

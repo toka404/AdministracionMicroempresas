@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Banding.Repository.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20220428130550_initial")]
+    [Migration("20220505025426_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,12 +36,15 @@ namespace Banding.Repository.Migrations
 
             modelBuilder.Entity("Banding.Core.Models.Entities.MySql.Detalle_Factura", b =>
                 {
-                    b.Property<int>("Id_Cabecera")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<double>("Cantidad_Vendida")
-                        .HasColumnType("double");
+                    b.Property<int>("Cantidad_Vendida")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id_Cabecera")
+                        .HasColumnType("int");
 
                     b.Property<int>("Id_Producto")
                         .HasColumnType("int");
@@ -49,7 +52,7 @@ namespace Banding.Repository.Migrations
                     b.Property<double>("Precio_Total")
                         .HasColumnType("double");
 
-                    b.HasKey("Id_Cabecera");
+                    b.HasKey("Id");
 
                     b.ToTable("Detalle_Factura");
                 });
@@ -127,8 +130,8 @@ namespace Banding.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<double>("Valor_Iva")
-                        .HasColumnType("double");
+                    b.Property<int>("Valor_Iva")
+                        .HasColumnType("int");
 
                     b.HasKey("Id_Iva");
 

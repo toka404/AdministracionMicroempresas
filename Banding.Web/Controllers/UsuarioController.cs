@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Banding.Core.Models.Entities.MySql;
 using Microsoft.AspNetCore.Authorization;
 using Banding.Core.Interfaces.Repository.MySql;
+using X.PagedList;
 
 namespace Banding.Web.Controllers
 {
@@ -22,9 +23,9 @@ namespace Banding.Web.Controllers
         }
 
         // GET: Usuario
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page=1)
         {
-            return View(_userRepository.GetUsuarios());
+            return View(_userRepository.GetUsuarios().ToPagedList(page, 3));
         }
 
         // GET: Usuario/Details/5

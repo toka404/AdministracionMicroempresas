@@ -11,6 +11,6 @@ namespace Banding.Core.Models.Entities.MySql
         [Key]
         public int Id_Iva { get; set; }
         [Display(Name = "Valor")]
-        public double Valor_Iva { get; set; }
+        public int Valor_Iva { get; set; }
     }
 }

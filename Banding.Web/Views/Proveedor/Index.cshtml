@@ -1,10 +1,14 @@
-﻿@model IEnumerable<Banding.Core.Models.Entities.MySql.Proveedor>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+
+@model IPagedList<Banding.Core.Models.Entities.MySql.Proveedor>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Proveedores</h1>
 
 <p>
     <a class="btn btn-dark" asp-action="Create">Crear</a>
@@ -13,22 +17,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id_Provincia)
+                @Html.DisplayNameFor(model => model.First().Id_Provincia)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre_Proveedor)
+                @Html.DisplayNameFor(model => model.First().Nombre_Proveedor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telefono)
+                @Html.DisplayNameFor(model => model.First().Telefono)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.E_Mail_Proveedor)
+                @Html.DisplayNameFor(model => model.First().E_Mail_Proveedor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Producto)
+                @Html.DisplayNameFor(model => model.First().Producto)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RUC)
+                @Html.DisplayNameFor(model => model.First().RUC)
             </th>
             <th></th>
         </tr>
@@ -63,3 +67,10 @@
 }
     </tbody>
 </table>
+
+@Html.PagedListPager((IPagedList)Model, page => 
+    Url.Action("Index", new { page = page }), 
+    new PagedListRenderOptions {
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+})

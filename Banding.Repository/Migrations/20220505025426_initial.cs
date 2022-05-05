@@ -25,15 +25,16 @@ namespace Banding.Repository.Migrations
                 name: "Detalle_Factura",
                 columns: table => new
                 {
-                    Id_Cabecera = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Id_Cabecera = table.Column<int>(type: "int", nullable: false),
                     Id_Producto = table.Column<int>(type: "int", nullable: false),
-                    Cantidad_Vendida = table.Column<double>(type: "double", nullable: false),
+                    Cantidad_Vendida = table.Column<int>(type: "int", nullable: false),
                     Precio_Total = table.Column<double>(type: "double", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Detalle_Factura", x => x.Id_Cabecera);
+                    table.PrimaryKey("PK_Detalle_Factura", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -81,7 +82,7 @@ namespace Banding.Repository.Migrations
                 {
                     Id_Iva = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Valor_Iva = table.Column<double>(type: "double", nullable: false)
+                    Valor_Iva = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

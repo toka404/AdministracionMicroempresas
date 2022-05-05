@@ -1,4 +1,8 @@
-﻿@model IEnumerable<Banding.Core.Models.Entities.MySql.Emprendimiento>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+
+@model IPagedList<Banding.Core.Models.Entities.MySql.Emprendimiento>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,16 +17,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id_Categoria)
+                @Html.DisplayNameFor(model => model.First().Id_Categoria)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre_Emprendimiento)
+                @Html.DisplayNameFor(model => model.First().Nombre_Emprendimiento)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descripcion_Emprendimiento)
+                @Html.DisplayNameFor(model => model.First().Descripcion_Emprendimiento)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Logo)
+                @Html.DisplayNameFor(model => model.First().Logo)
             </th>
             <th></th>
         </tr>
@@ -51,3 +55,10 @@
 }
     </tbody>
 </table>
+
+@Html.PagedListPager((IPagedList)Model, page => 
+    Url.Action("Index", new { page = page }), 
+    new PagedListRenderOptions {
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+})

@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace Banding.Web.Controllers
 {
@@ -18,10 +19,10 @@ namespace Banding.Web.Controllers
         {
             _productoRepository = productoRepository;
         }
-        public IActionResult Index()
+        public IActionResult Index(int page=1)
         {
             var productos = _productoRepository.GetProductos().Where(p => p.Id_Emprendimiento == Convert.ToInt32(User.Claims.ElementAt(3).Value)).ToList();
-            return View(productos);
+            return View(productos.ToPagedList(page,4));
         }
 
         public async Task<IActionResult> Details(int? id)

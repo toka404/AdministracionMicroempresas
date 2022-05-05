@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace Banding.Web.Controllers
 {
@@ -15,10 +16,10 @@ namespace Banding.Web.Controllers
             _userRepository = userRepository;
         }
         // GET: Usuario
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page=1)
         {
             int id_emprendimiento = int.Parse(User.Claims.ElementAt(3).Value);
-            return View(_userRepository.GetUsuariosByEmprendimiento(id_emprendimiento));
+            return View(_userRepository.GetUsuariosByEmprendimiento(id_emprendimiento).ToPagedList(page,4));
         }
 
         // GET: Usuario/Details/5

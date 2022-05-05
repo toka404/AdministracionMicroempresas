@@ -15,3 +15,12 @@
     margin-left: 5px;
     font-size: 20px;
 }
+
+.page-item.active .page-link{
+    border-color: #343a40;
+    background-color: #343a40;
+}
+
+.page-link {
+    color: #343a40;
+}
