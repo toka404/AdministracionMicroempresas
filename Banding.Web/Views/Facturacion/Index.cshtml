@@ -7,6 +7,7 @@
 
 @{
     Layout = "_Layout";
+    var Iva = 92;
 }
 
 <h1>Facturación</h1>
@@ -16,6 +17,13 @@
 </p>
 
 
+@if(!(Model.Count() > 0))
+{
+    <div>No tiene ninguna factura</div>
+}
+else
+{
+    
 @foreach (var item in Model)
 {
     <div class="container">
@@ -87,7 +95,7 @@
         </thead>
 
         <tbody>
-            
+
             @foreach (var producto in item.DetalleFactura)
             {
                 <tr>
@@ -97,7 +105,7 @@
                     <td>$@producto.PrecioTotal</td>
                 </tr>
             }
-            
+
         </tbody>
 
 
@@ -131,11 +139,15 @@
     </div>
 
     <div hidden>@Html.DisplayFor(model => model.First().FacturaCabecera.Id_Cabecera)</div>
-}
 
-<p>
-    <a class="btn btn-dark" asp-action="Delete">Eliminar Factura</a>
-</p>
+    <p>
+
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="@Model.First().Iva" />
+            <input type="submit" value="Delete" class="btn btn-dark" /> 
+        </form>
+    </p>
+}  
 
 
 @Html.PagedListPager((IPagedList)Model, page =>
@@ -144,3 +156,4 @@
         LiElementClasses = new string[] { "page-item" },
         PageClasses = new string[] { "page-link" }
 })
+}

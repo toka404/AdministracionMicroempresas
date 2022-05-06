@@ -22,22 +22,6 @@ namespace Banding.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Detalle_Factura",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Id_Cabecera = table.Column<int>(type: "int", nullable: false),
-                    Id_Producto = table.Column<int>(type: "int", nullable: false),
-                    Cantidad_Vendida = table.Column<int>(type: "int", nullable: false),
-                    Precio_Total = table.Column<double>(type: "double", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Detalle_Factura", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Emprendimiento",
                 columns: table => new
                 {
@@ -198,6 +182,34 @@ namespace Banding.Repository.Migrations
                 constraints: table =>
                 {
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Detalle_Factura",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Id_Cabecera = table.Column<int>(type: "int", nullable: false),
+                    Id_Producto = table.Column<int>(type: "int", nullable: false),
+                    Cantidad_Vendida = table.Column<int>(type: "int", nullable: false),
+                    Precio_Total = table.Column<double>(type: "double", nullable: false),
+                    Factura_CabeceraId_Cabecera = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Detalle_Factura", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Detalle_Factura_Factura_Cabecera_Factura_CabeceraId_Cabecera",
+                        column: x => x.Factura_CabeceraId_Cabecera,
+                        principalTable: "Factura_Cabecera",
+                        principalColumn: "Id_Cabecera",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Detalle_Factura_Factura_CabeceraId_Cabecera",
+                table: "Detalle_Factura",
+                column: "Factura_CabeceraId_Cabecera");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -210,9 +222,6 @@ namespace Banding.Repository.Migrations
 
             migrationBuilder.DropTable(
                 name: "Emprendimiento");
-
-            migrationBuilder.DropTable(
-                name: "Factura_Cabecera");
 
             migrationBuilder.DropTable(
                 name: "Iva");
@@ -237,6 +246,9 @@ namespace Banding.Repository.Migrations
 
             migrationBuilder.DropTable(
                 name: "Usuario_Tiene_Emprendimientos");
+
+            migrationBuilder.DropTable(
+                name: "Factura_Cabecera");
         }
     }
 }

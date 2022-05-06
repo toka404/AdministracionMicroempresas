@@ -9,7 +9,7 @@ namespace Banding.Core.Interfaces.Service
 {
     public interface IFacturacionService
     {
-        public List<FacturaViewModel> GetFacturas();
+        public List<FacturaViewModel> GetFacturasByEmprendimiento(int idEmprendimiento);
         public void CreateFactura();
     }
 }

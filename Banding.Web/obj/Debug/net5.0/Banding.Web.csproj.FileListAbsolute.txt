@@ -427,3 +427,4 @@ C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debu
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Banding.Web.pdb
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Banding.Web.genruntimeconfig.cache
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\ref\Banding.Web.dll
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Facturacion\Create.cshtml.g.cs

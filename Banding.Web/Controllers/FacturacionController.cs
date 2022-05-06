@@ -1,6 +1,9 @@
 ﻿using Banding.Core.Interfaces.Service;
 using Banding.Core.Models.Entities.MySql;
+using Banding.Core.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using X.PagedList;
 
@@ -15,7 +18,9 @@ namespace Banding.Web.Controllers
         }
         public IActionResult Index(int page = 1)
         {
-            var facturas = _facturacionService.GetFacturas().ToPagedList(page, 1);
+            int idEmprendimiento = int.Parse(User.Claims.ElementAt(3).Value);
+
+            var facturas = _facturacionService.GetFacturasByEmprendimiento(idEmprendimiento).ToPagedList(page, 1);
             return View(facturas);
         }
         // GET: Producto/Create
@@ -29,24 +34,25 @@ namespace Banding.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id_Producto,Id_Emprendimiento,Nombre_Producto,Precio_Fabricacion,Descripcion,Foto,Stock,Stock_Minimo,Email_Enviado,Fecha_Caducidad,Precio_Venta,Iva")] Producto producto)
+        public IActionResult Create(string NroFactura, FacturaViewModel factura)
         {
             if (ModelState.IsValid)
             {
                 _facturacionService.CreateFactura();
                 return RedirectToAction(nameof(Index));
             }
-            return View(producto);
+            return View(factura);
         }
 
         // POST: Producto/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed()
         {
             /*var producto = _productoRepository.GetProductoById(id);
             _productoRepository.DeleteProducto(producto);
             */
+
 
             return RedirectToAction(nameof(Index));
         }

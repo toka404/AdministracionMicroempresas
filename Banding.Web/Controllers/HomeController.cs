@@ -24,16 +24,19 @@ namespace Banding.Web.Controllers
         private readonly IAuthenticateUserService _authenticationService;
         private readonly IInventarioService _inventarioService;
         private readonly IProductoRepository _productoRepository;
+        private readonly IFacturaCabeceraRepository _facturaCabeceraRepository;
 
         public HomeController(ILogger<HomeController> logger,
             IAuthenticateUserService authenticationService,
             IInventarioService inventarioService,
-            IProductoRepository productoRepository)
+            IProductoRepository productoRepository,
+            IFacturaCabeceraRepository facturaCabeceraRepository)
         {
             _authenticationService = authenticationService;
             _inventarioService = inventarioService;
             _productoRepository = productoRepository;
             _logger = logger;
+            _facturaCabeceraRepository = facturaCabeceraRepository;
         }
 
         public IActionResult Index()
@@ -44,9 +47,9 @@ namespace Banding.Web.Controllers
                 int idEmprendimiento = int.Parse(User.Claims.ElementAt(3).Value);
                 listaProductos = _productoRepository.ProductosWithMinStock(idEmprendimiento);
                 var listaEmailProductos = _productoRepository.ProductosNotEmailSent(idEmprendimiento);
-                if (listaEmailProductos != null && listaEmailProductos.Count()>0)
+                if (listaEmailProductos != null && listaEmailProductos.Count() > 0)
                 {
-                    _inventarioService.SendEmail(listaEmailProductos, User.Claims.ElementAt(2).Value, User.Claims.ElementAt(5).Value );
+                    _inventarioService.SendEmail(listaEmailProductos, User.Claims.ElementAt(2).Value, User.Claims.ElementAt(5).Value);
                 }
             }
             return View(listaProductos);

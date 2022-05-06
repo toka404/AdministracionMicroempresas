@@ -41,6 +41,9 @@ namespace Banding.Repository.Migrations
                     b.Property<int>("Cantidad_Vendida")
                         .HasColumnType("int");
 
+                    b.Property<int?>("Factura_CabeceraId_Cabecera")
+                        .HasColumnType("int");
+
                     b.Property<int>("Id_Cabecera")
                         .HasColumnType("int");
 
@@ -51,6 +54,8 @@ namespace Banding.Repository.Migrations
                         .HasColumnType("double");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Factura_CabeceraId_Cabecera");
 
                     b.ToTable("Detalle_Factura");
                 });
@@ -299,6 +304,18 @@ namespace Banding.Repository.Migrations
                         .HasColumnType("int");
 
                     b.ToTable("Usuario_Tiene_Emprendimientos");
+                });
+
+            modelBuilder.Entity("Banding.Core.Models.Entities.MySql.Detalle_Factura", b =>
+                {
+                    b.HasOne("Banding.Core.Models.Entities.MySql.Factura_Cabecera", null)
+                        .WithMany("Detalles")
+                        .HasForeignKey("Factura_CabeceraId_Cabecera");
+                });
+
+            modelBuilder.Entity("Banding.Core.Models.Entities.MySql.Factura_Cabecera", b =>
+                {
+                    b.Navigation("Detalles");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,140 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Banding.Core.Models.ViewModels.FacturaViewModel
+
 @{
+    Layout = "_Layout";
 }
+
+<h1>Facturación</h1>
+
+<p>
+    <a class="btn btn-dark" asp-action="Create">Registrar Factura</a>
+</p>
+
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="container">
+        <div class="row">
+            <h2>Factura N°</h2>
+            <p class="title-right">
+                <input asp-for="FacturaCabecera.Nro_Factura" class="form-control" />
+                <span asp-validation-for="FacturaCabecera.Nro_Factura" class="text-danger"></span>
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3">
+                            <h5>Nombre</h5>
+                            <h5>Cédula</h5>
+                            <h5>Celular</h5>
+                        </div>
+                        <div class="col-9">
+                            <label class="body-right">
+                                <input asp-for="FacturaCabecera.Nro_Factura" class="form-control" />
+                                <span asp-validation-for="FacturaCabecera.Nro_Factura" class="text-danger"></span>
+                            </label>
+                            <br>
+                            <label class="body-right">
+                                <input asp-for="FacturaCabecera.Nro_Factura" class="form-control" />
+                                <span asp-validation-for="FacturaCabecera.Nro_Factura" class="text-danger"></span>
+                            </label>
+                            <br>
+                            <label class="body-right">
+                                <input asp-for="FacturaCabecera.Nro_Factura" class="form-control" />
+                                <span asp-validation-for="FacturaCabecera.Nro_Factura" class="text-danger"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 align-content-end" style="padding:0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h5>Fecha</h5>
+                            <h5>Dirección</h5>
+                        </div>
+                        <div class="col">
+
+                            <label class="body-right">
+                                <input asp-for="FacturaCabecera.Nro_Factura" class="form-control" />
+                                <span asp-validation-for="FacturaCabecera.Nro_Factura" class="text-danger"></span>
+                            </label>
+                            <br>
+                            <label class="body-right">
+                                <input asp-for="FacturaCabecera.Nro_Factura" class="form-control" />
+                                <span asp-validation-for="FacturaCabecera.Nro_Factura" class="text-danger"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio Unitario</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>
+                    <input asp-for="FacturaCabecera.Nro_Factura" class="form-control" />
+                    <span asp-validation-for="FacturaCabecera.Nro_Factura" class="text-danger"></span>
+                </td>
+                <td>
+                    <input asp-for="FacturaCabecera.Nro_Factura" class="form-control" />
+                    <span asp-validation-for="FacturaCabecera.Nro_Factura" class="text-danger"></span>
+                </td>
+                <td>
+                    <input asp-for="FacturaCabecera.Nro_Factura" class="form-control" />
+                    <span asp-validation-for="FacturaCabecera.Nro_Factura" class="text-danger"></span>
+                </td>
+            </tr>
+
+
+        </tbody>
+
+
+    </table>
+
+
+    <div hidden>a</div>
+    <div hidden>a</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <h5>
+                    Iva
+                </h5>
+            </div>
+            <div class="col-10">
+
+                <label class="body-right">
+                    <input asp-for="FacturaCabecera.Nro_Factura" class="form-control" />
+                    <span asp-validation-for="FacturaCabecera.Nro_Factura" class="text-danger"></span>
+                </label>
+
+            </div>
+        </div>
+    </div>
+
+    <div hidden>a</div>
+    
+</form>
+<p>
+    <a class="btn btn-dark" asp-action="Delete">Eliminar Factura</a>
+</p>
+

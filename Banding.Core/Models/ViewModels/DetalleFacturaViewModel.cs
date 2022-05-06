@@ -15,5 +15,7 @@ namespace Banding.Core.Models.ViewModels
         public double PrecioUnitario { get; set; }
         [DataType(DataType.Currency)]
         public double PrecioTotal { get; set; }
+        public int Id_Cabecera { get; set; }
+        public int Id_Producto { get; set; }
     }
 }

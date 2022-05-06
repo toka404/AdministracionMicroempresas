@@ -30,7 +30,7 @@ namespace Banding.Service.Services
             _ivaRepository = ivaRepository;
         }
 
-        public List<FacturaViewModel> GetFacturas()
+        public List<FacturaViewModel> GetFacturasByEmprendimiento(int idEmprendimiento)
         {
             List<FacturaViewModel> _facturas;
             _facturas = new List<FacturaViewModel>();
@@ -39,26 +39,33 @@ namespace Banding.Service.Services
 
             foreach (var cabecera in cabecerasFactura)
             {
-                FacturaViewModel facturaAux = new FacturaViewModel();
+                
                 List<DetalleFacturaViewModel> detalles = new List<DetalleFacturaViewModel>();
 
-                facturaAux.FacturaCabecera = cabecera;
-                facturaAux.Iva = _ivaRepository.GetIvaById(facturaAux.FacturaCabecera.Id_Iva).Valor_Iva;
-                
                 var detalleFactura = _detalleFacturaRepository.GetDetalleFacturasByIdCabecera(cabecera.Id_Cabecera);
                 foreach (var detalle in detalleFactura)
                 {
                     DetalleFacturaViewModel detalleAux = new DetalleFacturaViewModel();
 
                     var productoAux = _productoRepository.GetProductoById(detalle.Id_Producto);
-                    detalleAux.NombreProducto = productoAux.Nombre_Producto;
-                    detalleAux.CantidadVendida = detalle.Cantidad_Vendida;
-                    detalleAux.PrecioUnitario = productoAux.Precio_Venta;
-                    detalleAux.PrecioTotal = detalle.Precio_Total;
-                    detalles.Add(detalleAux);
+                    if (productoAux.Id_Emprendimiento == idEmprendimiento)
+                    {
+                        detalleAux.NombreProducto = productoAux.Nombre_Producto;
+                        detalleAux.CantidadVendida = detalle.Cantidad_Vendida;
+                        detalleAux.PrecioUnitario = productoAux.Precio_Venta;
+                        detalleAux.PrecioTotal = detalle.Precio_Total;
+                        detalles.Add(detalleAux);
+                    }
                 }
-                facturaAux.DetalleFactura = detalles;
-                _facturas.Add(facturaAux);
+                if (detalles.Count() > 0)
+                {
+                    FacturaViewModel facturaAux = new FacturaViewModel();
+                    facturaAux.FacturaCabecera = cabecera;
+                    facturaAux.Iva = _ivaRepository.GetIvaById(facturaAux.FacturaCabecera.Id_Iva).Valor_Iva;
+
+                    facturaAux.DetalleFactura = detalles;
+                    _facturas.Add(facturaAux);
+                }
             }
             return _facturas;
         }
