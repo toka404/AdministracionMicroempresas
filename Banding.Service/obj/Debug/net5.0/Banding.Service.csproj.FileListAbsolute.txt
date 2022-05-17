@@ -1,0 +1,17 @@
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\bin\Debug\net5.0\Banding.Service.deps.json
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\bin\Debug\net5.0\Banding.Service.dll
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\bin\Debug\net5.0\Banding.Service.pdb
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\bin\Debug\net5.0\Banding.Core.dll
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\bin\Debug\net5.0\Banding.Repository.dll
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\bin\Debug\net5.0\Banding.Repository.pdb
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\bin\Debug\net5.0\Banding.Core.pdb
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\obj\Debug\net5.0\Banding.Service.csproj.AssemblyReference.cache
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\obj\Debug\net5.0\Banding.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\obj\Debug\net5.0\Banding.Service.AssemblyInfoInputs.cache
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\obj\Debug\net5.0\Banding.Service.AssemblyInfo.cs
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\obj\Debug\net5.0\Banding.Service.csproj.CoreCompileInputs.cache
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\obj\Debug\net5.0\Banding.Service.csproj.CopyComplete
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\obj\Debug\net5.0\Banding.Service.dll
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\obj\Debug\net5.0\refint\Banding.Service.dll
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\obj\Debug\net5.0\Banding.Service.pdb
+C:\Users\alang\Desktop\NUEVOOOOOOOO\Banding\Banding.Service\obj\Debug\net5.0\ref\Banding.Service.dll
