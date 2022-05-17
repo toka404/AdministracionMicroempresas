@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banding</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm fixed-top navbar-dark navbar-fixed-top bg-dark border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Banding</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+
+
+                        @if (User.IsInRole("admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Administrar General
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Categoria" asp-action="Index">Categorías</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Provincia" asp-action="Index">Provincias</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Producto" asp-action="Index">Productos</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Proveedor" asp-action="Index">Proveedores</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Emprendimiento" asp-action="Index">Emprendimientos</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Usuario" asp-action="Index">Usuarios</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Iva" asp-action="Index">Iva</a>
+                                </div>
+                            </li>
+
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Administrar datos
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="" asp-controller="ProveedorUsuario" asp-action="Index">Proveedores</a>
+
+                                    @if (User.IsInRole("admin") || User.IsInRole("dueno"))
+                                    {
+                                        <a class="dropdown-item" asp-area="" asp-controller="UsuarioSesion" asp-action="Index">Usuarios</a>
+                                    }
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Inventario" asp-action="Index">Inventario</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Facturacion" asp-action="Index">Facturación</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Historico" asp-action="Index">Histórico</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Reporte" asp-action="Index">Reporte</a>
+                            </li>
+                        }
+                        else
+                        {
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+                            </li>
+                        }
+
+                    </ul>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <ul class="nav navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link text-white flex-column-reverse" asp-area="" asp-controller="Home" asp-action="LogIn">Iniciar Sesión</a>
+                            </li>
+                        </ul>
+
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Cuenta" asp-action="Index">Cuenta</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="LogOut">Cerrar Sesión</a>
+                            </li>
+
+                        </ul>
+
+                    }
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fixed" >
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted bg-dark">
+        <div class="container text-white">
+            &copy; 2022 - Alan, Jack, Bryan, Mateo, Isma, Toka - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
