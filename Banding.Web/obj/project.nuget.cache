@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TjQeoEHKNO7sfNLjiQLbXQ7FMi89YHSatPU2XU6rjFiKwrzQ0qD7NPk/pLN350VJv3zCX6jv/6cotubb/Pn36w==",
+  "dgSpecHash": "5lMp7COG8PKLyyOK9kGoLq4xLFMThO8WikwK+gdVUibCcCMAAqydUvKpUuDf58LNDpCk1PKJd2nfmRDeEaP0MA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alang\\Desktop\\NUEVOOOOOOOO\\Banding\\Banding.Web\\Banding.Web.csproj",
+  "projectFilePath": "C:\\Users\\alang\\Documents\\GitHub\\AdministracionMicroempresas\\Banding.Web\\Banding.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alang\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\alang\\.nuget\\packages\\chart.js\\2.9.3\\chart.js.2.9.3.nupkg.sha512",

@@ -1684,11 +1684,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alang\\Desktop\\NUEVOOOOOOOO\\Banding\\Banding.Repository\\Banding.Repository.csproj",
+      "projectUniqueName": "C:\\Users\\alang\\Documents\\GitHub\\AdministracionMicroempresas\\Banding.Repository\\Banding.Repository.csproj",
       "projectName": "Banding.Repository",
-      "projectPath": "C:\\Users\\alang\\Desktop\\NUEVOOOOOOOO\\Banding\\Banding.Repository\\Banding.Repository.csproj",
+      "projectPath": "C:\\Users\\alang\\Documents\\GitHub\\AdministracionMicroempresas\\Banding.Repository\\Banding.Repository.csproj",
       "packagesPath": "C:\\Users\\alang\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alang\\Desktop\\NUEVOOOOOOOO\\Banding\\Banding.Repository\\obj\\",
+      "outputPath": "C:\\Users\\alang\\Documents\\GitHub\\AdministracionMicroempresas\\Banding.Repository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1709,8 +1709,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\alang\\Desktop\\NUEVOOOOOOOO\\Banding\\Banding.Core\\Banding.Core.csproj": {
-              "projectPath": "C:\\Users\\alang\\Desktop\\NUEVOOOOOOOO\\Banding\\Banding.Core\\Banding.Core.csproj"
+            "C:\\Users\\alang\\Documents\\GitHub\\AdministracionMicroempresas\\Banding.Core\\Banding.Core.csproj": {
+              "projectPath": "C:\\Users\\alang\\Documents\\GitHub\\AdministracionMicroempresas\\Banding.Core\\Banding.Core.csproj"
             }
           }
         }

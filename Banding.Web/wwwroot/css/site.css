@@ -1,8 +1,8 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 :root {
-    --verde70: #127369;
-    --verde90: #10403B;
+    --verde70: #4AC4F3;
+    --verde90: #225C73;
     --verde40: #8AA6A3;
     --verde10: #f5f9f98a;
     --gris70: #4C5958;
@@ -12,6 +12,11 @@ for details on configuring this project to bundle and minify static web assets. 
 .factura-header{
     background-color: var(--verde10);
     padding-top: 15px;
+}
+
+.factura-footer{
+    background-color: var(--verde10);
+    padding: 0px 15px 15px 15px;
 }
 
 .container-header {
