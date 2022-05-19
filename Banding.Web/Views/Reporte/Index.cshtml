@@ -3,34 +3,68 @@
 
 
 
-        <div class="container">
+
+        <div class="contenedor-grande" style="margin:20px 400px;">
             <div class="row">
-                <form asp-action="Index" method="get">
-                    <h5>Fecha Inicio</h5>
-                    <input type="date" name="fechaInicio" class="form-control mar2 " />
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <div>
+                        <div class="row">
+                            <form asp-action="Index" method="get">
+                                <h5>Fecha Inicio</h5>
+                                <input type="date" name="fechaInicio" class="form-control mar2 " />
 
-                    <h5>Fecha Fin</h5>
-                    <input type="date" name="fechaFin" class="form-control mar2 " />
+                                <h5>Fecha Fin</h5>
+                                <input type="date" name="fechaFin" class="form-control mar2 " />
 
-                    <br />
-                    <input type="submit" value="Consultar" class="btn btn-dark" />
-                </form>
+                                <br />
+                                <input type="submit" value="Consultar" class="btn btn-dark" />
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-1"></div>
             </div>
-        </div>
+
+            <br />
+        </div>>
 
         @if (ViewData["fechaInicio"] != null)
         {
-            <h2>Mostrando resultados desde @ViewData["fechaInicio"] hasta @ViewData["fechaFin"] </h2>
-            <div>
-                <div class="row">
+            <br />
+            <div class="contenedor-grande" style="visibility:hidden" id="contenedor1">
 
-                    <div class="col sm-6" style="visibility:hidden" id="PieProductosDesc">
+                <h3 style="text-align:center">Mostrando resultados desde @ViewData["fechaInicio"] hasta @ViewData["fechaFin"] </h3>
+                <br>
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
                         <div class="card">
                             <div class="card-header">
                                 Productos más vendidos
                             </div>
                             <div class="card-body">
-                                <canvas class="my-4 h-25" id="bar"></canvas>
+                                <canvas width="class=" my-2 h-35" id="pieSolo"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+                <br>
+            </div>
+
+            <div class="contenedor-grande" style="visibility:hidden" id="PieProductosDesc">
+                <h3 style="text-align:center">Mostrando resultados desde @ViewData["fechaInicio"] hasta @ViewData["fechaFin"] </h3>
+                <br>
+                <div class="row">
+                    <div class="col sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                Productos más vendidos
+                            </div>
+                            <div class="card-body">
+                                <canvas class="my-2 h-35" id="bar"></canvas>
                             </div>
                         </div>
                     </div>
@@ -41,15 +75,16 @@
                                 Productos menos vendidos
                             </div>
                             <div class="card-body">
-                                <canvas class="my-4 h-15" id="pie"></canvas>
+                                <canvas class="my-2 h-35" id="pie"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
+                <br>
             </div>
         }
-
     </div>
+
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -66,7 +101,7 @@
     console.log(nombresDesc.length);
     console.log(nombresDesc.length>0);
 
-    if(nombresDesc.length>0){
+    if(nombresDesc.length>0 && nombres.length>0){
         var barchart = document.getElementById('bar').getContext('2d');
         var mybarchart = new Chart(barchart, {
             type: 'pie',
@@ -89,10 +124,10 @@
             }
         });
         var node = document.getElementById('PieProductosDesc');
-            node.style.visibility = 'visible';
-    }
+        node.style.visibility = 'visible';
 
-    if(nombres.length>0){
+
+
         var piechart = document.getElementById('pie').getContext('2d');
         var mypiechart = new Chart(piechart, {
             type: 'pie',
@@ -116,6 +151,35 @@
         });
         var node = document.getElementById('PieProductos');
         node.style.visibility = 'visible';
+          document.getElementById("contenedor1").hidden = true;
+
+    }
+    else if(nombresDesc.length>0){
+        var barchart = document.getElementById('pieSolo').getContext('2d');
+        var mybarchart = new Chart(barchart, {
+            type: 'pie',
+            data: {
+                labels: nombresDesc,
+                datasets: [{
+                    label: 'Producto',
+                    data: cantidadesDesc,
+                    backgroundColor: ['rgba(60,50,20)','rgba(146,78,39)','rgba(52,58,64)','rgba(203,167,129)','rgba(132,113,135)']
+                }]
+            },
+            options:{
+                scales: {
+                    y: {
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }
+                },
+            }
+        });
+        var node = document.getElementById('contenedor1');
+        node.style.visibility = 'visible';
+          document.getElementById("PieProductosDesc").hidden = true;
+
     }
 </script>
 

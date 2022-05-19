@@ -5,6 +5,27 @@
     --dark: #202942;
 }
 
+.factura-label {
+    font-size: 16px;
+}
+
+.factura-header {
+    background-color: var(--verde10);
+    padding-top: 15px;
+}
+
+.factura-footer {
+    padding: 0px 15px 15px 15px;
+}
+
+.container-header {
+    max-width: 800px;
+}
+
+.container-fixed {
+    margin-top: 55px;
+}
+
 .contenedor-grande {
     padding: 20px;
     background-color: #EDF5FF;

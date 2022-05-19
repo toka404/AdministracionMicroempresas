@@ -8,8 +8,13 @@
     $(window).scroll(function () {
     if ($(this).scrollTop() > 45) {
          $('.navbar').removeClass('bg-primary');
+         $('.navbar').removeClass('py-lg-3');
+         $('.navbar').addClass('py-lg-0');
     } else {
         $('.navbar').addClass('bg-primary');
+         $('.navbar').removeClass('py-lg-0');
+        $('.navbar').addClass('py-lg-3');
+
     }
     });
 </script>
