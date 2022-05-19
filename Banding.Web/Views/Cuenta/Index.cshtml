@@ -9,60 +9,87 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<div class="container-xxl hero-header" style="padding-bottom:0px">
+    <div class="container">
+        <h1>Cuenta</h1>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Edit" > 
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="IdUsuario" />
+                    <input type="hidden" asp-for="RolId" />
+                    <input type="hidden" asp-for="IdEmprendimiento" />
+                    <div class="form-group">
+                        <label asp-for="IdProvincia" class="control-label"></label>
+                        <input asp-for="IdProvincia" class="form-control" />
+                        <span asp-validation-for="IdProvincia" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NombreUsuario" class="control-label"></label>
+                        <input asp-for="NombreUsuario" class="form-control" />
+                        <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ApellidoUsuario" class="control-label"></label>
+                        <input asp-for="ApellidoUsuario" class="form-control" />
+                        <span asp-validation-for="ApellidoUsuario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Celular" class="control-label"></label>
+                        <input asp-for="Celular" class="form-control" />
+                        <span asp-validation-for="Celular" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EMail" class="control-label"></label>
+                        <input asp-for="EMail" class="form-control" />
+                        <span asp-validation-for="EMail" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Username" class="control-label"></label>
+                        <input asp-for="Username" class="form-control" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Contrasena" class="control-label"></label>
+                        <input asp-for="Contrasena" class="form-control" />
+                        <span asp-validation-for="Contrasena" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <br />
+                        <div class="col">
+                            <input type="submit" value="Guardar" class="btn btn-dark" />
+                            
+                        </div>
 
-<h1>Cuenta</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdUsuario" />
-            <div class="form-group">
-                <label asp-for="IdProvincia" class="control-label"></label>
-                <input asp-for="IdProvincia" class="form-control" />
-                <span asp-validation-for="IdProvincia" class="text-danger"></span>
+
+                    </div>
+                </form>
+                <a class="btn btn-dark" asp-action="Index">Regresar</a>
             </div>
-            <div class="form-group">
-                <label asp-for="NombreUsuario" class="control-label"></label>
-                <input asp-for="NombreUsuario" class="form-control" />
-                <span asp-validation-for="NombreUsuario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ApellidoUsuario" class="control-label"></label>
-                <input asp-for="ApellidoUsuario" class="form-control" />
-                <span asp-validation-for="ApellidoUsuario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Celular" class="control-label"></label>
-                <input asp-for="Celular" class="form-control" />
-                <span asp-validation-for="Celular" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EMail" class="control-label"></label>
-                <input asp-for="EMail" class="form-control" />
-                <span asp-validation-for="EMail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Contrasena" class="control-label"></label>
-                <input asp-for="Contrasena" class="form-control" />
-                <span asp-validation-for="Contrasena" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-dark" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a class="btn btn-dark" asp-action="Index">Regresar</a>
-</div>
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }
+}
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+
+           var nav = document.getElementById("navbar");
+           nav.classList.add('bg-primary');
+
+           $(window).scroll(function () {
+           if ($(this).scrollTop() > 45) {
+                $('.navbar').removeClass('bg-primary');
+           } else {
+               $('.navbar').addClass('bg-primary');
+           }
+           });
+</script>

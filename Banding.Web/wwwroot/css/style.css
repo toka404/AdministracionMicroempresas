@@ -240,6 +240,20 @@ h6,
     }
 }
 
+/*** Hero Header ***/
+.hero-cuenta {
+    margin-bottom: 6rem;
+    padding: 9rem 0;
+}
+
+@media (max-width: 991.98px) {
+    .hero-cuenta {
+        padding: 6rem 0 9rem 0;
+    }
+}
+
+
+
 
 /*** Feature ***/
 .feature-item,

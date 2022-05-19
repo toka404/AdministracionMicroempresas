@@ -1,7 +1,11 @@
 ﻿using Banding.Core.Interfaces.Repository.MySql;
+using Banding.Core.Models.Entities.MySql;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Banding.Web.Controllers
 {
@@ -9,13 +13,22 @@ namespace Banding.Web.Controllers
     public class CuentaController : Controller
     {
         private readonly IUsuarioRepository _userRepository;
-        public CuentaController(IUsuarioRepository userRepository)
+        private readonly IProvinciaRepository _provinciaRepository;
+        public CuentaController(IUsuarioRepository userRepository,
+            IProvinciaRepository provinciaRepository)
         {
             _userRepository = userRepository;
+            _provinciaRepository = provinciaRepository;
         }
         public IActionResult Index()
         {
             int id = int.Parse(User.Claims.ElementAt(7).Value);
+
+            /*var provincias = _provinciaRepository.GetProvincias();
+            var u = new SelectList(provincias);
+            ViewBag.u = u;*/
+
+
             var usuario = _userRepository.GetUsuarioById(id);
 
             if (usuario == null)
@@ -23,6 +36,33 @@ namespace Banding.Web.Controllers
                 return NotFound();
             }
             return View(usuario);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string nombreProvincia, [Bind("IdEmprendimiento, IdUsuario,IdProvincia,NombreUsuario,ApellidoUsuario,Celular,EMail,Username,Contrasena, RolId")] Usuario usuario)
+        {
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _userRepository.UpdateUsuario(usuario);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!_userRepository.UsuarioExists(usuario.IdUsuario))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return RedirectToAction("Index");
         }
     }
 }

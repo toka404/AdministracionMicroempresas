@@ -20,41 +20,50 @@
     <input type="submit" value="login" />
 </form>
 -->
+<div class="container-xxl bg-primary hero-header">
+    <div class="container">
+        <div class="row g-5 text-white">
+             
+            <h1 style="padding-left: 12px;" class="text-white">Iniciar Sesión</h1>
+            <div class="row ">
+                <div class="col-md-4">
+                    <section>
+                        <form action="/login?ReturnUrl=@System.Net.WebUtility.UrlEncode(returnUrl)" method="post">
+                            <h4></h4>
+                            <hr />
+                            <div class="text-danger"></div>
+                            <div class="form-group">
+                                <label>Usuario o Email</label>
+                                <input type="text" class="form-control" name="username" />
+                            </div>
+                            <div class="form-group">
+                                <label>Contraseña</label>
+                                <input type="password" name="password" class="form-control" placeholder="Password" />
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <button type="submit" value="login" class="btn btn-dark">Iniciar Sesión</button>
+                            </div>
 
-<h1>Iniciar Sesión</h1>
-<div class="row">
-    <div class="col-md-4">
-        <section>
-            <form action="/login?ReturnUrl=@System.Net.WebUtility.UrlEncode(returnUrl)" method="post">
-                <h4>Bienvenido.</h4>
-                <hr />
-                <div class="text-danger"></div>
-                <div class="form-group">
-                    <label>Usuario o Email</label>
-                    <input type="text" class="form-control" name="username" />
+                        </form>
+                    </section>
                 </div>
-                <div class="form-group">
-                    <label>Contraseña</label>
-                    <input type="password" name="password" class="form-control" placeholder="Password" />
-                </div>
-                <div class="form-group">
-                    <button type="submit" value="login" class="btn btn-dark">Iniciar Sesión</button>
-                </div>
+                <div class="col-md-6 col-md-offset-2">
+                    <section class="text-white">
+                        <h4 class="text-white"></h4>
+                        <hr />
+                        <br />
+                        <div>
+                            <p style="font-size: 20px">
+                                Inicie sesión con las credenciales recibidas. En caso de no tener una cuenta registrada contacte con el administrador de su emprendimiento.
+                            </p>
+                        </div>
 
-            </form>
-        </section>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h4>Banding.</h4>
-            <hr />
-
-            <div>
-                <p>
-                    Inicie sesión con las credenciales recibidas. En caso de no tener una cuenta registrada contacte con el administrador de su emprendimiento.
-                </p>
+                    </section>
+                </div>
             </div>
 
-        </section>
+        </div>
     </div>
 </div>
+

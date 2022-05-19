@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<Banding.Core.Models.Entities.MySql.Producto>
 
-<link rel="stylesheet" href="~/css/GreenCard.css" />
 
 @{
     ViewData["Title"] = "Home Page";
@@ -9,68 +8,117 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <div class="container">
-        <div class="row">
-            <div class="col-9">
-                <div class="jumbotron">
-                    <h1 class="display-4">Bienvenido @User.Claims.ElementAt(2).Value</h1>
-                    <p class="lead">Bienvenido a la página de adminstración de su emprendimiento.</p>
-                    <hr class="my-4">
-                    <p>@User.Claims.ElementAt(4).Value</p>
-                </div>
-            </div>
-            <div class="col-3">
+       <div class="container-xxl bg-primary hero-header">
+        <div class="container">
+            <div class="row g-5 align-items-center">
 
-                <div class="container bootstrap snippets bootdeys">
-                    <div class="row">
-
-                        <div class="col-md col-sm content-card">
-                            <div class="card-big-shadow">
-                                <div class="card card-just-text" data-background="color" data-color="green" data-radius="none">
-                                    <div class="content">
-                                        <h6 class="category"></h6>
-                                        <h4 class="title"><a href="#">Stock Mínimo</a></h4>
-
-
-                                        @if (@Model.Count() > 0)
-                                        {
-                                            <ul>
-                                                @foreach (var item in Model)
-                                                {
-                                                    <li class="description">@item.NombreProducto</li>
-                                                }
-                                            </ul>
-                                        }
-                                        else
-                                        {
-                                            <div>No hay productos con el stock mínimo.</div>
-                                        }
-
-                                    </div>
-                                </div> <!-- end card -->
-                        </div>
-                        </div>
-
-
+            <div class="container">
+            <div class="row">
+                <div class="col-9">
+                    <div class="jumbotron">
+                        <h1 class="display-4 text-white">Bienvenido @User.Claims.ElementAt(2).Value</h1>
+                        <p class="lead text-white">Bienvenido a la página de adminstración de su emprendimiento.</p>
+                        <hr class="my-4">
+                        <p style="font-size: 40px" class="text-white">@User.Claims.ElementAt(4).Value</p>
                     </div>
                 </div>
+                <div class="col-3">
+
+                 
+
+                            <div class="col-md col-sm">
+                                <div class="container bootstrap snippets bootdeys">
+                                    <div class="row">
+                                        <div class="col-lg wow fadeInUp" data-wow-delay="0.5s">
+                                            <div class="feature-item bg-light rounded text-center">
+                                                <br>
+                                                    <h5 class="mb">Stock Mínimo</h5>
+                                                    <br>
+                                                    <i class="fa fa-4x fa-cart-flatbed text-primary mb"></i>
+                                                    <br>
+                                                        @if (@Model.Count() > 0)
+                                                        {
+                                                            <br />
+                                                    <ul>
+                                                                @foreach (var item in Model)
+                                                                {
+                                                                <li class="description">@item.NombreProducto</li>
+                                                                }
+                                                    </ul>
+                                                        }
+                                                        else
+                                                        {
+                                                    <div>No hay productos con el stock mínimo.</div>
+                                                        }
+                                                        <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
-             
+                     
+
+
+
+                </div>
             </div>
         </div>
-    </div>
+
+
+
+            </div>
+        </div>
+       </div>
+
+
 }
 else
 {
-    <div class="jumbotron">
-        <h1 class="display-4">Banding, administración de emprendimientos</h1>
-        <p class="lead">Bienvenido a la página de banding</p>
-        <hr class="my-4">
-        <p>Emprendimientos para todos</p>
-        <p class="lead">
-            <a class="btn btn-dark btn-lg" asp-area="" asp-controller="Home" asp-action="Privacy">Saber más</a>
-        </p>
-    </div>
+                <div class="container-xxl bg-primary hero-header">
+                    <div class="container">
+                        <div class="row g-5 align-items-center">
+                            <div class="col-lg-7 text-center text-lg-start">
+                                <h1 class="text-white mb-4 animated slideInDown">Una increíble forma de administrar tu emprendimiento</h1>
+                                <p class="text-white pb-3 animated slideInDown">Con Banding es posible administrar tu emprendimiento facilitando tus procesos de inventario y facturación sin necesidad de experiencia previa en sistemas de administración.</p>
+
+                            </div>
+                            <div class="col-lg-6 text-center text-lg-start">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="container-xxl py-6">
+                <div class="container">
+                    <div class="row g-4">
+                        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="feature-item bg-light rounded text-center p-5">
+                                <i class="fa fa-4x fa-warehouse text-primary mb-4"></i>
+                                <h5 class="mb-3">Inventario</h5>
+                                <p class="m-0">El manejo del inventario permite una gestión completa de los productos.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="feature-item bg-light rounded text-center p-5">
+                                <i class="fa fa-4x fa-chart-column text-primary mb-4"></i>
+                                <h5 class="mb-3">Reportes</h5>
+                                <p class="m-0">Se generan reportes sobre datos en base a dos fechas definidas.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="feature-item bg-light rounded text-center p-5">
+                                <i class="fa fa-4x fa-wallet text-primary mb-4"></i>
+                                <h5 class="mb-3">Facturación</h5>
+                                <p class="m-0">Se permite una gestión completa de las facturas del emprendimiento.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 }
 
