@@ -4,28 +4,36 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div class="container-xxl hero-header" style="padding-bottom:0px">
+    <div class="container">
 
-<h4>Provincia</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="NombreProvincia" class="control-label"></label>
-                <input asp-for="NombreProvincia" class="form-control" />
-                <span asp-validation-for="NombreProvincia" class="text-danger"></span>
+
+        <h1>Crear</h1>
+
+        <h4>Provincia</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="NombreProvincia" class="control-label"></label>
+                        <input asp-for="NombreProvincia" class="form-control" />
+                        <span asp-validation-for="NombreProvincia" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
+
+        <div>
+            <a asp-action="Index">Regresar</a>
+        </div>
+
+
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

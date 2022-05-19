@@ -4,81 +4,89 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="container-xxl hero-header" style="padding-bottom:0px">
+    <div class="container">
 
-<div>
-    <h4>Producto</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NombreProducto)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NombreProducto)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PrecioFabricacion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PrecioFabricacion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Foto)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Foto)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Stock)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Stock)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaCaducidad)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaCaducidad)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PrecioVenta)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PrecioVenta)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Iva)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Iva)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StockMinimo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StockMinimo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EmailEnviado)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EmailEnviado)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdEmprendimientoNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdEmprendimientoNavigation.IdEmprendimiento)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IdProducto">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+        <h1>Detalles</h1>
+
+        <div>
+            <h4>Producto</h4>
+            <hr />
+            <dl class="row">
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.NombreProducto)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.NombreProducto)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.PrecioFabricacion)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.PrecioFabricacion)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.Descripcion)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.Foto)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.Foto)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.Stock)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.Stock)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.FechaCaducidad)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.FechaCaducidad)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.PrecioVenta)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.PrecioVenta)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.Iva)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.Iva)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.StockMinimo)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.StockMinimo)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmailEnviado)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.EmailEnviado)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.IdEmprendimientoNavigation)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.IdEmprendimientoNavigation.IdEmprendimiento)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.IdProducto">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+
+
+    </div>
 </div>

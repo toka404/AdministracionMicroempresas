@@ -4,32 +4,38 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="container-xxl hero-header" style="padding-bottom:0px">
+    <div class="container">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreRol)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreRol)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdRol">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdRol">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdRol">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <h1>Roles</h1>
+
+        <p>
+            <a asp-action="Create">Crear</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreRol)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreRol)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdRol">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdRol">Detalles</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdRol">Eliminar</a>
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+
+    </div>
+</div>

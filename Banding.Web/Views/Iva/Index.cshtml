@@ -9,35 +9,43 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Iva</h1>
+<div class="container-xxl hero-header" style="padding-bottom:0px">
+    <div class="container">
 
-<p>
-    <a class="btn btn-dark" asp-action="Create">Crear</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.First().ValorIva)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValorIva)
-            </td>
-            <td>
-                <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.IdIva">Edit</a> |
-                <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.IdIva">Details</a> |
-                <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.IdIva">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+        <h1>Iva</h1>
+
+        <p>
+            <a class="btn btn-dark" asp-action="Create">Crear</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().ValorIva)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorIva)
+                    </td>
+                    <td>
+                        <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.IdIva">Edit</a> |
+                        <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.IdIva">Details</a> |
+                        <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.IdIva">Delete</a>
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
 
 @Html.PagedListPager((IPagedList)Model, page => 
     Url.Action("Index", new { page = page }), 

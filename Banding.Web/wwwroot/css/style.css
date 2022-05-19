@@ -5,6 +5,11 @@
     --dark: #202942;
 }
 
+.contenedor-grande {
+    padding: 20px;
+    background-color: #EDF5FF;
+    border-radius: 20px;
+}
 
 /*** Spinner ***/
 #spinner {
@@ -232,6 +237,7 @@ h6,
     margin-bottom: 6rem;
     padding: 9rem 0;
     background: url(../img/bg-bottom.png) center bottom no-repeat;
+    background-size: 100%;
 }
 
 @media (max-width: 991.98px) {

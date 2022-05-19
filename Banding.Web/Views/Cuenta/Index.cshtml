@@ -15,7 +15,7 @@
         <hr />
         <div class="row">
             <div class="col-md-4">
-                <form asp-action="Edit" > 
+                <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="IdUsuario" />
                     <input type="hidden" asp-for="RolId" />
@@ -59,13 +59,11 @@
                         <br />
                         <div class="col">
                             <input type="submit" value="Guardar" class="btn btn-dark" />
-                            
+                            <a class="btn btn-dark" asp-action="Index">Regresar</a>
+
                         </div>
-
-
                     </div>
                 </form>
-                <a class="btn btn-dark" asp-action="Index">Regresar</a>
             </div>
         </div>
     </div>
@@ -82,14 +80,14 @@
 
 <script>
 
-           var nav = document.getElementById("navbar");
-           nav.classList.add('bg-primary');
+    var nav = document.getElementById("navbar");
+    nav.classList.add('bg-primary');
 
-           $(window).scroll(function () {
-           if ($(this).scrollTop() > 45) {
-                $('.navbar').removeClass('bg-primary');
-           } else {
-               $('.navbar').addClass('bg-primary');
-           }
-           });
+    $(window).scroll(function () {
+    if ($(this).scrollTop() > 45) {
+         $('.navbar').removeClass('bg-primary');
+    } else {
+        $('.navbar').addClass('bg-primary');
+    }
+    });
 </script>

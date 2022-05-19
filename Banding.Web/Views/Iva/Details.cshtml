@@ -3,22 +3,28 @@
 @{
     ViewData["Title"] = "Details";
 }
+<div class="container-xxl hero-header" style="padding-bottom:0px">
+    <div class="container">
 
-<h1>Details</h1>
 
-<div>
-    <h4>Iva</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ValorIva)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ValorIva)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IdIva">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+        <h1>Detalles</h1>
+
+        <div>
+            <h4>Iva</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ValorIva)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ValorIva)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.IdIva">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+    </div>
 </div>

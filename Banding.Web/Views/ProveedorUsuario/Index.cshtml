@@ -9,70 +9,76 @@
 
 }
 
-<h1>Proveedores</h1>
+<div class="container-xxl hero-header" style="padding-bottom:0px">
+    <div class="container">
 
-<p>
-    <a class="btn btn-dark" asp-action="Create">Crear</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.First().IdProvincia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().NombreProveedor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().Telefono)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().EMailProveedor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().Producto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().Ruc)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdProvincia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreProveedor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EMailProveedor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Producto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ruc)
-            </td>
-            <td>
-                <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.IdProveedor">Editar</a> |
-                <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.IdProveedor">Detalles</a> |
-                <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.IdProveedor">Eliminar</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <h1>Proveedores</h1>
+
+        <p>
+            <a class="btn btn-dark" asp-action="Create">Crear</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().IdProvincia)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().NombreProveedor)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Telefono)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().EMailProveedor)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Producto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().Ruc)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdProvincia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreProveedor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EMailProveedor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Producto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ruc)
+                    </td>
+                    <td>
+                        <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.IdProveedor">Editar</a> |
+                        <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.IdProveedor">Detalles</a> |
+                        <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.IdProveedor">Eliminar</a>
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
 
 
-@Html.PagedListPager((IPagedList)Model, page => 
-    Url.Action("Index", new { page = page }), 
-    new PagedListRenderOptions {
-        LiElementClasses = new string[] { "page-item" },
-        PageClasses = new string[] { "page-link" }
-})
+        @Html.PagedListPager((IPagedList)Model, page => 
+            Url.Action("Index", new { page = page }), 
+            new PagedListRenderOptions {
+                LiElementClasses = new string[] { "page-item" },
+                PageClasses = new string[] { "page-link" }
+        })
+
+    </div>
+</div>
