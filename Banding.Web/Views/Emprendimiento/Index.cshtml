@@ -9,7 +9,7 @@
 }
 
 <div class="container-xxl hero-header" style="padding-bottom:0px">
-    <div class="container">
+    <div class="contenedor-grande">
 
         <h1>Emprendimientos</h1>
 
@@ -29,7 +29,7 @@
                         @Html.DisplayNameFor(model => model.First().Logo)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().IdCategoriaNavigation)
+                        @Html.DisplayNameFor(model => model.First().IdCategoria)
                     </th>
                     <th></th>
                 </tr>
@@ -47,7 +47,7 @@
                         @Html.DisplayFor(modelItem => item.Logo)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.IdCategoria)
+                        @Html.DisplayFor(modelItem => item.IdCategoria)
                     </td>
                     <td>
                         <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.IdEmprendimiento">Edit</a> |
@@ -68,3 +68,5 @@
 
     </div>
 </div>
+
+<partial name="~/Views/Shared/_NavbarStylePartial.cshtml" />

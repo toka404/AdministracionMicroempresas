@@ -5,14 +5,14 @@
 }
 
 <div class="container-xxl hero-header" style="padding-bottom:0px">
-    <div class="container">
+    <div class="contenedor-create contenedor-grande">
 
         <h1>Editar</h1>
 
         <h4>Emprendimiento</h4>
         <hr />
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-10">
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="IdEmprendimiento" />
@@ -36,15 +36,16 @@
                         <input asp-for="Logo" class="form-control" />
                         <span asp-validation-for="Logo" class="text-danger"></span>
                     </div>
+                    <br />
                     <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <input type="submit" value="Guardar" class="btn btn-dark" />
                     </div>
                 </form>
             </div>
         </div>
-
+        <br />
         <div>
-            <a asp-action="Index">Back to List</a>
+            <a class="btn btn-dark" asp-action="Index">Regresar</a>
         </div>
 
         @section Scripts {
@@ -52,3 +53,5 @@
         }
     </div>
 </div>
+
+<partial name="~/Views/Shared/_NavbarStylePartial.cshtml" />

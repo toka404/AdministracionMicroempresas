@@ -10,7 +10,7 @@
 }
 
 <div class="container-xxl hero-header" style="padding-bottom:0px">
-    <div class="container">
+    <div>
         <div class="contenedor-grande">
 
 
@@ -96,18 +96,4 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-<script>
-
-    var nav = document.getElementById("navbar");
-    nav.classList.add('bg-primary');
-
-    $(window).scroll(function () {
-    if ($(this).scrollTop() > 45) {
-         $('.navbar').removeClass('bg-primary');
-    } else {
-        $('.navbar').addClass('bg-primary');
-    }
-    });
-</script>
+<partial name="~/Views/Shared/_NavbarStylePartial.cshtml" />

@@ -9,7 +9,13 @@
     padding: 20px;
     background-color: #EDF5FF;
     border-radius: 20px;
+    margin: 20px;
 }
+
+.contenedor-create {
+    margin: 30px 800px 50px 60px;
+}
+
 
 /*** Spinner ***/
 #spinner {
