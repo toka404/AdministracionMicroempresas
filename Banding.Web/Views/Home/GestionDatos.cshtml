@@ -1,0 +1,55 @@
+﻿@{
+}
+<div class="container">
+
+    <div class="container-xxl py-6" id="features">
+        <div class="container" style="padding-top: 25px;">
+            <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="mb-3">Gestionar Datos</h1>
+                <p class="mb-5">Seleccione el módulo que desee gestionar.</p>
+            </div>
+             <div class="row g-3">
+                <a class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" asp-area="" asp-controller="Emprendimiento" asp-action="Index">
+                    <div class="advanced-feature-item text-center rounded py-5 px-4">
+                        <i class="fa fa-store fa-3x text-primary mb-4"></i>
+                        <h5 class="mb-3">Usuarios</h5>
+                    </div>
+                </a>
+                <a class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s" asp-area="" asp-controller="Provincia" asp-action="Index">
+                    <div class="advanced-feature-item text-center rounded py-5 px-4">
+                        <i class="fa fa-truck-moving fa-3x text-primary mb-4"></i>
+                        <h5 class="mb-3">Proveedores</h5>
+                    </div>
+                </a>
+                <a class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s" asp-area="" asp-controller="Iva" asp-action="Index">
+                    <div class="advanced-feature-item text-center rounded py-5 px-4">
+                        <i class="fa fa-boxes-stacked fa-3x text-primary mb-4"></i>
+                        <h5 class="mb-3">Inventario</h5>
+                    </div>
+                </a>
+               
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
+<script>
+
+    $('.navbar').removeClass('py-lg-3');
+    $('.navbar').addClass('py-lg-0');
+
+    var nav = document.getElementById("navbar");
+    nav.classList.add('bg-primary');
+
+    $(window).scroll(function () {
+    if ($(this).scrollTop() > 45) {
+         $('.navbar').removeClass('bg-primary');
+    } else {
+        $('.navbar').addClass('bg-primary');
+    }
+    });
+</script>

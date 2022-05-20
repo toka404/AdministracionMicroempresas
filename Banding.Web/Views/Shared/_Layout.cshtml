@@ -51,12 +51,12 @@
                         @if (User.IsInRole("admin"))
                         {
                         //dropdown - multifunciones
-                            <a href="#home" class="nav-item nav-link">Gestión General</a>
+                            <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="GestionAdministrador">Gestión Administrador</a>
                         }
                         @if (User.Identity.IsAuthenticated)
                         {
                         //dropdown - multifunciones
-                            <a href="#about" class="nav-item nav-link">Gestión Datos</a>
+                            <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="GestionDatos">Gestión Datos</a>
 
 
                             <a class="nav-item nav-link" asp-area="" asp-controller="Inventario" asp-action="Index">Inventario</a>

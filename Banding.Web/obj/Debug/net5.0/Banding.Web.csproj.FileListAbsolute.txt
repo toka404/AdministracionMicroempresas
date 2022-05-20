@@ -1009,3 +1009,5 @@ C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debu
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Banding.Web.genruntimeconfig.cache
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\ref\Banding.Web.dll
 C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Shared\_NavbarStylePartial.cshtml.g.cs
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Home\GestionAdministrador.cshtml.g.cs
+C:\Users\alang\Documents\GitHub\AdministracionMicroempresas\Banding.Web\obj\Debug\net5.0\Razor\Views\Home\GestionDatos.cshtml.g.cs

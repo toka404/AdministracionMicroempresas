@@ -5,6 +5,15 @@
     --dark: #202942;
 }
 
+h2, h3, h4, h5 {
+    color: #858585;
+}
+.btn-dark {
+    color: #fff;
+    background-color: #4AC4F3;
+    border-color: #4AC4F3;
+}
+
 .factura-label {
     font-size: 16px;
 }

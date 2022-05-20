@@ -55,6 +55,16 @@ namespace Banding.Web.Controllers
             return View();
         }
 
+        public IActionResult GestionAdministrador()
+        {
+            return View();
+        }
+
+        public IActionResult GestionDatos()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

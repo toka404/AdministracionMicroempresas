@@ -50,7 +50,7 @@ namespace Banding.Repository.Data.MySql
 
         public ICollection<FacturaCabecera> GetFacturaCabeceras()
         {
-            return _context.FacturaCabecera.Include(c => c.DetalleFacturas).Where(c=>c.Anulado.Equals("0")).ToList();
+            return _context.FacturaCabecera.Include(c => c.DetalleFacturas).Where(c=>c.Anulado.Equals("0")).OrderBy(t=>t.NroFactura).ToList();
         }
         public ICollection<DetalleFactura> GetDetallesByIdCabecera(int idCabecera)
         {
