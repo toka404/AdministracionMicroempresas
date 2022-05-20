@@ -18,7 +18,7 @@ namespace Banding.Repository.Data.MySql
         }
         public bool ProvinciaExists(int id)
         {
-            return _context.Provincia.Any(c => c.Id_Provincia == id);
+            return _context.Provincia.Any(c => c.IdProvincia == id);
         }
 
         public void CreateProvincia(Provincia provincia)
@@ -40,7 +40,7 @@ namespace Banding.Repository.Data.MySql
 
         public Provincia GetProvinciaById(int? id)
         {
-            return _context.Provincia.FirstOrDefault(p => p.Id_Provincia == id);
+            return _context.Provincia.FirstOrDefault(p => p.IdProvincia == id);
         }
 
         public void UpdateProvincia(Provincia provincia)

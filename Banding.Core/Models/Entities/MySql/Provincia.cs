@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 #nullable disable
 
@@ -14,10 +15,11 @@ namespace Banding.Core.Models.Entities.MySql
         }
 
         public int IdProvincia { get; set; }
+        [DisplayName("Nombre")]
         public string NombreProvincia { get; set; }
 
         public virtual ICollection<Proveedor> Proveedors { get; set; }
         public virtual ICollection<Usuario> Usuarios { get; set; }
-        public int Id_Provincia { get; set; }
+        //public int Id_Provincia { get; set; }
     }
 }

@@ -10,7 +10,7 @@
 }
 
 <div class="container-xxl hero-header" style="padding-bottom:0px">
-    <div class="container">
+    <div class="contenedor-grande">
 
 
         <h1>Usuarios</h1>
@@ -46,7 +46,7 @@
                         @Html.DisplayNameFor(model => model.First().IdProvinciaNavigation)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().Rol)
+                        @Html.DisplayNameFor(model => model.First().Rol.NombreRol)
                     </th>
                     <th></th>
                 </tr>
@@ -73,7 +73,7 @@
                         @Html.DisplayFor(modelItem => item.Contrasena)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.IdEmprendimientoNavigation.IdEmprendimiento)
+                        @Html.DisplayFor(modelItem => item.IdEmprendimientoNavigation.NombreEmprendimiento)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.IdProvinciaNavigation.NombreProvincia)
@@ -82,9 +82,9 @@
                         @Html.DisplayFor(modelItem => item.Rol.NombreRol)
                     </td>
                     <td>
-                        <a class="btn btn-dark"  asp-action="Edit" asp-route-id="@item.IdUsuario">Edit</a> |
-                        <a class="btn btn-dark"  asp-action="Details" asp-route-id="@item.IdUsuario">Details</a> |
-                        <a class="btn btn-dark"  asp-action="Delete" asp-route-id="@item.IdUsuario">Delete</a>
+                        <a class="btn btn-dark"  asp-action="Edit" asp-route-id="@item.IdUsuario">Editar</a> |
+                        <a class="btn btn-dark"  asp-action="Details" asp-route-id="@item.IdUsuario">Detalles</a> |
+                        <a class="btn btn-dark"  asp-action="Delete" asp-route-id="@item.IdUsuario">Eliminar</a>
                     </td>
                 </tr>
         }

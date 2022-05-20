@@ -1,6 +1,7 @@
 ﻿using Banding.Core.Interfaces.Repository.MySql;
 using Banding.Core.Models.Entities.MySql;
 using Banding.Repository.MySql;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Banding.Repository.Data.MySql
         }
         public List<Usuario> GetUsuarios()
         {
-            return _context.Usuario.ToList();
+            return _context.Usuario.Include(u => u.IdEmprendimientoNavigation).Include(u => u.IdProvinciaNavigation).Include(u=>u.Rol).ToList();
         }
         public string GetRol(int? id)
         {

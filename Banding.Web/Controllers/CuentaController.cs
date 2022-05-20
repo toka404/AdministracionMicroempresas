@@ -24,12 +24,10 @@ namespace Banding.Web.Controllers
         {
             int id = int.Parse(User.Claims.ElementAt(7).Value);
 
-            /*var provincias = _provinciaRepository.GetProvincias();
-            var u = new SelectList(provincias);
-            ViewBag.u = u;*/
-
-
             var usuario = _userRepository.GetUsuarioById(id);
+
+            ViewData["IdProvincia"] = new SelectList(_provinciaRepository.GetProvincias(), "IdProvincia", "NombreProvincia", usuario.IdProvincia);
+
 
             if (usuario == null)
             {
@@ -60,9 +58,9 @@ namespace Banding.Web.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
     }
 }

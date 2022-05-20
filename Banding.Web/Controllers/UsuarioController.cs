@@ -17,9 +17,18 @@ namespace Banding.Web.Controllers
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepository _userRepository;
+        private readonly IRolRepository _rolRepository;
+        private readonly IEmprendimientoRepository _emprendimientoRepository;
+        private readonly IProvinciaRepository _provinciaRepository;
 
-        public UsuarioController(IUsuarioRepository userRepository)
+        public UsuarioController(IUsuarioRepository userRepository,
+            IRolRepository rolRepository,
+            IEmprendimientoRepository emprendimientoRepository,
+            IProvinciaRepository provinciaRepository)
         {
+            _rolRepository = rolRepository;
+            _emprendimientoRepository = emprendimientoRepository;
+            _provinciaRepository = provinciaRepository;
             _userRepository = userRepository;
         }
 
@@ -80,6 +89,9 @@ namespace Banding.Web.Controllers
             {
                 return NotFound();
             }
+            ViewData["IdEmprendimiento"] = new SelectList(_emprendimientoRepository.GetEmprendimientos(), "IdEmprendimiento", "IdEmprendimiento", usuario.IdEmprendimiento);
+            ViewData["IdProvincia"] = new SelectList(_provinciaRepository.GetProvincias(), "IdProvincia", "NombreProvincia", usuario.IdProvincia);
+            ViewData["RolId"] = new SelectList(_rolRepository.GetRoles(), "IdRol", "NombreRol", usuario.RolId);
             return View(usuario);
         }
 
@@ -88,7 +100,7 @@ namespace Banding.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,IdProvincia,Nombre_Usuario,ApellidoUsuario,Celular,EMail,Username,Contrasena")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("IdRol,IdEmprendimiento,IdUsuario,IdProvincia,NombreUsuario,ApellidoUsuario,Celular,EMail,Username,Contrasena")] Usuario usuario)
         {
             if (id != usuario.IdUsuario)
             {
