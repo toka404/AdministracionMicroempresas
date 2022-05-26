@@ -45,7 +45,7 @@ namespace Banding.Service.Services
                 claims.Add(new Claim("email", usuario.EMail));
                 claims.Add(new Claim(ClaimTypes.Role, rol));
                 claims.Add(new Claim("id_usuario", usuario.IdUsuario.ToString()));
-
+                claims.Add(new Claim("id_rol", usuario.RolId.ToString()));
             }
             return claims;
         }

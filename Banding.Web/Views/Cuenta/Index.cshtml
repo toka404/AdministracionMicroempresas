@@ -23,7 +23,7 @@
                     <input type="hidden" asp-for="IdEmprendimiento" />
                     <div class="form-group">
                         <label asp-for="IdProvincia" class="control-label"></label>
-                        <select asp-for="IdProvincia" class="form-control" asp-items="ViewBag.IdProvincia"></select>
+                        <select asp-for="IdProvincia" class="form-select" asp-items="ViewBag.IdProvincia"></select>
                         <span asp-validation-for="IdProvincia" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -53,18 +53,24 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Contrasena" class="control-label"></label>
-                        <input asp-for="Contrasena" class="form-control" type="password" />
+                        <input asp-for="Contrasena" class="form-control" />
                         <span asp-validation-for="Contrasena" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <br />
                         <div class="col">
                             <input type="submit" value="Guardar" class="btn btn-dark" />
-                            <a class="btn btn-dark" asp-action="Index">Regresar</a>
-
                         </div>
                     </div>
                 </form>
+                <br />
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="IdUsuario" />
+
+                    <input type="button" onClick="confirmDarseBaja()" value="Darse de baja" class="btn btn-danger" />
+                    <input id="btnForm" hidden type="submit" value="Darse de baja" class="btn btn-danger" />
+                </form>
+
             </div>
             <div class="col-2"></div>
         </div>
@@ -73,7 +79,50 @@
     </div>
 </div>
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmDarseBaja(){
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-dark btn-swal',
+            cancelButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+        })
 
+        swalWithBootstrapButtons.fire({
+          title: '¿Está seguro de darse de baja?',
+          text: "No se podrá cancelar esta acción!",
+          icon: 'warning',
+          showCancelButton: true,
+          cancelButtonText: 'No, cancelar!',
+          confirmButtonText: 'Si, darme de baja!',
+          reverseButtons: false
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Eliminado!',
+              'Tu cuenta ha sido eliminada.',
+              'success'
+            ).then( okay=> {
+                if(okay){
+                    document.getElementById('btnForm').click();
+                }
+            });;
+            
+          } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            swalWithBootstrapButtons.fire(
+              'Cancelado',
+              'Tu cuenta sigue activa :)',
+              'error'
+            )
+          }
+        })
+    }
+</script>
 
 @section Scripts {
     @{

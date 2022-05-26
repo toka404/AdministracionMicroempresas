@@ -8,39 +8,48 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Categorías</h1>
+<div class="container-xxl hero-header" style="padding-bottom:0px">
+    <div class="contenedor-grande">
 
-<p>
-    <a asp-action="Create" class="btn btn-dark">Crear</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.First().NombreCategoria)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreCategoria)
-            </td>
-            <td>
-                <a class="btn btn-dark asp-action="Edit" asp-route-id="@item.IdCategoria">Edit</a> |
-                <a class="btn btn-dark asp-action="Details" asp-route-id="@item.IdCategoria">Details</a> |
-                <a class="btn btn-dark asp-action="Delete" asp-route-id="@item.IdCategoria">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <h1>Categorías</h1>
 
-@Html.PagedListPager((IPagedList)Model, page => 
-    Url.Action("Index", new { page = page }), 
-    new PagedListRenderOptions {
+        <p>
+            <a asp-action="Create" class="btn btn-dark">Crear</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.First().NombreCategoria)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NombreCategoria)
+                        </td>
+                        <td>
+                            <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.IdCategoria">Edit</a> |
+                            <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.IdCategoria">Details</a> |
+                            <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.IdCategoria">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        @Html.PagedListPager((IPagedList)Model, page =>
+        Url.Action("Index", new { page = page }),
+        new PagedListRenderOptions {
         LiElementClasses = new string[] { "page-item" },
         PageClasses = new string[] { "page-link" }
-})
+        })
+
+    </div>
+</div>
+
+<partial name="~/Views/Shared/_NavbarStylePartial.cshtml" />

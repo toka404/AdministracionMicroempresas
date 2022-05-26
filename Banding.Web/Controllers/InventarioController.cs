@@ -2,6 +2,7 @@
 using Banding.Core.Models.Entities.MySql;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -14,8 +15,11 @@ namespace Banding.Web.Controllers
     public class InventarioController : Controller
     {
         private readonly IProductoRepository _productoRepository;
-        public InventarioController(IProductoRepository productoRepository)
+        private readonly IEmprendimientoRepository _emprendimientoRepository;
+        public InventarioController(IProductoRepository productoRepository,
+            IEmprendimientoRepository emprendimientoRepository)
         {
+            _emprendimientoRepository = emprendimientoRepository;
             _productoRepository = productoRepository;
         }
         public IActionResult Index(int page = 1)
@@ -43,6 +47,8 @@ namespace Banding.Web.Controllers
         // GET: Producto/Create
         public IActionResult Create()
         {
+            ViewData["IdEmprendimiento"] = new SelectList(_emprendimientoRepository.GetEmprendimientos(), "IdEmprendimiento", "NombreEmprendimiento");
+
             return View();
         }
 
@@ -58,6 +64,8 @@ namespace Banding.Web.Controllers
                 _productoRepository.CreateProducto(producto);
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdEmprendimiento"] = new SelectList(_emprendimientoRepository.GetEmprendimientos(), "IdEmprendimiento", "NombreEmprendimiento", producto.IdEmprendimiento);
+
             return View(producto);
         }
 
@@ -75,6 +83,8 @@ namespace Banding.Web.Controllers
             {
                 return NotFound();
             }
+            ViewData["IdEmprendimiento"] = new SelectList(_emprendimientoRepository.GetEmprendimientos(), "IdEmprendimiento", "NombreEmprendimiento", producto.IdEmprendimiento);
+
             return View(producto);
         }
 
@@ -113,6 +123,8 @@ namespace Banding.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdEmprendimiento"] = new SelectList(_emprendimientoRepository.GetEmprendimientos(), "IdEmprendimiento", "NombreEmprendimiento", producto.IdEmprendimiento);
+
             return View(producto);
         }
 
@@ -138,8 +150,7 @@ namespace Banding.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var producto = _productoRepository.GetProductoById(id);
-            _productoRepository.DeleteProducto(producto);
+            _productoRepository.DeleteProducto(id);
             return RedirectToAction(nameof(Index));
         }
     }

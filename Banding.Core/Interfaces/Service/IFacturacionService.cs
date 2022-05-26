@@ -10,5 +10,8 @@ namespace Banding.Core.Interfaces.Service
     public interface IFacturacionService
     {
         public List<FacturaViewModel> GetFacturasByEmprendimiento(int idEmprendimiento);
-        public List<FacturaViewModel> GetFacturasByEmprendimientoDates(int idEmprendimiento, DateTime fechaInicio, DateTime fechaFin);    }
+        public List<FacturaViewModel> GetFacturasByEmprendimientoAll(int idEmprendimiento);
+        public List<FacturaViewModel> GetFacturasByEmprendimientoDates(int idEmprendimiento, DateTime fechaInicio, DateTime fechaFin);
+        public List<FacturaViewModel> GetFacturasByEmprendimientoDatesNombres(int idEmprendimiento, DateTime fechaInicio, DateTime fechaFin, string search);
+    }
 }

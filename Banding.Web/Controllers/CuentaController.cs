@@ -62,5 +62,13 @@ namespace Banding.Web.Controllers
             }
             return RedirectToAction("Index","Home");
         }
+        // POST: Usuario/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int IdUsuario)
+        {
+            _userRepository.DeleteUsuario(IdUsuario);
+            return RedirectToAction("Logout","Home");
+        }
     }
 }

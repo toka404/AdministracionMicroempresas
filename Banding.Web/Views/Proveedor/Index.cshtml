@@ -9,7 +9,7 @@
 }
 
 <div class="container-xxl hero-header" style="padding-bottom:0px">
-    <div class="container">
+    <div class="contenedor-grande">
 
 
         <h1>Proveedores</h1>
@@ -63,9 +63,9 @@
                         @Html.DisplayFor(modelItem => item.IdProvinciaNavigation.NombreProvincia)
                     </td>
                     <td>
-                        <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.IdProveedor">Edit</a> |
-                        <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.IdProveedor">Details</a> |
-                        <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.IdProveedor">Delete</a>
+                        <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.IdProveedor">Editar</a> |
+                        <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.IdProveedor">Detalles</a> |
+                        <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.IdProveedor">Eliminar</a>
                     </td>
                 </tr>
         }

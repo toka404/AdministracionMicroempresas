@@ -5,75 +5,111 @@
 }
 
 <div class="container-xxl hero-header" style="padding-bottom:0px">
-    <div class="container">
+    <div class="contenedor-middle">
 
 
-        <h1>Detalles</h1>
+
 
         <div>
-            <h4>Usuario</h4>
-            <hr />
-            <dl class="row">
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.NombreUsuario)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.NombreUsuario)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.ApellidoUsuario)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.ApellidoUsuario)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.Celular)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.Celular)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.EMail)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.EMail)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.Username)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.Username)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.Contrasena)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.Contrasena)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.IdEmprendimientoNavigation)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.IdEmprendimientoNavigation.IdEmprendimiento)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.IdProvinciaNavigation)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.IdProvinciaNavigation.NombreProvincia)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.Rol)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.Rol.NombreRol)
-                </dd>
-            </dl>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+
+                    <h4 style="text-align:center;">Usuario</h4>
+                    <hr />
+                    <dl class="row">
+                        <div class="col-sm-2"></div>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.NombreUsuario)
+                        </dt>
+                        <dd class="col-sm-4">
+                            @Html.DisplayFor(model => model.NombreUsuario)
+                        </dd>
+                        <div class="col-sm-2"></div>
+
+                        <div class="col-sm-2"></div>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.ApellidoUsuario)
+                        </dt>
+                        <dd class="col-sm-4">
+                            @Html.DisplayFor(model => model.ApellidoUsuario)
+                        </dd>
+                        <div class="col-sm-2"></div>
+
+                        <div class="col-sm-2"></div>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Celular)
+                        </dt>
+                        <dd class="col-sm-4">
+                            @Html.DisplayFor(model => model.Celular)
+                        </dd>
+                        <div class="col-sm-2"></div>
+
+                        <div class="col-sm-2"></div>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.EMail)
+                        </dt>
+                        <dd class="col-sm-4">
+                            @Html.DisplayFor(model => model.EMail)
+                        </dd>
+                        <div class="col-sm-2"></div>
+
+                        <div class="col-sm-2"></div>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Username)
+                        </dt>
+                        <dd class="col-sm-4">
+                            @Html.DisplayFor(model => model.Username)
+                        </dd>
+                        <div class="col-sm-2"></div>
+
+                        <div class="col-sm-2"></div>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Contrasena)
+                        </dt>
+                        <dd class="col-sm-4">
+                            @Html.DisplayFor(model => model.Contrasena)
+                        </dd>
+                        <div class="col-sm-2"></div>
+
+                        <div class="col-sm-2"></div>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.IdEmprendimientoNavigation)
+                        </dt>
+                        <dd class="col-sm-4">
+                            @Html.DisplayFor(model => model.IdEmprendimientoNavigation.NombreEmprendimiento)
+                        </dd>
+                        <div class="col-sm-2"></div>
+
+                        <div class="col-sm-2"></div>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.IdProvinciaNavigation)
+                        </dt>
+                        <dd class="col-sm-4">
+                            @Html.DisplayFor(model => model.IdProvinciaNavigation.NombreProvincia)
+                        </dd>
+                        <div class="col-sm-2"></div>
+
+                        <div class="col-sm-2"></div>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Rol)
+                        </dt>
+                        <dd class="col-sm-4">
+                            @Html.DisplayFor(model => model.Rol.NombreRol)
+                        </dd>
+                        <div class="col-sm-2"></div>
+                    </dl>
+                    <div>
+                        <a class="btn btn-dark" style="margin-left: 60px" asp-action="Edit" asp-route-id="@Model.IdUsuario">Editar</a> |
+                        <a clasS="btn btn-dark" asp-action="Index">Regresar</a>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+
+            </div>
+
         </div>
-        <div>
-            <a asp-action="Edit" asp-route-id="@Model.IdUsuario">Edit</a> |
-            <a asp-action="Index">Back to List</a>
-        </div>
+
 
 
 

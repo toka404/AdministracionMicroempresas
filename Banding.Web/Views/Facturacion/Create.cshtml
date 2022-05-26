@@ -3,144 +3,183 @@
 @{
     Layout = "_Layout";
 }
+@if (Model != null)
+{
+    @if (Model.Subtotal == -1)
+    {
+        <div>holaaaa</div>
+
+    }
+}
+
 
 <div class="container-xxl hero-header" style="padding-bottom:0px">
-    <div class="container">
+    <div class="contenedor-grande" style="margin: 20px 100px;">
 
 
-        <h1>Facturación</h1>
+        <div class="factura-label">
+            <form asp-action="Create">
 
-        <p>
-            <a class="btn btn-dark" asp-action="Create">Registrar Factura</a>
-        </p>
-
-
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="container">
-                <div class="row">
-                    <h2>Factura N°</h2>
-                    <p class="title-right">
-                        <input asp-for="NroFactura" class="form-control" />
-                        <span asp-validation-for="NroFactura" class="text-danger"></span>
-                    </p>
-                </div>
-
-                <div class="row">
-                    <div class="col-8">
-
+                <div class="factura-header">
+                    <div class="container-header">
                         <div class="container">
+                            <h2 style="padding-left:10px;">Registrar Factura</h2>
+
+
                             <div class="row">
-                                <div class="col-3">
-                                    <h5>Nombre</h5>
-                                    <h5>Cédula</h5>
-                                    <h5>Celular</h5>
+                                <div class="col-8">
+
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-2" style="padding:0px">
+                                                <label class="factura-lbl"><strong>Nombre</strong></label>
+                                                <label class="factura-lbl"><strong>Cédula</strong></label>
+                                                <label class="factura-lbl"><strong>Celular</strong></label>
+                                            </div>
+                                            <div class="col-5">
+                                                <label>
+                                                    <input asp-for="NombreCliente" class="form-control factura-input" />
+                                                    <span asp-validation-for="NombreCliente" class="text-danger"></span>
+                                                </label>
+                                                <br />
+                                                <label>
+                                                    <input asp-for="CedulaCliente" class="form-control factura-input" />
+                                                    <span asp-validation-for="CedulaCliente" class="text-danger"></span>
+                                                </label>
+                                                <br />
+                                                <label>
+                                                    <input asp-for="TelefonoCliente" class="form-control factura-input" />
+                                                    <span asp-validation-for="TelefonoCliente" class="text-danger"></span>
+                                                </label>
+                                            </div>
+
+
+
+                                            <div class="col"></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-9">
-                                    <label class="body-right">
-                                        <input asp-for="NombreCliente" class="form-control" />
-                                        <span asp-validation-for="NombreCliente" class="text-danger"></span>
-                                    </label>
-                                    <br>
-                                    <label class="body-right">
-                                        <input asp-for="CedulaCliente" class="form-control" />
-                                        <span asp-validation-for="CedulaCliente" class="text-danger"></span>
-                                    </label>
-                                    <br>
-                                    <label class="body-right">
-                                        <input asp-for="TelefonoCliente" class="form-control" />
-                                        <span asp-validation-for="TelefonoCliente" class="text-danger"></span>
-                                    </label>
+
+                                <div class="col-4 align-content-end" style="padding:0">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label class="factura-lbl"><strong>Fecha</strong></label>
+                                                <label class="factura-lbl"><strong>Dirección</strong></label>
+                                            </div>
+                                            <div class="col-7">
+                                                <label>
+                                                    <input asp-for="FechaCabecera" class="form-control factura-input" />
+                                                    <span asp-validation-for="FechaCabecera" class="text-danger"></span>
+                                                </label>
+                                                <br />
+
+                                                <label>
+                                                    <input asp-for="DireccionCliente" class="form-control factura-input" style="width: 175px;" />
+                                                    <span asp-validation-for="DireccionCliente" class="text-danger"></span>
+                                                </label>
+
+                                            </div>
+                                            <div class="col">
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4 align-content-end" style="padding:0">
+                </div>
+                <div style="margin:20px">
+                    <table class="table table-footer">
+                        <thead>
+                            <tr>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Precio Unitario</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="productosTd">
+                            <tr>
+                                <td>
+                                    <select name="IdProductos[0]" id="comboProducto" class="form-select">
+                                    </select>
+                                    <input class="btn btn-dark" style='margin-top: 20px' id="btnAñadir" type="button" value="+" onclick="añadirProducto()" />
+
+                                </td>
+                                <td>
+                                    <select class="form-select" type="number" id="comboCantidad" name="Cantidades[0]"></select>
+                                </td>
+                                <td>
+                                    <input readonly name="PrecioUnitario[0]" id="inputPrecioUnitario" class="form-control factura-input" />
+                                </td>
+                                <td>
+                                    <input readonly name='PrecioTotales[0]' id="inputPrecioTotal" class='form-control factura-input total' />
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+
+                <div hidden></div>
+                <div hidden></div>
+
+                <div class="container-header">
+                    <div class="factura-footer">
                         <div class="container">
                             <div class="row">
-                                <div class="col">
-                                    <h5>Fecha</h5>
-                                    <h5>Dirección</h5>
+                                <div class="col-2">
+                                    <label class="factura-lbl"><strong>Subtotal</strong></label>
+                                    <label class="factura-lbl"><strong>Iva %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></label>
+                                    <label class="factura-lbl"><strong>Iva Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></label>
+                                    <label class="factura-lbl"><strong>Total &nbsp;&nbsp;</strong></label>
+                                </div>
+                                <div class="col-2">
+                                    <label>
+                                        @{
+                                            var a = 2;
+                                        }
+                                        <input readonly asp-for="Subtotal" value="2" id="Subtotal" class="form-control factura-input" />
+                                    </label>
+                                    <label>
+                                        <select asp-for="IdIva" class="form-select factura-input" asp-items="ViewBag.IdIva" id="IdIva" style="height:35px"></select>
+                                    </label>
+                                    <label>
+                                        <input readonly asp-for="IvaTotal" value="@a" class="form-control factura-input" id="IvaTotal" />
+
+                                    </label>
+                                    <label>
+                                        <input readonly asp-for="Total" value="@a" class="form-control factura-input" id="Total" />
+
+                                    </label>
                                 </div>
                                 <div class="col">
-
-                                    <label class="body-right">
-                                        <input asp-for="FechaCabecera" class="form-control" />
-                                        <span asp-validation-for="FechaCabecera" class="text-danger"></span>
-                                    </label>
-                                    <br>
-                                    <label class="body-right">
-                                        <input asp-for="DireccionCliente" class="form-control" />
-                                        <span asp-validation-for="DireccionCliente" class="text-danger"></span>
-                                    </label>
                                 </div>
                             </div>
-
                         </div>
+                        <br>
+
+
+
+                        <br>
+
                     </div>
                 </div>
-            </div>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Cantidad</th>
-                    </tr>
-                </thead>
-
-                <tbody id="productosTd">
-
-                    <tr>
-                        <td>
-                            <select name="productos" id="comboProducto" class="form-select">
-
-                                <br />
-                                <input class="btn btn-dark" style='margin-top: 20px' id="btnAñadir" type="button" value="+" onclick="añadirProducto()" />
-
-                                <!--
-                                <input class="form-control" type="text" name="DetalleFacturas[0].IdProducto" value="" />
-                                -->
-                        </td>
-                        <td>
-                            <select class="form-select" type="number" id="comboCantidad" name="DetalleFacturas[0].CantidadVendida"></select>
-                        </td>
-                    </tr>
-
-
-                </tbody>
-
-
-            </table>
-
-
-            <div hidden>a</div>
-            <div hidden>a</div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-2">
-                        <h5>
-                            Iva
-                        </h5>
-                    </div>
-                    <div class="col-10">
-
-                        <label class="body-right">
-                            <input asp-for="IdIva" class="form-control" />
-                            <span asp-validation-for="IdIva" class="text-danger"></span>
-                        </label>
-
-                        <input hidden asp-for="IvaCero" class="form-control" value="0" />
-
-                        <input type="submit" value="Create" class="btn btn-primary" />
-                    </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
-            </div>
+            </form>
 
-            <div hidden>a</div>
+        </div>
 
-        </form>
+
+
+
+
 
     </div>
 </div>
@@ -148,8 +187,38 @@
 <script>
           var productos = @Html.Raw(Json.Serialize(ViewBag.productos));
           var cantidades = @Html.Raw(Json.Serialize(ViewBag.cantidades));
-          var contador = 0;
-          console.log(cantidades);
+          var precios = @Html.Raw(Json.Serialize(ViewBag.precios));
+          var contador = 1;
+
+
+
+
+
+          function loadFooterValores(){
+              var subtotal= document.getElementById('Subtotal');
+              var IdIva = document.getElementById('IdIva');
+              var IvaTotal = document.getElementById('IvaTotal');
+              var Total = document.getElementById('Total');
+
+              var value = IdIva.selectedIndex;
+              var selected_text = IdIva.options[value].text;
+
+
+              IvaTotal.value = parseInt(subtotal.value) *(parseInt(selected_text))/100;
+              Total.value =  parseFloat(subtotal.value) +   parseFloat(IvaTotal.value);
+          }
+
+          function loadSubtotal(){
+              var totales = document.getElementsByClassName('total');
+              var subtotal= document.getElementById('Subtotal');
+              var aux = 0;
+
+              for(let i=0; i<totales.length; i++){
+                  aux+= parseInt(totales[i].value)
+                  }
+              subtotal.value = aux;
+              loadFooterValores()
+          }
 
           function loadComboBoxProductos(id)
           {
@@ -157,7 +226,10 @@
 
               productos.forEach(element =>
                   select.innerHTML += "<option value='"+element['idProducto']+"'>"+element['nombreProducto']+"</option>");
+                  loadSubtotal()
           }
+
+
 
     function loadComboCantidad(id,id2){
       var selectProducto = document.getElementById(id);
@@ -166,35 +238,79 @@
       for(let i=0; i<cantidades[selectProducto.selectedIndex]; i++){
           selectCantidad.innerHTML += "<option value='"+(i+1)+"'>"+(i+1)+"</option>";
       }
+      loadSubtotal()
+    }
+
+    function loadInputPrecioUnitario(id,id2, id3, id4){
+      var selectProducto = document.getElementById(id);
+      var inputPrecio = document.getElementById(id2);
+      var inputPrecioTotal = document.getElementById(id3);
+      var selectCantidad = document.getElementById(id4);
+
+      inputPrecio.value = "";
+      inputPrecio.value = precios[selectProducto.selectedIndex];
+
+      inputPrecioTotal.value = "";
+      inputPrecioTotal.value = selectCantidad.value*inputPrecio.value;
+        loadSubtotal()
     }
 
 
           window.addEventListener('load', (event) => {
               loadComboBoxProductos('comboProducto');
               loadComboCantidad('comboProducto','comboCantidad');
+              loadInputPrecioUnitario('comboProducto','inputPrecioUnitario','inputPrecioTotal','comboCantidad');
+
+              document.getElementById('comboProducto').addEventListener("change",function() {
+                  loadComboCantidad('comboProducto','comboCantidad');
+                  loadInputPrecioUnitario('comboProducto','inputPrecioUnitario','inputPrecioTotal','comboCantidad');
+              } );
+
+              document.getElementById('comboCantidad').addEventListener("change",function() {
+                  loadInputPrecioUnitario('comboProducto','inputPrecioUnitario','inputPrecioTotal','comboCantidad');
+              } );
+
+              document.getElementById('IdIva').addEventListener("change",function() {
+                  loadFooterValores();
+              });
           });
+
+
+
 
           function añadirProducto(){
                  var newSelect = document.createElement('tr');
                  var btn = document.getElementById('btnAñadir');
                  btn.remove();
 
-                 newSelect.innerHTML += "<td><select name='productos' id='comboProducto"+contador+"' class='form-select'>"
-                              +"</select><br /><input class='btn btn-dark' style='margin-top: 20px' id='btnAñadir' type='button' value='+' onclick='añadirProducto()' /></td>"
-                              +"<td><select class='form-select' type='number' id='comboCantidad"+contador+"' name='DetalleFacturas["+contador+"].CantidadVendida'></select></td>";
+                 newSelect.innerHTML += "<td><select name='IdProductos["+contador+"]' id='comboProducto"+contador+"' class='form-select'>"
+                              +"</select><input class='btn btn-dark' style='margin-top: 20px' id='btnAñadir' type='button' value='+' onclick='añadirProducto()' /></td>"
+                              +"<td><select class='form-select' type='number' id='comboCantidad"+contador+"' name='Cantidades["+contador+"]'></select></td>"
+                              +"<td><input readonly name='PrecioUnitario["+contador+"]' id='inputPrecioUnitario"+contador+"' class='form-control factura-input' /></td>"
+                              +"<td><input readonly name='PrecioTotales["+contador+"]' id='inputPrecioTotal"+contador+"' class='form-control factura-input total' /></td>";
 
               var tabla = document.querySelector("#productosTd");
               tabla.appendChild(newSelect);
 
               loadComboBoxProductos("comboProducto"+contador);
               loadComboCantidad("comboProducto"+contador, "comboCantidad"+contador);
+              loadInputPrecioUnitario('comboProducto'+contador,'inputPrecioUnitario'+contador,'inputPrecioTotal'+contador,'comboCantidad'+contador);
+
               var aux = "comboProducto"+contador;
               console.log(document.getElementById(aux));
               console.log("comboProducto"+contador);
               var aux2 ="comboCantidad"+contador;
+              var aux3='inputPrecioUnitario'+contador;
+              var aux4='inputPrecioTotal'+contador;
 
               document.getElementById(aux).addEventListener("change",function() {
-                  loadComboCantidad(aux,aux2)} );
+                  loadComboCantidad(aux,aux2);
+                  loadInputPrecioUnitario(aux,aux3,aux4,aux2);
+              });
+
+              document.getElementById('comboCantidad'+contador).addEventListener("change",function() {
+                loadInputPrecioUnitario(aux,aux3,aux4,aux2);
+              });
 
               contador++;
           }

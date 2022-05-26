@@ -1,4 +1,5 @@
 ﻿using Banding.Core.Models.Entities.MySql;
+using Banding.Core.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace Banding.Core.Interfaces.Repository.MySql
     {
         public ICollection<FacturaCabecera> GetFacturaCabeceras();
         public FacturaCabecera GetFacturaCabeceraById(int? id);
+        public ICollection<FacturaCabecera> GetFacturaCabecerasAll();
+        public void CreateFactura(FacturaCabecera facturaCabecera, FacturaViewModel facturaViewModel);
         public void CreateFacturaCabecera(FacturaCabecera facturaCabecera);
         public void UpdateFacturaCabecera(FacturaCabecera facturaCabecera);
         public void DeleteFacturaCabecera(int id);

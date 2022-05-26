@@ -67,6 +67,46 @@ namespace Banding.Service.Services
             }
             return _facturas;
         }
+
+        public List<FacturaViewModel> GetFacturasByEmprendimientoAll(int idEmprendimiento)
+        {
+            List<FacturaViewModel> _facturas;
+            _facturas = new List<FacturaViewModel>();
+
+            var cabecerasFactura = _facturaCabeceraRepository.GetFacturaCabecerasAll();
+
+            foreach (var cabecera in cabecerasFactura)
+            {
+                List<DetalleFacturaViewModel> detalles = new List<DetalleFacturaViewModel>();
+
+                foreach (var detalle in cabecera.DetalleFacturas)
+                {
+                    DetalleFacturaViewModel detalleAux = new DetalleFacturaViewModel();
+
+                    var productoAux = _productoRepository.GetProductoById(detalle.IdProducto);
+                    if (productoAux.IdEmprendimiento == idEmprendimiento)
+                    {
+                        detalleAux.NombreProducto = productoAux.NombreProducto;
+                        detalleAux.CantidadVendida = detalle.CantidadVendida;
+                        detalleAux.PrecioUnitario = productoAux.PrecioVenta;
+                        detalleAux.PrecioTotal = detalle.PrecioTotal;
+                        detalles.Add(detalleAux);
+                    }
+                }
+
+                if (detalles.Count() > 0)
+                {
+                    FacturaViewModel facturaAux = new FacturaViewModel();
+                    facturaAux.CabeceraFactura = cabecera;
+                    facturaAux.Iva = _ivaRepository.GetIvaById(facturaAux.CabeceraFactura.IdIva).ValorIva;
+
+                    facturaAux.DetalleFactura = detalles;
+                    _facturas.Add(facturaAux);
+                }
+            }
+            return _facturas;
+        }
+
         public List<FacturaViewModel> GetFacturasByEmprendimientoDates(int idEmprendimiento, DateTime fechaInicio, DateTime fechaFin)
         {
             List<FacturaViewModel> _facturas;
@@ -84,6 +124,45 @@ namespace Banding.Service.Services
 
                     var productoAux = _productoRepository.GetProductoById(detalle.IdProducto);
                     if (productoAux.IdEmprendimiento == idEmprendimiento)
+                    {
+                        detalleAux.NombreProducto = productoAux.NombreProducto;
+                        detalleAux.CantidadVendida = detalle.CantidadVendida;
+                        detalleAux.PrecioUnitario = productoAux.PrecioVenta;
+                        detalleAux.PrecioTotal = detalle.PrecioTotal;
+                        detalleAux.Id_Producto = detalle.IdProducto;
+                        detalles.Add(detalleAux);
+                    }
+                }
+
+                if (detalles.Count() > 0)
+                {
+                    FacturaViewModel facturaAux = new FacturaViewModel();
+                    facturaAux.CabeceraFactura = cabecera;
+                    facturaAux.Iva = _ivaRepository.GetIvaById(facturaAux.CabeceraFactura.IdIva).ValorIva;
+
+                    facturaAux.DetalleFactura = detalles;
+                    _facturas.Add(facturaAux);
+                }
+            }
+            return _facturas;
+        }
+        public List<FacturaViewModel> GetFacturasByEmprendimientoDatesNombres(int idEmprendimiento, DateTime fechaInicio, DateTime fechaFin, string search)
+        {
+            List<FacturaViewModel> _facturas;
+            _facturas = new List<FacturaViewModel>();
+
+            var cabecerasFactura = _facturaCabeceraRepository.GetFacturaCabecerasByDates(fechaInicio, fechaFin);
+
+            foreach (var cabecera in cabecerasFactura)
+            {
+                List<DetalleFacturaViewModel> detalles = new List<DetalleFacturaViewModel>();
+
+                foreach (var detalle in cabecera.DetalleFacturas)
+                {
+                    DetalleFacturaViewModel detalleAux = new DetalleFacturaViewModel();
+
+                    var productoAux = _productoRepository.GetProductoById(detalle.IdProducto);
+                    if (productoAux.IdEmprendimiento == idEmprendimiento && detalleAux.NombreProducto.Contains(search))
                     {
                         detalleAux.NombreProducto = productoAux.NombreProducto;
                         detalleAux.CantidadVendida = detalle.CantidadVendida;

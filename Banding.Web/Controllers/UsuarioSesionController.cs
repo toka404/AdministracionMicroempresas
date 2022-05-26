@@ -2,6 +2,7 @@
 using Banding.Core.Models.Entities.MySql;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,8 +14,17 @@ namespace Banding.Web.Controllers
     public class UsuarioSesionController : Controller
     {
         private readonly IUsuarioRepository _userRepository;
-        public UsuarioSesionController(IUsuarioRepository userRepository)
+        private readonly IRolRepository _rolRepository;
+        private readonly IEmprendimientoRepository _emprendimientoRepository;
+        private readonly IProvinciaRepository _provinciaRepository;
+        public UsuarioSesionController(IUsuarioRepository userRepository,
+            IRolRepository rolRepository,
+            IEmprendimientoRepository emprendimientoRepository,
+            IProvinciaRepository provinciaRepository)
         {
+            _rolRepository = rolRepository;
+            _emprendimientoRepository = emprendimientoRepository;
+            _provinciaRepository = provinciaRepository;
             _userRepository = userRepository;
         }
         // GET: Usuario
@@ -44,6 +54,9 @@ namespace Banding.Web.Controllers
         // GET: Usuario/Create
         public IActionResult Create()
         {
+            ViewData["IdEmprendimiento"] = new SelectList(_emprendimientoRepository.GetEmprendimientos(), "IdEmprendimiento", "NombreEmprendimiento");
+            ViewData["IdProvincia"] = new SelectList(_provinciaRepository.GetProvincias(), "IdProvincia", "NombreProvincia");
+            ViewData["RolId"] = new SelectList(_rolRepository.GetRoles(), "IdRol", "NombreRol");
             return View();
         }
 
@@ -57,9 +70,12 @@ namespace Banding.Web.Controllers
             if (ModelState.IsValid)
             {
                 usuario.IdEmprendimiento = int.Parse(User.Claims.ElementAt(3).Value);
+                usuario.RolId = 1;
                 _userRepository.CreateUsuario(usuario);
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdProvincia"] = new SelectList(_provinciaRepository.GetProvincias(), "IdProvincia", "NombreProvincia", usuario.IdProvincia);
+
             return View(usuario);
         }
 
@@ -76,6 +92,7 @@ namespace Banding.Web.Controllers
             {
                 return NotFound();
             }
+            ViewData["IdProvincia"] = new SelectList(_provinciaRepository.GetProvincias(), "IdProvincia", "NombreProvincia", usuario.IdProvincia);
             return View(usuario);
         }
 
@@ -84,7 +101,7 @@ namespace Banding.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,IdProvincia,NombreUsuario,ApellidoUsuario,Celular,EMail,Username,Contrasena")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("RolId,IdEmprendimiento,IdUsuario,IdProvincia,NombreUsuario,ApellidoUsuario,Celular,EMail,Username,Contrasena")] Usuario usuario)
         {
             if (id != usuario.IdUsuario)
             {
@@ -95,6 +112,7 @@ namespace Banding.Web.Controllers
             {
                 try
                 {
+                    usuario.IdEmprendimiento = int.Parse(User.Claims.ElementAt(3).Value);
                     _userRepository.UpdateUsuario(usuario);
                 }
                 catch (DbUpdateConcurrencyException)
@@ -135,8 +153,7 @@ namespace Banding.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var usuario = _userRepository.GetUsuarioById(id);
-            _userRepository.DeleteUsuario(usuario);
+            _userRepository.DeleteUsuario(id);
             return RedirectToAction(nameof(Index));
         }
     }

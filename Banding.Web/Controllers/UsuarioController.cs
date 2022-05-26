@@ -58,6 +58,9 @@ namespace Banding.Web.Controllers
         // GET: Usuario/Create
         public IActionResult Create()
         {
+            ViewData["IdEmprendimiento"] = new SelectList(_emprendimientoRepository.GetEmprendimientos(), "IdEmprendimiento", "NombreEmprendimiento");
+            ViewData["IdProvincia"] = new SelectList(_provinciaRepository.GetProvincias(), "IdProvincia", "NombreProvincia");
+            ViewData["RolId"] = new SelectList(_rolRepository.GetRoles(), "IdRol", "NombreRol");
             return View();
         }
 
@@ -66,13 +69,16 @@ namespace Banding.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdUsuario,IdProvincia,NombreUsuario,ApellidoUsuario,Celular,EMail,Username,Contrasena")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("RolId, IdEmprendimiento, Anulado, IdUsuario,IdProvincia,NombreUsuario,ApellidoUsuario,Celular,EMail,Username,Contrasena")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
                 _userRepository.CreateUsuario(usuario);
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdEmprendimiento"] = new SelectList(_emprendimientoRepository.GetEmprendimientos(), "IdEmprendimiento", "NombreEmprendimiento", usuario.IdEmprendimiento);
+            ViewData["IdProvincia"] = new SelectList(_provinciaRepository.GetProvincias(), "IdProvincia", "NombreProvincia", usuario.IdProvincia);
+            ViewData["RolId"] = new SelectList(_rolRepository.GetRoles(), "IdRol", "NombreRol", usuario.RolId);
             return View(usuario);
         }
 
@@ -89,7 +95,7 @@ namespace Banding.Web.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdEmprendimiento"] = new SelectList(_emprendimientoRepository.GetEmprendimientos(), "IdEmprendimiento", "IdEmprendimiento", usuario.IdEmprendimiento);
+            ViewData["IdEmprendimiento"] = new SelectList(_emprendimientoRepository.GetEmprendimientos(), "IdEmprendimiento", "NombreEmprendimiento", usuario.IdEmprendimiento);
             ViewData["IdProvincia"] = new SelectList(_provinciaRepository.GetProvincias(), "IdProvincia", "NombreProvincia", usuario.IdProvincia);
             ViewData["RolId"] = new SelectList(_rolRepository.GetRoles(), "IdRol", "NombreRol", usuario.RolId);
             return View(usuario);
@@ -100,7 +106,7 @@ namespace Banding.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdRol,IdEmprendimiento,IdUsuario,IdProvincia,NombreUsuario,ApellidoUsuario,Celular,EMail,Username,Contrasena")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("RolId,IdEmprendimiento,IdUsuario,IdProvincia,NombreUsuario,ApellidoUsuario,Celular,EMail,Username,Contrasena")] Usuario usuario)
         {
             if (id != usuario.IdUsuario)
             {
@@ -111,6 +117,7 @@ namespace Banding.Web.Controllers
             {
                 try
                 {
+                    
                     _userRepository.UpdateUsuario(usuario);
                 }
                 catch (DbUpdateConcurrencyException)
@@ -151,8 +158,7 @@ namespace Banding.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var usuario = _userRepository.GetUsuarioById(id);
-            _userRepository.DeleteUsuario(usuario);
+            _userRepository.DeleteUsuario(id);
             return RedirectToAction(nameof(Index));
         }
     }

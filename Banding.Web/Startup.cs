@@ -46,14 +46,20 @@ namespace Banding.Web
             services.AddScoped<IRolRepository, RolRepository>();
             services.AddScoped<IDetalleFacturaRepository, DetalleFacturaRepository>();
             services.AddScoped<IFacturaCabeceraRepository, FacturaCabeceraRepository>();
+            services.AddScoped<IProductoTieneProveedorRepository, ProductoTieneProveedorRepository>();
 
             //Service
             services.AddTransient<IAuthenticateUserService, AuthenticateUserService>();
             services.AddTransient<IInventarioService, InventarioService>();
             services.AddTransient<IFacturacionService, FacturacionService>();
+            services.AddTransient<IValidationService, ValidationService>();
 
             services.AddControllersWithViews();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
                AddCookie(options =>

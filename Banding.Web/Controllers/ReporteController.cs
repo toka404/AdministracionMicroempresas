@@ -1,5 +1,6 @@
 ﻿using Banding.Core.Interfaces.Repository.MySql;
 using Banding.Core.Interfaces.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Banding.Web.Controllers
 {
+    [Authorize]
     public class ReporteController : Controller
     {
         private readonly IFacturacionService _facturacionService;

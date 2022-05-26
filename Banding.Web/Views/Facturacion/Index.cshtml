@@ -10,6 +10,13 @@
 
 
 }
+@if(ViewBag.mensaje != null)
+{
+    <script>
+        alert('aaa');
+    </script>
+}
+
 <div class="container-xxl hero-header" style="padding-bottom:0px">
     <div class="contenedor-grande" style="margin: 20px 100px;">
 
@@ -147,11 +154,14 @@
                                     }
                                     <div class="col-2" style="padding-left: 23px;">
                                         <input type="hidden" asp-for="@IdCabecera" />
-                                        <input type="submit" value="Anular" class="btn btn-dark btn-footer" />
+                                        <input hidden id="btnAnular" type="submit" value="Anular" class="btn btn-dark btn-footer" />
+                                        <input type="button" value="Anular" onClick="confirmAnular()" class="btn btn-dark btn-footer" />
                                     </div>
+
                                     <div class="col-3">
                                         <a class="btn btn-dark btn-footer" asp-action="Create">Registrar Factura</a>
                                     </div>
+
                                     <div class="col-7"></div>
                                 </div>
                             </form>
@@ -159,10 +169,10 @@
 
                             <div style="padding-left: 12px;">
                                 @Html.PagedListPager((IPagedList)Model, page =>
-                                Url.Action("Index", new { page = page }),
-                                new PagedListRenderOptions {
-                                LiElementClasses = new string[] { "page-item" },
-                                PageClasses = new string[] { "page-link" }})
+                        Url.Action("Index", new { page = page }),
+                        new PagedListRenderOptions {
+                        LiElementClasses = new string[] { "page-item" },
+                        PageClasses = new string[] { "page-link" }})
                             </div>
                         </div>
                     </div>
@@ -176,3 +186,47 @@
 </div>
 
 <partial name="~/Views/Shared/_NavbarStylePartial.cshtml" />
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmAnular(){
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-dark btn-swal',
+            cancelButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+          title: '¿Está seguro de anular esta factura?',
+          icon: 'warning',
+          showCancelButton: true,
+          cancelButtonText: 'No, cancelar!',
+          confirmButtonText: 'Si, anular la factura!',
+          reverseButtons: false
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Eliminado!',
+              'Tu factura se ha anulado.',
+              'success'
+            ).then( okay=> {
+                if(okay){
+                    document.getElementById('btnAnular').click();
+                }
+            });;
+            
+          } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            swalWithBootstrapButtons.fire(
+              'Cancelado',
+              'Tu factura no ha sido anulada :)',
+              'error'
+            )
+          }
+        })
+    }
+</script>

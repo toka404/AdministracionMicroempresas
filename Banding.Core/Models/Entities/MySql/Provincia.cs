@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -16,6 +17,7 @@ namespace Banding.Core.Models.Entities.MySql
 
         public int IdProvincia { get; set; }
         [DisplayName("Nombre")]
+        [Required(ErrorMessage = "El nombre no puede estar vacío")]
         public string NombreProvincia { get; set; }
 
         public virtual ICollection<Proveedor> Proveedors { get; set; }

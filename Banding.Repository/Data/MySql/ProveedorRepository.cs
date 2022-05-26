@@ -1,6 +1,7 @@
 ﻿using Banding.Core.Interfaces.Repository.MySql;
 using Banding.Core.Models.Entities.MySql;
 using Banding.Repository.MySql;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,24 +32,27 @@ namespace Banding.Repository.Data.MySql
 
         public Proveedor GetProveedorById(int? id)
         {
-            return _context.Proveedor.FirstOrDefault(p => p.IdProveedor == id);
+            return _context.Proveedor.Include(p=>p.IdProvinciaNavigation).FirstOrDefault(p => p.IdProveedor == id);
         }
 
         public List<Proveedor> GetProveedores()
         {
-            return _context.Proveedor.ToList();
+            return _context.Proveedor.Include(p => p.IdProvinciaNavigation).ToList();
         }
 
         public List<Proveedor> GetProveedoresByEmprendimiento(int id)
         {
             var productos = _context.Producto.Where(p => p.IdEmprendimiento == id).ToList();
             List<int> proveedoresProducto = new List<int>();
-            List<Proveedor> proveedores = _context.Proveedor.ToList();
+            List<Proveedor> proveedores = _context.Proveedor.Include(p => p.IdProvinciaNavigation).ToList();
 
             foreach (var item in productos)
             {
-                var aux = _context.ProductoTieneProveedor.FirstOrDefault(p => p.IdProducto == item.IdProducto);
-                proveedoresProducto.Add(aux.IdProveedor);
+                var aux = _context.ProductoTieneProveedor.Where(p => p.IdProducto == item.IdProducto).ToList();
+                foreach (var a in aux)
+                {
+                    proveedoresProducto.Add(a.IdProveedor);
+                }
             }
 
 

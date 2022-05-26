@@ -26,10 +26,7 @@
                         @Html.DisplayNameFor(model => model.First().DescripcionEmprendimiento)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().Logo)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.First().IdCategoria)
+                        @Html.DisplayNameFor(model => model.First().IdCategoriaNavigation)
                     </th>
                     <th></th>
                 </tr>
@@ -44,15 +41,12 @@
                         @Html.DisplayFor(modelItem => item.DescripcionEmprendimiento)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Logo)
+                        @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.NombreCategoria)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.IdCategoria)
-                    </td>
-                    <td>
-                        <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.IdEmprendimiento">Edit</a> |
-                        <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.IdEmprendimiento">Details</a> |
-                        <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.IdEmprendimiento">Delete</a>
+                        <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.IdEmprendimiento">Editar</a> |
+                        <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.IdEmprendimiento">Detalles</a> |
+                        <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.IdEmprendimiento">Eliminar</a>
                     </td>
                 </tr>
         }

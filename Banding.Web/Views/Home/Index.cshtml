@@ -8,47 +8,47 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-       <div class="container-xxl bg-primary hero-header">
+    <div class="container-xxl bg-primary hero-header">
         <div class="container">
             <div class="row g-5 align-items-center" style="padding:40px">
 
-            <div class="container">
-            <div class="row">
-                <div class="col-9">
-                    <div class="jumbotron">
-                        <h1 class="display-4 text-white">Bienvenido @User.Claims.ElementAt(2).Value</h1>
-                        <p class="lead text-white">Bienvenido a la página de adminstración de su emprendimiento.</p>
-                        <hr class="my-4">
-                        <p style="font-size: 40px" class="text-white">@User.Claims.ElementAt(4).Value</p>
-                    </div>
-                </div>
-                <div class="col-3">
-                   
+                <div class="container">
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="jumbotron">
+                                <h1 class="display-4 text-white">Bienvenido @User.Claims.ElementAt(2).Value</h1>
+                                <p class="lead text-white">Bienvenido a la página de adminstración de su emprendimiento.</p>
+                                <hr class="my-4">
+                                <p style="font-size: 40px" class="text-white">@User.Claims.ElementAt(4).Value</p>
+                            </div>
+                        </div>
+                        <div class="col-3">
+
                             <div class="col-md col-sm">
                                 <div class="container bootstrap snippets bootdeys">
                                     <div class="row">
                                         <div class="col-lg wow fadeInUp" data-wow-delay="0.5s">
                                             <div class="feature-item bg-light rounded text-center">
                                                 <br>
-                                                    <h5 class="mb">Stock Mínimo</h5>
-                                                    <br>
-                                                    <i class="fa fa-4x fa-cart-flatbed text-primary mb"></i>
-                                                    <br>
-                                                        @if (@Model.Count() > 0)
-                                                        {
-                                                            <br />
+                                                <h5 class="mb">Stock Mínimo</h5>
+                                                <br>
+                                                <i class="fa fa-4x fa-cart-flatbed text-primary mb"></i>
+                                                <br>
+                                                @if (@Model.Count() > 0)
+                                                {
+                                                    <br />
                                                     <ul>
-                                                                @foreach (var item in Model)
-                                                                {
-                                                                <li class="description">@item.NombreProducto</li>
-                                                                }
-                                                    </ul>
-                                                        }
-                                                        else
+                                                        @foreach (var item in Model)
                                                         {
-                                                    <div>No hay productos con el stock mínimo.</div>
+                                                            <li class="description">@item.NombreProducto</li>
                                                         }
-                                                        <br>
+                                                    </ul>
+                                                }
+                                                else
+                                                {
+                                                    <div>No hay productos con el stock mínimo.</div>
+                                                }
+                                                <br>
                                             </div>
                                         </div>
                                     </div>
@@ -56,64 +56,68 @@
                             </div>
 
 
-                     
 
 
 
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
 
 
             </div>
         </div>
-       </div>
+    </div>
 
 
 }
 else
 {
-        <div class="container-xxl bg-primary hero-header">
-                <div class="container">
-                    <div class="row g-5 align-items-center" style="padding:35px">
-                        <div class="col-lg-6 text-center text-lg-start" style="margin: 0;padding: 0px 0px 0px 40px;">
-                             <h1 class="text-white mb-4 animated slideInDown">Una increíble forma de administrar tu emprendimiento</h1>
-                                <p class="text-white pb-3 animated slideInDown" style="font-size: 20px;">Con Banding es posible administrar tu emprendimiento facilitando tus procesos de inventario y facturación sin necesidad de experiencia previa en sistemas de administración.</p>
-                        </div>
+    <div class="container-xxl bg-primary hero-header">
+        <div class="container">
+            <div class="row g-5 align-items-center" style="padding:35px">
+                <div class="col-lg-6 text-center text-lg-start" style="margin: 0;padding: 0px 0px 0px 40px;">
+                    <h1 class="text-white mb-4 animated slideInDown">Una increíble forma de administrar tu emprendimiento</h1>
+                    <p class="text-white pb-3 animated slideInDown" style="font-size: 20px;">Con Banding es posible administrar tu emprendimiento facilitando tus procesos de inventario y facturación sin necesidad de experiencia previa en sistemas de administración.</p>
+                </div>
 
+            </div>
+        </div>
+    </div>
+
+    <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px; margin-top:180px">
+        <h1 class="mt-4">Características</h1>
+    </div>
+
+    <div class="container-xxl py-6">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="feature-item bg-light rounded text-center p-5">
+                        <i class="fa fa-4x fa-warehouse text-primary mb-4"></i>
+                        <h5 class="mb-3">Inventario</h5>
+                        <p class="m-0">El manejo del inventario permite una gestión completa de los productos.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="feature-item bg-light rounded text-center p-5">
+                        <i class="fa fa-4x fa-chart-column text-primary mb-4"></i>
+                        <h5 class="mb-3">Reportes</h5>
+                        <p class="m-0">Se generan reportes sobre datos en base a dos fechas definidas.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="feature-item bg-light rounded text-center p-5">
+                        <i class="fa fa-4x fa-wallet text-primary mb-4"></i>
+                        <h5 class="mb-3">Facturación</h5>
+                        <p class="m-0">Se permite una gestión completa de las facturas del emprendimiento.</p>
                     </div>
                 </div>
             </div>
-
-            <div class="container-xxl py-6">
-                <div class="container">
-                    <div class="row g-4">
-                        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="feature-item bg-light rounded text-center p-5">
-                                <i class="fa fa-4x fa-warehouse text-primary mb-4"></i>
-                                <h5 class="mb-3">Inventario</h5>
-                                <p class="m-0">El manejo del inventario permite una gestión completa de los productos.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="feature-item bg-light rounded text-center p-5">
-                                <i class="fa fa-4x fa-chart-column text-primary mb-4"></i>
-                                <h5 class="mb-3">Reportes</h5>
-                                <p class="m-0">Se generan reportes sobre datos en base a dos fechas definidas.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="feature-item bg-light rounded text-center p-5">
-                                <i class="fa fa-4x fa-wallet text-primary mb-4"></i>
-                                <h5 class="mb-3">Facturación</h5>
-                                <p class="m-0">Se permite una gestión completa de las facturas del emprendimiento.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </div>
+    </div>
 
 
-            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 }

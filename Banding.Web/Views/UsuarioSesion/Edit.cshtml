@@ -5,21 +5,26 @@
 }
 
 <div class="container-xxl hero-header" style="padding-bottom:0px">
-    <div class="container">
+    <div class="contenedor-middle">
 
 
-        <h1>Editar</h1>
 
-        <h4>Usuario</h4>
-        <hr />
         <div class="row">
-            <div class="col-md-4">
+            <div clasS="col-2"></div>
+            <div class="col-8">
+
+                <h1>Editar</h1>
+
+                <h4>Usuario</h4>
+                <hr />
+
+
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="IdUsuario" />
                     <div class="form-group">
                         <label asp-for="IdProvincia" class="control-label"></label>
-                        <input asp-for="IdProvincia" class="form-control" />
+                        <select asp-for="IdProvincia" class="form-control" asp-items="ViewBag.IdProvincia"></select>
                         <span asp-validation-for="IdProvincia" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -52,24 +57,32 @@
                         <input asp-for="Contrasena" class="form-control" />
                         <span asp-validation-for="Contrasena" class="text-danger"></span>
                     </div>
+                    <div hidden class="form-group">
+                        <label asp-for="RolId" class="control-label"></label>
+                        <input asp-for="RolId" class="form-control"/>
+                        <span asp-validation-for="RolId" class="text-danger"></span>
+                    </div>
                     <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-dark" />
+                        <input type="submit" value="Guardar" class="btn btn-dark" />
                     </div>
                 </form>
+                <div>
+                    <a class="btn btn-dark" asp-action="Index">Regresar</a>
+                </div>
             </div>
+            <div clasS="col-2"></div>
+
+
+
+
         </div>
-
-        <div>
-            <a class="btn btn-dark" asp-action="Index">Regresar</a>
-        </div>
-
-
     </div>
+
+    @section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-
 
 <partial name="~/Views/Shared/_NavbarStylePartial.cshtml" />

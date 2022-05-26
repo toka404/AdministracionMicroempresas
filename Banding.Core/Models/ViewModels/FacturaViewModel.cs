@@ -12,5 +12,9 @@ namespace Banding.Core.Models.ViewModels
         public FacturaCabecera CabeceraFactura { get; set; }
         public List<DetalleFacturaViewModel> DetalleFactura { get; set; }
         public int? Iva { get; set; }
+        public List<int> Cantidades { get; set; }
+        public List<int> IdProductos { get; set; }
+        public List<decimal> PrecioTotales { get; set; }
+
     }
 }

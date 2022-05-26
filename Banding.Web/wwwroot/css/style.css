@@ -5,13 +5,29 @@
     --dark: #202942;
 }
 
-h2, h3, h4, h5 {
+h1, h2, h3, h4, h5 {
     color: #858585;
 }
-.btn-dark {
-    color: #fff;
-    background-color: #4AC4F3;
+.btn-dark{
+    color: #fff; 
+    background-color: #4AC4F3; 
     border-color: #4AC4F3;
+}
+.btn-swal{
+    margin-right: 20px;
+}
+
+.swal2-styled.swal2-confirm {
+    background-color: #4AC4F3 !important;
+}
+
+.factura-lbl {
+    padding-bottom: 15px;
+}
+
+.factura-input{
+    height: 30px;
+    margin: 0px 5px 5px 5px;
 }
 
 .factura-label {
@@ -40,6 +56,13 @@ h2, h3, h4, h5 {
     background-color: #EDF5FF;
     border-radius: 20px;
     margin: 20px;
+}
+
+.contenedor-middle {
+    padding: 20px;
+    background-color: #EDF5FF;
+    border-radius: 20px;
+    margin: 20px 400px;
 }
 
 .contenedor-create {

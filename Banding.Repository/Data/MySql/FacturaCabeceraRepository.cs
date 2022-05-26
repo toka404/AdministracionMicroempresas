@@ -1,5 +1,6 @@
 ﻿using Banding.Core.Interfaces.Repository.MySql;
 using Banding.Core.Models.Entities.MySql;
+using Banding.Core.Models.ViewModels;
 using Banding.Repository.MySql;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -52,6 +53,10 @@ namespace Banding.Repository.Data.MySql
         {
             return _context.FacturaCabecera.Include(c => c.DetalleFacturas).Where(c=>c.Anulado.Equals("0")).OrderBy(t=>t.NroFactura).ToList();
         }
+        public ICollection<FacturaCabecera> GetFacturaCabecerasAll()
+        {
+            return _context.FacturaCabecera.Include(c => c.DetalleFacturas).OrderBy(t => t.NroFactura).ToList();
+        }
         public ICollection<DetalleFactura> GetDetallesByIdCabecera(int idCabecera)
         {
             var cabecera= _context.FacturaCabecera.Include(c => c.DetalleFacturas).FirstOrDefault(c => c.IdCabecera == 1);
@@ -61,6 +66,13 @@ namespace Banding.Repository.Data.MySql
         public void UpdateFacturaCabecera(FacturaCabecera facturaCabecera)
         {
             _context.Update(facturaCabecera);
+            _context.SaveChanges();
+        }
+
+        public void CreateFactura(FacturaCabecera facturaCabecera, FacturaViewModel facturaViewModel)
+        {
+
+            _context.Add(facturaCabecera);
             _context.SaveChanges();
         }
     }

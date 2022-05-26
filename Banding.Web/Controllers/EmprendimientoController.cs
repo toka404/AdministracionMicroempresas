@@ -17,9 +17,12 @@ namespace Banding.Web.Controllers
     public class EmprendimientoController : Controller
     {
         private readonly IEmprendimientoRepository _emprendimientoRepository;
+        private readonly ICategoriaRepository _categoriaRepository;
 
-        public EmprendimientoController(IEmprendimientoRepository emprendimientoRepository)
+        public EmprendimientoController(IEmprendimientoRepository emprendimientoRepository,
+            ICategoriaRepository categoriaRepository)
         {
+            _categoriaRepository = categoriaRepository;
             _emprendimientoRepository = emprendimientoRepository;
         }
 
@@ -49,6 +52,7 @@ namespace Banding.Web.Controllers
         // GET: Emprendimiento/Create
         public IActionResult Create()
         {
+            ViewData["IdCategoria"] = new SelectList(_categoriaRepository.GetCategorias(), "IdCategoria", "NombreCategoria");
             return View();
         }
 
@@ -64,6 +68,8 @@ namespace Banding.Web.Controllers
                 _emprendimientoRepository.CreateEmprendimiento(emprendimiento);
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdCategoria"] = new SelectList(_categoriaRepository.GetCategorias(), "IdCategoria", "NombreCategoria", emprendimiento.IdCategoria);
+
             return View(emprendimiento);
         }
 
@@ -80,6 +86,7 @@ namespace Banding.Web.Controllers
             {
                 return NotFound();
             }
+            ViewData["IdCategoria"] = new SelectList(_categoriaRepository.GetCategorias(), "IdCategoria", "NombreCategoria", emprendimiento.IdCategoria);
             return View(emprendimiento);
         }
 
@@ -114,6 +121,7 @@ namespace Banding.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdCategoria"] = new SelectList(_categoriaRepository.GetCategorias(), "IdCategoria", "NombreCategoria", emprendimiento.IdCategoria);
             return View(emprendimiento);
         }
 

@@ -50,32 +50,28 @@
 
                         @if (User.IsInRole("admin"))
                         {
-                        //dropdown - multifunciones
-                            <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="GestionAdministrador">Gestión Administrador</a>
+                            //dropdown - multifunciones
+                            <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="GestionAdministrador">Administrar Sistema</a>
                         }
                         @if (User.Identity.IsAuthenticated)
                         {
-                        //dropdown - multifunciones
-                            <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="GestionDatos">Gestión Datos</a>
+                            //dropdown - multifunciones
+                            <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="GestionDatos">Administrar Emprendimiento</a>
 
-
-                            <a class="nav-item nav-link" asp-area="" asp-controller="Inventario" asp-action="Index">Inventario</a>
+                            <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="Reportes">Reportes</a>
                             <a class="nav-item nav-link" asp-area="" asp-controller="Facturacion" asp-action="Index">Facturación</a>
-                            <a class="nav-item nav-link" asp-area="" asp-controller="Historico" asp-action="Index">Histórico</a>
-                            <a class="nav-item nav-link" asp-area="" asp-controller="Reporte" asp-action="Index">Reporte</a>
+
                         }
                     </div>
                     @if (!User.Identity.IsAuthenticated)
                     {
-                        <a class="btn btn-light rounded-pill py-2 px-4 ms-3 d-none d-lg-block" asp-area="" asp-controller="Home" asp-action="LogIn">Iniciar Sesión</a>
-
-
+                        <a class="nav-item btn btn-light rounded-pill py-2 px-4 ms-3 d-none d-lg-block" asp-area="" asp-controller="Home" asp-action="LogIn">Iniciar Sesión</a>
                     }
                     else
                     {
 
-                        <a class="btn btn-light rounded-pill py-2 px-4 ms-3 d-none d-lg-block" asp-area="" asp-controller="Cuenta" asp-action="Index">Cuenta</a>
-                        <a class="btn btn-light rounded-pill py-2 px-4 ms-3 d-none d-lg-block" asp-area="" asp-controller="Home" asp-action="LogOut">Cerrar Sesión</a>
+                        <a class="nav-item btn btn-light rounded-pill py-2 px-4 ms-3 d-none d-lg-block" asp-area="" asp-controller="Cuenta" asp-action="Index">Cuenta</a>
+                        <a class="nav-item btn btn-light rounded-pill py-2 px-4 ms-3 d-none d-lg-block" asp-area="" asp-controller="Home" asp-action="LogOut">Cerrar Sesión</a>
                     }
 
                 </div>
@@ -114,7 +110,7 @@
                         <div class="col-md-12 text-center text-md-start mb-3 mb-md-0">
                             &copy; <a href="#">Banding</a>, Todos los derechos reservados.
 
-                            Diseñado por: <a href="https://htmlcodex.com"> Grupo 3</a>
+                            Diseñado por: <a href="https://htmlcodex.com"> Alan Guijarro</a>
                         </div>
 
                     </div>

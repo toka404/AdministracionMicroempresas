@@ -33,11 +33,6 @@ namespace Banding.Repository.MySql
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySQL("server=20.230.83.233;user=prueba2;database=banding;password=some_pass;port=3306");
-            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -106,6 +101,13 @@ namespace Banding.Repository.MySql
                     .HasMaxLength(1024);
 
                 entity.Property(e => e.IdCategoria).HasColumnName("ID_CATEGORIA");
+
+                entity.Property(e => e.Anulado)
+                    .IsRequired()
+                    .HasColumnName("anulado")
+                    .HasMaxLength(1)
+                    .IsFixedLength()
+                    .HasDefaultValueSql("'0'");
 
                 entity.Property(e => e.Logo)
                     .HasColumnName("LOGO")
@@ -221,6 +223,13 @@ namespace Banding.Repository.MySql
                 entity.Property(e => e.EmailEnviado)
                     .IsRequired()
                     .HasColumnName("email_enviado")
+                    .HasMaxLength(1)
+                    .IsFixedLength()
+                    .HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.Anulado)
+                    .IsRequired()
+                    .HasColumnName("anulado")
                     .HasMaxLength(1)
                     .IsFixedLength()
                     .HasDefaultValueSql("'0'");

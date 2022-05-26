@@ -1,0 +1,86 @@
+﻿@model Banding.Core.Models.Entities.MySql.Producto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container-xxl hero-header" style="padding-bottom:0px">
+    <div class="container">
+
+        <h1>Crear</h1>
+
+        <h4>Producto</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="IdEmprendimiento" class="control-label"></label>
+                        <select asp-for="IdEmprendimiento" class ="form-control" asp-items="ViewBag.IdEmprendimiento"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NombreProducto" class="control-label"></label>
+                        <input asp-for="NombreProducto" class="form-control" />
+                        <span asp-validation-for="NombreProducto" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PrecioFabricacion" class="control-label"></label>
+                        <input asp-for="PrecioFabricacion" class="form-control" />
+                        <span asp-validation-for="PrecioFabricacion" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Descripcion" class="control-label"></label>
+                        <input asp-for="Descripcion" class="form-control" />
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Foto" class="control-label"></label>
+                        <input asp-for="Foto" class="form-control" />
+                        <span asp-validation-for="Foto" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Stock" class="control-label"></label>
+                        <input asp-for="Stock" class="form-control" />
+                        <span asp-validation-for="Stock" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FechaCaducidad" class="control-label"></label>
+                        <input asp-for="FechaCaducidad" class="form-control" />
+                        <span asp-validation-for="FechaCaducidad" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PrecioVenta" class="control-label"></label>
+                        <input asp-for="PrecioVenta" class="form-control" />
+                        <span asp-validation-for="PrecioVenta" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StockMinimo" class="control-label"></label>
+                        <input asp-for="StockMinimo" class="form-control" />
+                        <span asp-validation-for="StockMinimo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EmailEnviado" class="control-label"></label>
+                        <input asp-for="EmailEnviado" class="form-control" />
+                        <span asp-validation-for="EmailEnviado" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<partial name="~/Views/Shared/_NavbarStylePartial.cshtml" />

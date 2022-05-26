@@ -16,7 +16,7 @@ namespace Banding.Core.Interfaces.Repository.MySql
         public string GetRol(int? id);
         public void CreateUsuario(Usuario usuario);
         public void UpdateUsuario(Usuario usuario);
-        public void DeleteUsuario(Usuario usuario);
+        public void DeleteUsuario(int id);
         public bool UsuarioExists(int id);
     }
 }

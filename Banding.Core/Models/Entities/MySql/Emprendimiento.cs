@@ -21,8 +21,9 @@ namespace Banding.Core.Models.Entities.MySql
         public string NombreEmprendimiento { get; set; }
         [DisplayName("Descripción")]
         public string DescripcionEmprendimiento { get; set; }
+        public string Anulado { get; set; } = "0";
         public string Logo { get; set; }
-
+        [DisplayName("Categoría")]
         public virtual Categoria IdCategoriaNavigation { get; set; }
         public virtual ICollection<Producto> Productos { get; set; }
         public virtual ICollection<Usuario> Usuarios { get; set; }

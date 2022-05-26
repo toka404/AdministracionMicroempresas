@@ -5,15 +5,17 @@
 }
 
 <div class="container-xxl hero-header" style="padding-bottom:0px">
-    <div class="container">
+    <div class="contenedor-middle">
 
 
-        <h1>Crear</h1>
 
-        <h4>Iva</h4>
-        <hr />
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <h1>Crear</h1>
+
+                <h4>Iva</h4>
+                <hr />
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
@@ -21,23 +23,30 @@
                         <input asp-for="ValorIva" class="form-control" />
                         <span asp-validation-for="ValorIva" class="text-danger"></span>
                     </div>
+                    <br />
                     <div class="form-group">
                         <input type="submit" value="Create" class="btn btn-primary" />
                     </div>
                 </form>
+                <br />
+                <div>
+                    <a class="btn btn-dark" asp-action="Index">Regresar</a>
+                </div>
             </div>
+            <div class="col-2"></div>
+
         </div>
 
-        <div>
-            <a asp-action="Index">Back to List</a>
-        </div>
+
 
     </div>
 </div>
 
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }
 
 <partial name="~/Views/Shared/_NavbarStylePartial.cshtml" />

@@ -4,21 +4,23 @@
     ViewData["Title"] = "Create";
 }
 <div class="container-xxl hero-header" style="padding-bottom:0px">
-    <div class="contenedor-grande contenedor-create">
+    <div class="contenedor-middle">
 
-        <h1>Crear</h1>
-        <br />
-        <h4>Emprendimiento</h4>
-        <br />
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-2"></div>
+            <div class="col-8">
+
+                <h1>Crear</h1>
+                <br />
+                <h4>Emprendimiento</h4>
+                <br />
+
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="IdCategoria" class="control-label"></label>
-                        <input asp-for="IdCategoria" class="form-control" />
-                        <span asp-validation-for="IdCategoria" class="text-danger"></span>
+                        <select asp-for="IdCategoria" class="form-select" asp-items="ViewBag.IdCategoria"></select>
                     </div>
                     <div class="form-group">
                         <label asp-for="NombreEmprendimiento" class="control-label"></label>
@@ -44,6 +46,8 @@
                 <a class="btn btn-dark" asp-action="Index">Regresar</a>
 
             </div>
+            <div class="col-2"></div>
+
         </div>
 
 

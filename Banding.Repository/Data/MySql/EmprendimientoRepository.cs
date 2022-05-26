@@ -1,6 +1,7 @@
 ﻿using Banding.Core.Interfaces.Repository.MySql;
 using Banding.Core.Models.Entities.MySql;
 using Banding.Repository.MySql;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,8 @@ namespace Banding.Repository.Data.MySql
 
         public void DeleteEmprendimiento(Emprendimiento emprendimiento)
         {
-            _context.Remove(emprendimiento);
+            emprendimiento.Anulado = "1";
+            _context.Update(emprendimiento);
             _context.SaveChanges();
         }
 
@@ -36,12 +38,12 @@ namespace Banding.Repository.Data.MySql
 
         public Emprendimiento GetEmprendimientoById(int? id)
         {
-            return _context.Emprendimiento.FirstOrDefault(e => e.IdEmprendimiento == id);
+            return _context.Emprendimiento.Include(e=>e.IdCategoriaNavigation).FirstOrDefault(e => e.IdEmprendimiento == id);
         }
 
         public List<Emprendimiento> GetEmprendimientos()
         {
-            return _context.Emprendimiento.ToList();
+            return _context.Emprendimiento.Include(e=>e.IdCategoriaNavigation).Where(e=>e.Anulado.Equals("0")).ToList();
         }
 
         public void UpdateEmprendimiento(Emprendimiento emprendimiento)

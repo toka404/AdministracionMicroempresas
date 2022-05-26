@@ -28,6 +28,7 @@ namespace Banding.Core.Models.Entities.MySql
         [DisplayName("Dirección")]
         public string DireccionCliente { get; set; }
         [DisplayName("Número Factura")]
+
         public int NroFactura { get; set; }
         public decimal Subtotal { get; set; }
         public decimal? IvaTotal { get; set; }

@@ -1,0 +1,71 @@
+﻿@model Banding.Core.Models.Entities.MySql.Proveedor
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container-xxl hero-header" style="padding-bottom:0px">
+    <div class="contenedor-middle">
+
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <h1>Crear</h1>
+
+                <h4>Proveedor</h4>
+                <hr />
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="IdProvincia" class="control-label"></label>
+                        <select asp-for="IdProvincia" class="form-select" asp-items="ViewBag.IdProvincia"></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Nombre</label>
+                        <input asp-for="NombreProveedor" class="form-control" />
+                        <span asp-validation-for="NombreProveedor" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Telefono" class="control-label"></label>
+                        <input asp-for="Telefono" class="form-control" />
+                        <span asp-validation-for="Telefono" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EMailProveedor" class="control-label"></label>
+                        <input asp-for="EMailProveedor" class="form-control" />
+                        <span asp-validation-for="EMailProveedor" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Producto" class="control-label"></label>
+                        <select asp-for="Producto" class="form-select" asp-items="ViewBag.IdProducto"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Ruc" class="control-label"></label>
+                        <input asp-for="Ruc" class="form-control" />
+                        <span asp-validation-for="Ruc" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+                <br />
+                <a class="btn btn-dark" asp-action="Index">Regresar</a>
+
+            </div>
+            <div class="col-2"></div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
+
+<partial name="~/Views/Shared/_NavbarStylePartial.cshtml" />
+

@@ -5,15 +5,17 @@
 }
 
 <div class="container-xxl hero-header" style="padding-bottom:0px">
-    <div class="container">
+    <div class="contenedor-middle">
 
 
-        <h1>Editar</h1>
-
-        <h4>Usuario</h4>
-        <hr />
         <div class="row">
-            <div class="col-md-4">
+            <div clasS="col-2"></div>
+            <div class="col-8">
+
+                <h1>Editar</h1>
+
+                <h4>Usuario</h4>
+                <hr />
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="IdUsuario" />
@@ -62,23 +64,29 @@
                         <select asp-for="IdEmprendimiento" class="form-control" asp-items="ViewBag.IdEmprendimiento"></select>
                         <span asp-validation-for="IdEmprendimiento" class="text-danger"></span>
                     </div>
+                    <br />
                     <div class="form-group">
                         <input type="submit" value="Guardar" class="btn btn-dark" />
                     </div>
                 </form>
+                <br />
+                <div>
+                    <a class="btn btn-dark" asp-action="Index">Regresar</a>
+                </div>
             </div>
+            <div clasS="col-2"></div>
         </div>
+        <br />
 
-        <div>
-            <a class="btn btn-dark" asp-action="Index">Regresar</a>
-        </div>
 
 
     </div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }
 
 

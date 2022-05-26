@@ -18,7 +18,7 @@
                     @Html.DisplayNameFor(model => model.IdProvincia)
                 </dt>
                 <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.IdProvincia)
+                    @Html.DisplayFor(model => model.IdProvinciaNavigation.NombreProvincia)
                 </dd>
                 <dt class = "col-sm-2">
                     @Html.DisplayNameFor(model => model.NombreUsuario)
@@ -60,7 +60,7 @@
     
             <form asp-action="Delete">
                 <input type="hidden" asp-for="IdUsuario" />
-                <input type="submit" value="Delete" class="btn btn-dark" /> |
+                <input type="submit" value="Eliminar" class="btn btn-dark" /> |
                 <a class="btn btn-dark" asp-action="Index">Regresar</a>
             </form>
         </div>

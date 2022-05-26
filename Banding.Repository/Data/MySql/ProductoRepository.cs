@@ -1,6 +1,7 @@
 ﻿using Banding.Core.Interfaces.Repository.MySql;
 using Banding.Core.Models.Entities.MySql;
 using Banding.Repository.MySql;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,26 +23,31 @@ namespace Banding.Repository.Data.MySql
             _context.SaveChanges();
         }
 
-        public void DeleteProducto(Producto producto)
+        public void DeleteProducto(int id)
         {
-            _context.Remove(producto);
+            var producto = _context.Producto.FirstOrDefault(c => c.IdProducto == id);
+            producto.Anulado = "1";
+            _context.Update(producto);
             _context.SaveChanges();
         }
 
         public Producto GetProductoById(int? id)
         {
-            return _context.Producto.FirstOrDefault(p => p.IdProducto == id);
+            return _context.Producto.Include(p => p.IdEmprendimientoNavigation).FirstOrDefault(p => p.IdProducto == id);
         }
 
         public List<Producto> GetProductos()
         {
-            return _context.Producto.ToList();
+            return _context.Producto.Include(p => p.IdEmprendimientoNavigation).Where(p=>p.Anulado.Equals("0")).ToList();
         }
         public List<Producto> GetProductosByEmprendimiento(int idEmprendimiento)
         {
-            return _context.Producto.Where(p => p.IdEmprendimiento == idEmprendimiento).ToList();
+            return _context.Producto.Include(p => p.IdEmprendimientoNavigation).Where(p => p.IdEmprendimiento == idEmprendimiento && p.Anulado.Equals("0")).ToList();
         }
-
+        public List<Producto> GetProductosByEmprendimientoAvailable(int idEmprendimiento)
+        {
+            return _context.Producto.Include(p => p.IdEmprendimientoNavigation).Where(p => p.IdEmprendimiento == idEmprendimiento && p.Anulado.Equals("0") && p.Stock >0).ToList();
+        }
         public bool ProductoExists(int id)
         {
             return _context.Producto.Any(p => p.IdProducto == id);

@@ -10,7 +10,7 @@
 }
 
 <div class="container-xxl hero-header" style="padding-bottom:0px">
-    <div class="container">
+    <div class="contenedor-grande">
 
         <h1>Proveedores</h1>
 
@@ -21,7 +21,7 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().IdProvincia)
+                        @Html.DisplayNameFor(model => model.First().IdProvinciaNavigation)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.First().NombreProveedor)
@@ -33,9 +33,6 @@
                         @Html.DisplayNameFor(model => model.First().EMailProveedor)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.First().Producto)
-                    </th>
-                    <th>
                         @Html.DisplayNameFor(model => model.First().Ruc)
                     </th>
                     <th></th>
@@ -45,7 +42,7 @@
         @foreach (var item in Model) {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.IdProvincia)
+                        @Html.DisplayFor(modelItem => item.IdProvinciaNavigation.NombreProvincia)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.NombreProveedor)
@@ -55,9 +52,6 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.EMailProveedor)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Producto)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Ruc)

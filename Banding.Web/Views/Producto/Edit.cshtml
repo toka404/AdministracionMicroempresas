@@ -3,16 +3,17 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
 <div class="container-xxl hero-header" style="padding-bottom:0px">
-    <div class="container">
+    <div class="contenedor-middle">
 
-        <h1>Editar</h1>
 
-        <h4>Producto</h4>
-        <hr />
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <h1>Editar</h1>
+
+                <h4>Producto</h4>
+                <hr />
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="IdProducto" />
@@ -56,38 +57,40 @@
                         <input asp-for="PrecioVenta" class="form-control" />
                         <span asp-validation-for="PrecioVenta" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Iva" class="control-label"></label>
-                        <input asp-for="Iva" class="form-control" />
-                        <span asp-validation-for="Iva" class="text-danger"></span>
-                    </div>
+
                     <div class="form-group">
                         <label asp-for="StockMinimo" class="control-label"></label>
                         <input asp-for="StockMinimo" class="form-control" />
                         <span asp-validation-for="StockMinimo" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" hidden>
                         <label asp-for="EmailEnviado" class="control-label"></label>
                         <input asp-for="EmailEnviado" class="form-control" />
                         <span asp-validation-for="EmailEnviado" class="text-danger"></span>
                     </div>
+                    <br />
                     <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <input type="submit" value="Guardar" class="btn btn-dark" />
+                    </div>
+                    <br />
+
+                    <div>
+                        <a class="btn btn-dark" asp-action="Index">Regresar</a>
                     </div>
                 </form>
             </div>
+            <div class="col-2"></div>
         </div>
 
-        <div>
-            <a asp-action="Index">Back to List</a>
-        </div>
 
     </div>
 </div>
 
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }
 
 <partial name="~/Views/Shared/_NavbarStylePartial.cshtml" />

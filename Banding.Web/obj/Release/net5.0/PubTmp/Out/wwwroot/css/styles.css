@@ -1,0 +1,43 @@
+﻿.notifications {
+    background-color: #e9ecef;
+    border-radius: .3rem;
+    padding: 0.5rem;
+}
+
+.bg-dark {
+    background-color: var(--verde70) !important;
+}
+
+.body-right {
+    margin: 0;
+    margin-left: 5px;
+}
+
+.factura-label{
+    font-size: 16px;
+}
+
+.col-2{
+    padding-left:0;
+}
+.btn-footer{
+    font-size: 15px;
+    margin: 15px;
+}
+.table-footer th, .table-footer td{
+    padding: 8px 8px 8px 15px;
+}
+
+.page-item.active .page-link {
+    border-color: var(--verde90);
+    background-color: var(--verde90);
+}
+
+.page-link {
+    color: #343a40;
+}
+
+.btn-dark {
+    background-color: var(--verde90);
+    border-color: var(--verde90);
+}

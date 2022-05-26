@@ -17,9 +17,12 @@ namespace Banding.Web.Controllers
     public class ProveedorController : Controller
     {
         private readonly IProveedorRepository _proveedorRepository;
+        private readonly IProvinciaRepository _provinciaRepository;
 
-        public ProveedorController(IProveedorRepository proveedorRepository)
+        public ProveedorController(IProveedorRepository proveedorRepository,
+            IProvinciaRepository provinciaRepository)
         {
+            _provinciaRepository = provinciaRepository;
             _proveedorRepository = proveedorRepository;
         }
 
@@ -49,6 +52,7 @@ namespace Banding.Web.Controllers
         // GET: Proveedor/Create
         public IActionResult Create()
         {
+            ViewData["IdProvincia"] = new SelectList(_provinciaRepository.GetProvincias(), "IdProvincia", "NombreProvincia");
             return View();
         }
 
@@ -57,13 +61,14 @@ namespace Banding.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdProveedor,IdProvincia,NombreProveedor,Telefono,EMail_Proveedor,Producto,RUC")] Proveedor proveedor)
+        public async Task<IActionResult> Create([Bind("IdProveedor,IdProvincia,NombreProveedor,Telefono,EMailProveedor,Producto,RUC")] Proveedor proveedor)
         {
             if (ModelState.IsValid)
             {
                 _proveedorRepository.CreateProveedor(proveedor);
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdProvincia"] = new SelectList(_provinciaRepository.GetProvincias(), "IdProvincia", "NombreProvincia", proveedor.IdProvincia);
             return View(proveedor);
         }
 
@@ -80,6 +85,8 @@ namespace Banding.Web.Controllers
             {
                 return NotFound();
             }
+            ViewData["IdProvincia"] = new SelectList(_provinciaRepository.GetProvincias(), "IdProvincia", "NombreProvincia", proveedor.IdProvincia);
+
             return View(proveedor);
         }
 
@@ -88,7 +95,7 @@ namespace Banding.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdProveedor,IdProvincia,NombreProveedor,Telefono,EMailProveedor,Producto,RUC")] Proveedor proveedor)
+        public async Task<IActionResult> Edit(int id, [Bind("IdProveedor,IdProvincia,NombreProveedor,Telefono,EMailProveedor,Producto,Ruc")] Proveedor proveedor)
         {
             if (id != proveedor.IdProveedor)
             {
@@ -114,6 +121,7 @@ namespace Banding.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdProvincia"] = new SelectList(_provinciaRepository.GetProvincias(), "IdProvincia", "NombreProvincia", proveedor.IdProvincia);
             return View(proveedor);
         }
 
