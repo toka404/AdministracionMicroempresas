@@ -18,6 +18,8 @@ namespace Banding.Core.Models.Entities.MySql
         [Required(ErrorMessage = "El campo no puede estar vacío")]
         [DisplayName("Nombre")]
         public string NombreCategoria { get; set; }
+        public string TipoCategoria { get; set; }
+        public string EspecialidadCategoria { get; set; }
 
         public virtual ICollection<Emprendimiento> Emprendimientos { get; set; }
     }
