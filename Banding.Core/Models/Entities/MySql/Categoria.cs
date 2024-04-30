@@ -19,8 +19,6 @@ namespace Banding.Core.Models.Entities.MySql
         [DisplayName("Nombre")]
         public string NombreCategoria { get; set; }
         public string TipoCategoria { get; set; }
-        public string EspecialidadCategoria { get; set; }
-
         public virtual ICollection<Emprendimiento> Emprendimientos { get; set; }
     }
 }
